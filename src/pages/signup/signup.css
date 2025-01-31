@@ -1,0 +1,152 @@
+.signup-wrap {
+  display: grid;
+  grid-template-columns: 1.8fr 2fr;
+  align-items: center;
+  background: #f7fbf8;
+}
+.signup-left{
+  position: relative;
+}
+.signup-left img {
+  width: 100%;
+  height: 100vh;
+  height: 100%;
+  /* width: 700px; */
+}
+.sign-top {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--Neutral-Gray-Gray-50, #f0f1f3);
+  background: var(--Neutral-White, #fff);
+  box-shadow: 0px 4px 30px 0px rgba(131, 98, 234, 0.05);
+  position: absolute;
+  top: 0;
+  /* left: 0; */
+  right: 0;
+  width: 52.5%;
+}
+.sign-top p {
+  color: #8692a6;
+  text-align: right;
+  font-family: Paris2024-Variable;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 155.556% */
+}
+.sign-top a {
+  color: #48a052;
+  text-align: right;
+  font-family: Paris2024;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px; /* 155.556% */
+  padding: 10px 8px;
+
+}
+
+.sign-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  padding: 40px;
+  column-gap: 24px;
+  row-gap: 10px;
+}
+.sign-in:hover {
+  border: 2px solid #0e842c;
+  transition: 0.3s ease-in-out;
+}
+.sign-in {
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  border: 2px solid #fff;
+  /* Eff2 */
+  box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+}
+.signrow {
+  color: #0e842c;
+}
+.signtxt {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.signtxt h2 {
+  color: #000;
+  -webkit-text-stroke-width: 0.20000000298023224;
+  -webkit-text-stroke-color: #000;
+  font-family: Paris2024;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.signtxt p {
+  color: #698f74;
+  font-family: Paris2024-Variable;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 350;
+  line-height: normal;
+  width: 200px;
+}
+
+.sign-home{
+  width: 85px;
+  height: 42px;
+  background: transparent;
+  /* background-color: #fff; */
+  z-index: 999;
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  left: 85px;
+
+}
+
+@media screen and (max-width: 1290px){
+    .sign-home{
+      left: 80px;
+    }
+}
+@media screen and (max-width: 900px) {
+  .sign-home{
+    left: 110px;
+    width: 100px;
+    height: 60px;
+  }
+  .signup-wrap {
+    margin-top: 100px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .sign-top {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .signtxt p {
+    width: 234px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .sign-grid {
+    grid-template-columns: 1fr;
+  }
+  .signtxt p {
+    width: 214px;
+  }
+  .sign-home{
+    left: 50px;
+    width: 60px;
+    height: 30px;
+    top: 20px;
+  }
+}

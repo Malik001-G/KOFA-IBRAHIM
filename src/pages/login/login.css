@@ -1,0 +1,149 @@
+.nav-login {
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #e9ecef;
+  background: #fff;
+}
+.login-wrapp {
+  height: 90vh;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background: #f5f5f5;
+}
+.sign-inn {
+  padding: 32px 80px 24px 80px;
+  border-radius: 13px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sign-inn h1 {
+  color: #000;
+  text-align: center;
+  font-family: Quicksand;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 35.2px; /* 110% */
+  margin-bottom: 24px;
+}
+.inputt {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.inputt label {
+  color: var(--Foundation-Primary-primary-500, #0e842c);
+  font-family: Urbanist;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px; /* 131.25% */
+  letter-spacing: -0.32px;
+}
+.inputt input {
+  width: 375px;
+  padding: 13px 16px;
+  border-radius: 4px;
+  border: 1px solid var(--Foundation-Primary-primary-500, #0e842c);
+  font-size: 18px;
+  font-weight: 500;
+  font-family: Inter;
+}
+.check-pass {
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.check-pass div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.check-pass div label {
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 16.8px */
+}
+.check-pass div input {
+  height: 20px;
+  width: 20px;
+}
+
+.forgot {
+  color: var(--Error-300, #f66);
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px; /* 150% */
+  letter-spacing: -0.32px;
+}
+.login-wrapp button {
+  color: #fff;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px; /* 112.5% */
+  text-transform: capitalize;
+  width: 100%;
+  border-radius: 6px;
+  background: var(--Foundation-Primary-primary-500, #0e842c);
+  padding: 9px 14px;
+}
+.create-act {
+  color: var(--Black-60, rgba(17, 17, 19, 0.6));
+  text-align: center;
+
+  /* Body */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 22.4px */
+  margin-top: 16px;
+}
+.create-act a {
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  text-decoration-line: underline;
+}
+.log-imgg {
+  margin-top: 39px;
+}
+.eye-pos {
+  position: absolute;
+  right: 16px;
+  top: 46px;
+  cursor: pointer;
+}
+.eye-pos .i {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .sign-inn {
+    padding: 32px 32px 24px 32px;
+  }
+  .inputt input {
+    width: 360px;
+  }
+}

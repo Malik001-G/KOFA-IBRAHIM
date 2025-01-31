@@ -1,0 +1,101 @@
+/* Container */
+.half-circle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Half-circle styling */
+.half-circle {
+  width: 792px;
+  width: 50%;
+  height: 680px;
+  padding-top: 120px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  transition: transform 1s ease;
+}
+
+/* Left half circle */
+.yellow-left {
+  background-color: #fddb0a;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateX(0);
+}
+
+.green-left {
+  background-color: #0e842c;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateX(100%);
+}
+
+/* Right half circle */
+.green-right {
+  background-color: #0e842c;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(0);
+}
+
+.yellow-right {
+  background-color: #fddb0a;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(-100%);
+}
+
+/* Text styling */
+.circle-text {
+  font-family: Paris2024-Variable, sans-serif;
+  font-size: 160px; /* Adjusted font size */
+  font-weight: 760;
+  line-height: normal;
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease; /* Fade-in effect */
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+
+@media screen and (max-width:900px) {
+    .half-circle{
+        height: 500px;
+        padding-top: 70px;
+    }
+    .half-circle-container{
+        height: 200px;
+    }
+    .circle-text{
+        font-size: 80px;
+    }
+}
+@media screen and (max-width:600px) {
+    .half-circle{
+        height: 200px;
+        padding-top: 35px;
+    }
+    .half-circle-container{
+        height: 110px;
+    }
+    .circle-text{
+        font-size: 48px;
+    }
+}

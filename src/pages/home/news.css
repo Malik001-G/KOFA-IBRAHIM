@@ -1,0 +1,114 @@
+.news-wrapper{
+    padding: 56px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    background: var(--Foundation-Primary-primary-50, #E7F3EA);
+}
+.news-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.news-top h1{
+    color: var(--Black, #3E3232);
+font-feature-settings: 'liga' off, 'clig' off;
+font-family: Paris2024-Variable;
+font-size: 32px;
+font-style: normal;
+font-weight: 350;
+line-height: normal;
+text-transform: capitalize;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+.news-top a{
+    color: var(--Black, #3E3232);
+font-feature-settings: 'liga' off, 'clig' off;
+font-family: Paris2024-Variable;
+font-size: 24px;
+font-style: normal;
+font-weight: 350;
+line-height: normal;
+}
+.news-top h1 span{
+    border-radius: 12px;
+background: var(--Primary, #F81539);
+width: var(--14-px, 4px);
+height: 10px;
+}
+.news-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 24px;
+
+}
+.news-grid-item{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+        background: #FFF;
+}
+.news-grid-item div {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    padding: 0 12px 0 ;
+}
+.news-grid-item div h5{
+    color: var(--Foundation-Info-info-500, #005180);
+font-family: Paris2024-Variable;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; /* 142.857% */
+margin-bottom: 12px;
+}
+.news-grid-item img{
+    width: 320px;
+    width: 100%;
+height: 234px;
+object-fit: cover;
+}
+.news-grid-item div h2{
+    color: #1A1A1A;
+
+/* Text lg/Semibold */
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 28px; /* 155.556% */
+margin-bottom: 8px;
+}
+.news-grid-item div p{
+    color: #667085;
+font-family: Paris2024-Variable;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 150% */
+}
+
+@media screen and (max-width: 900px) {
+    .news-grid{
+        grid-template-columns: 2fr;
+    }
+}
+@media screen and (max-width: 600px) {
+    .news-wrapper{
+        padding: 48px 24px;
+    }
+    .news-grid-item{
+        display: flex;
+        flex-direction: column;
+    }
+    .news-grid-item div{
+        padding: 0 24px 24px;
+    }
+    .news-top h1, .news-top a{
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,144 @@
+.footer {
+  background: #014a14;
+  padding: 56px 100px;
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+.footer-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.footer-links a:hover{
+  color: #fddb0a;
+
+}
+.footer-links a {
+  color: #fff;
+  font-family: Paris2024-Variable;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 350;
+  line-height: 20px; /* 125% */
+  letter-spacing: 0.16px;
+}
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: start;
+}
+.subscribe p {
+  color: #fff;
+  font-family: Paris2024;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+  width: 352px;
+}
+.subscribe form input,
+.subscribe form input::placeholder {
+  color: var(--Cold-Grey-30, #b1b5bb);
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.subscribe form {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.subscribe form input {
+  width: 227px;
+  padding: 12px 8px;
+}
+.subscribe form button {
+  padding: 5px 26px;
+  border: 1px solid #fff;
+  background: #fff;
+  cursor: pointer;
+  color: #000;
+  text-align: center;
+  font-family: Paris2024;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.subscribe form button:hover{
+  background-color: #fddb0a;
+    border: 1px solid #fddb0a;
+}
+.footer-line {
+  width: 100%;
+  background-color: #fff;
+  height: 1px;
+  margin-top: 64px;
+}
+.footer-bottom {
+  padding-top: 16px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+.footer-bottom p {
+  color: #fff;
+  /* text-align: center; */
+  font-family: Paris2024;
+  font-size: 16.842px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.footer-bottom .socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.footer-bottom .socials a {
+  width: 41.053px;
+  height: 41.053px;
+  border: 1.053px solid white;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@media screen and (max-width: 900px) {
+  .footer{
+    padding: 42px;
+  }
+  .footer-top{
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .footer-bottom{
+    flex-direction: column;
+    gap: 32px;
+  }
+  .footer-links{
+    padding-top: 24px;
+    flex-direction: column;
+    align-items: start;
+  }
+  .subscribe form{
+    flex-direction: column;
+  }
+  .subscribe form input{
+    width: 250px;
+  }
+  .subscribe p{
+    width: 100%;
+  }
+}

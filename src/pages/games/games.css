@@ -1,0 +1,567 @@
+.games-intro {
+  display: flex;
+  /* height: 316px; */
+  padding: 56px 100px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.games-intro p {
+  /* width: 1240px; */
+  color: #000;
+  font-family: Paris2024-Variable;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 51px; /* 255% */
+  text-align: left;
+}
+
+.game-figures-top {
+  width: 100%;
+  /* height: 565px; */
+  display: flex;
+  justify-content: space-between;
+  padding: 56px 100px 78px;
+  /* gap: 60px; */
+  flex-shrink: 0;
+  background: #f6f6f6;
+  align-items: center;
+}
+
+.game-figures-top-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.game-figures-top-left h2 {
+  color: var(--Foundation-Primary-primary-500, #0e842c);
+  -webkit-text-stroke-width: 0.20000000298023224;
+  -webkit-text-stroke-color: var(--Foundation-Primary-primary-500, #0e842c);
+  font-family: Paris2024-Variable;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px; /* 118.75% */
+}
+
+.game-figures-img {
+  width: 632px;
+  height: 369px;
+  flex-shrink: 0;
+  border-radius: 20px;
+}
+
+.game-figures-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.games-figures-top-right {
+  border-radius: 20px;
+  background: #fff;
+  display: inline-flex;
+  padding: 56px 137px 56px 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.dot-text {
+  position: relative;
+  padding-left: 24px;
+  color: #000;
+  font-family: Paris2024-Variable;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 51px;
+}
+
+.dot-text::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px; /* dot size */
+  height: 15px;
+  border-radius: 50%;
+  background-color: green;
+}
+.game-figures-bottom {
+  width: 100%;
+  /* height: 565px; */
+  display: flex;
+  justify-content: space-between;
+  padding: 56px 100px 78px;
+  /* gap: 60px; */
+  flex-shrink: 0;
+  background: #fff;
+  align-items: center;
+}
+
+.game-figures-bottom-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.game-figures-bottom-left h2 {
+  color: var(--Foundation-Primary-primary-500, #0e842c);
+  -webkit-text-stroke-width: 0.20000000298023224;
+  -webkit-text-stroke-color: var(--Foundation-Primary-primary-500, #0e842c);
+  font-family: Paris2024-Variable;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px; /* 118.75% */
+}
+
+.game-figures-img {
+  width: 632px;
+  height: 369px;
+  flex-shrink: 0;
+  border-radius: 20px;
+}
+
+.game-figures-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.games-figures-bottom-right {
+  border-radius: 20px;
+  background: #f6f6f6;
+  display: inline-flex;
+  padding: 56px 137px 56px 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.games-legacy {
+  display: flex;
+  width: 100%;
+  padding: 56px 100px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 35px;
+  background: #f6f6f6;
+}
+
+.legacy {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.legacy h2 {
+  color: var(--Foundation-Primary-primary-500, #0e842c);
+  -webkit-text-stroke-width: 0.20000000298023224;
+  -webkit-text-stroke-color: var(--Foundation-Primary-primary-500, #0e842c);
+  font-family: Paris2024-Variable;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px; /* 95% */
+}
+
+.legacy p {
+  flex: 1 0 0;
+  color: #000;
+  font-family: Paris2024-Variable;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 51px;
+}
+
+.unlocking-potential {
+  display: flex;
+  /* width: 1440px; */
+  padding: 56px 100px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.unlocking-potential-header h2 {
+  /* width: 1240px; */
+  color: var(--Foundation-Primary-primary-500, #0e842c);
+  -webkit-text-stroke-width: 0.20000000298023224;
+  -webkit-text-stroke-color: var(--Foundation-Primary-primary-500, #0e842c);
+  font-family: Paris2024-Variable;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px; /* 120% */
+}
+
+.unlocking-potential-content {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.unlocking-potential-content p {
+  color: var(--Foundation-Primary-primary-500, #0e842c);
+  font-family: Paris2024-Variable;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 51px; /* 212.5% */
+}
+
+.unlocking-potential-content span {
+  color: #000;
+  font-family: Paris2024-Variable;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 51px;
+}
+
+@media (max-width: 1290px) {
+  .games-intro p {
+    /* text-align: center; */
+  }
+
+  .unlocking-potential {
+    width: 100%;
+    padding: 56px 40px;
+  }
+
+  .unlocking-potential-header h2 {
+    width: 1200px;
+    width: 100%;
+  }
+
+  .games-legacy {
+    display: flex;
+    width: 100%;
+    padding: 56px 40px;
+  }
+  .game-figures-bottom, .game-figures-top{
+    padding: 56px 74px;
+  }
+  .games-figures-bottom-right, .games-figures-top-right{
+    padding: 56px 56px 56px 40px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .games-intro p {
+    /* text-align: center; */
+  }
+
+  .unlocking-potential {
+    width: 100%;
+    padding: 56px 40px;
+  }
+
+  .unlocking-potential-header h2 {
+    width: 1200px;
+  }
+
+  .games-legacy {
+    display: flex;
+    width: 100%;
+    padding: 56px 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .games-intro p {
+    /* text-align: center; */
+  }
+
+  .games-legacy {
+    display: flex;
+    width: 100%;
+    padding: 56px 140px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 35px;
+    background: #f6f6f6;
+  }
+
+  .legacy {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+
+  .legacy h2 {
+    color: var(--Foundation-Primary-primary-500, #0e842c);
+    -webkit-text-stroke-width: 0.20000000298023224;
+    -webkit-text-stroke-color: var(--Foundation-Primary-primary-500, #0e842c);
+    font-family: Paris2024-Variable;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 38px; /* 95% */
+  }
+
+  .legacy p {
+    flex: 1 0 0;
+    color: #000;
+    font-family: Paris2024-Variable;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 51px;
+  }
+
+  .unlocking-potential {
+    display: flex;
+    /* width: 1440px; */
+    padding: 56px 42px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .unlocking-potential-header h2 {
+    /* width: 1240px; */
+    color: var(--Foundation-Primary-primary-500, #0e842c);
+    -webkit-text-stroke-width: 0.20000000298023224;
+    -webkit-text-stroke-color: var(--Foundation-Primary-primary-500, #0e842c);
+    font-family: Paris2024-Variable;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 48px; /* 120% */
+  }
+
+  .unlocking-potential-content {
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .unlocking-potential-content p {
+    color: var(--Foundation-Primary-primary-500, #0e842c);
+    font-family: Paris2024-Variable;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 51px; /* 212.5% */
+  }
+
+  .unlocking-potential-content span {
+    color: #000;
+    font-family: Paris2024-Variable;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 51px;
+  }
+  .games-intro, .games-legacy{
+    padding: 42px;
+  }
+}
+
+@media (max-width: 884px) {
+  .games-intro {
+    /* margin-top: 2rem; */
+  }
+  .games-intro p {
+    /* text-align: center; */
+  }
+
+  .game-figures-top {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 5rem;
+    padding: 42px;
+  }
+
+  .game-figures-img {
+    width: 800px;
+  }
+
+  .games-figures-top-right {
+    
+    width: 100%;
+  }
+
+  .game-figures-bottom {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    padding: 42px;
+    gap: 24px;
+  }
+
+  .game-figures-img {
+    width: 800px;
+    width: 100%;
+  }
+
+  .games-figures-bottom-right {
+    width: 100%;
+  }
+
+  .unlocking-potential-header h2 {
+    width: 800px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .games-intro {
+    height: auto;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 20px;
+    /* margin-bottom: 4rem; */
+  }
+  .games-intro p {
+    /* text-align: center; */
+    font-size: 16px;
+    width: 100%;
+    line-height: 37px;
+  }
+
+  .game-figures-top {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    gap: 12px;
+    padding: 12px;
+  }
+  .game-figures-top-left {
+    height: auto;
+  }
+
+  .game-figures-top-left h2 {
+    font-size: 20px;
+    text-align: start;
+    /* width: 600px; */
+  }
+
+  .game-figures-bottom {
+    width: 100%;
+    height: auto;
+    display: flex;
+    /* flex-direction: column; */
+    /* margin-top: 4rem; */
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .game-figures-bottom-left {
+    height: auto;
+  }
+
+  .game-figures-bottom-left h2 {
+    font-size: 20px;
+    text-align: start;
+    /* width: 600px; */
+  }
+
+  .game-figures-img {
+    width: 100%;
+    height: 350px;
+  }
+
+  .games-figures-top-right {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .dot-text {
+    width: 100%;
+    position: relative;
+    padding-left: 25px;
+    color: #000;
+    font-family: Paris2024-Variable;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 31px; /* 255% */
+  }
+
+  .dot-text::before {
+    width: 12px;
+    height: 12px;
+  }
+
+  .game-figures-bottom {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    padding: 12px;
+  }
+
+  .games-figures-bottom-right {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .unlocking-potential-header h2 {
+    /* width: 800px; */
+    width: 100%;
+    font-size: 30px;
+  }
+
+  .games-legacy {
+    display: flex;
+    width: 100%;
+    padding: 36px 30px;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: flex-start;
+    gap: 35px;
+    background: #f6f6f6;
+  }
+
+  .legacy p {
+    font-size: 15px;
+    line-height: 35px;
+    width: 100%;
+  }
+
+  .unlocking-potential {
+    padding: 10px 20px;
+  }
+
+  .unlocking-potential-header h2 {
+    width: 350px;
+    width: 100%;
+    font-size: 30px;
+  }
+
+  .unlocking-potential-content p {
+    font-size: 19px;
+    width: 100%;
+  }
+
+  .unlocking-potential-content span {
+    font-size: 19px;
+  }
+}
