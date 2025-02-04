@@ -10,6 +10,7 @@ import SignUp from './pages/signup/SignUp';
 import TakingPart from './pages/takingpart/TakingPart';
 import Venue from './pages/venue/Venue';
 import NewsPage from "./pages/home/NewsPage";
+import Portfoliodetails from "./pages/portfolio/Portfoliodetails";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} index />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/portfolio/:id" element={<Portfoliodetails />} />
           <Route path="/commitee" element={<Commitee />} />
           <Route path="/games" element={<Games />} />
           <Route path="/login" element={<Login />} />

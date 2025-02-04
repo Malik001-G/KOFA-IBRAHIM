@@ -24,6 +24,9 @@ import LatestVideos from "./LatestVideos";
 import Questions from "./Questions";
 import HalfCircleSwitch from "../../components/halfcircle/HalfCircle";
 import News from "./News";
+// import Portfolio from "./portfolio";
+import PorfolioCategories from "../../components/portfoliocategories/PorfolioCategories";
+
 
 const Home = () => {
 
@@ -33,7 +36,7 @@ const Home = () => {
       <Navbar />
       <Hero/>
       <About/>
-  
+      <PorfolioCategories/>
     </>
   );
 };
