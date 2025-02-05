@@ -27,7 +27,8 @@ import News from "./News";
 // import Portfolio from "./portfolio";
 import PorfolioCategories from "../../components/portfoliocategories/PorfolioCategories";
 import Career_Milestone from "../../components/career-milestone/Career_Milestone";
-Career_Milestone
+import Reviews from "../../components/Reviews/Reviews";
+
 const Home = () => {
 
 
@@ -38,6 +39,7 @@ const Home = () => {
       <About/>
       <PorfolioCategories/>
       <Career_Milestone/>
+      <Reviews/>
     </>
   );
 };

@@ -64,7 +64,6 @@ const Career_Milestone = () => {
                     <p className='text-base'>Explore my portfolio to see how creativity meets functionality.</p>
                 </div>
             </div>
-
             <div className="space-y-6">
                 {experiences.map((exp, index) => (
                     <ExperienceCard key={index} {...exp} />

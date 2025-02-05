@@ -27,7 +27,7 @@ const Hero = () => {
           </div>
         </div>
         <div>
-          <img src={hero} alt="" className="h-96 object-cover shadow-md w-full"/>
+          <img src={hero} alt="" className="h-96 object-cover md:shadow-md w-full"/>
         </div>
 
       </section>
