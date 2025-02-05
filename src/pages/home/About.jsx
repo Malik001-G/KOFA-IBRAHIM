@@ -68,7 +68,7 @@ const About = () => {
                         alt="Professional Image"
                         style={{
                             transition:
-                                "filter 1s ease-in-out, opacity 1s ease-in-out, transform 1s ease-in-out",
+                                "filter 1s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
                             filter: isVisible ? "grayscale(100%)" : "grayscale(0%)",
                             opacity: isVisible ? 1 : 0.8,
                             transform: isVisible ? "scale(1.05)" : "scale(0.95)",

@@ -1,4 +1,3 @@
-import { section } from 'framer-motion/client';
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import documentaryimg1 from '../../assets/images/new.jfif'

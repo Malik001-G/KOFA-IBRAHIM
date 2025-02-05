@@ -26,8 +26,8 @@ import HalfCircleSwitch from "../../components/halfcircle/HalfCircle";
 import News from "./News";
 // import Portfolio from "./portfolio";
 import PorfolioCategories from "../../components/portfoliocategories/PorfolioCategories";
-
-
+import Career_Milestone from "../../components/career-milestone/Career_Milestone";
+Career_Milestone
 const Home = () => {
 
 
@@ -37,6 +37,7 @@ const Home = () => {
       <Hero/>
       <About/>
       <PorfolioCategories/>
+      <Career_Milestone/>
     </>
   );
 };
