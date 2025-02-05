@@ -40,7 +40,7 @@ const About = () => {
                 <h2 className='text-black text-4xl mb-2 uppercase font-medium heading'>About</h2>
                 <h2 className='text-[#939393] text-4xl uppercase heading'>who am i?</h2>
             </div>
-            <div className="lg::flex gap-10">
+            <div className="lg:flex gap-10">
                 <div className='lg:w-8/12 text-[#4B4B4B] text-lg lg:text-xl mb-5 md:mb-0'>
                     <p className='mb-5'>James Kofa Ibrahim is a distinguished documentary
                         filmmaker, leadership and strategy expert, climate change
@@ -71,7 +71,7 @@ const About = () => {
                                 "filter 1s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
                             filter: isVisible ? "grayscale(100%)" : "grayscale(0%)",
                             opacity: isVisible ? 1 : 0.8,
-                            transform: isVisible ? "lg:scale(1.05)" : "scale(0.95)",
+                            transform: isVisible ? "scale(1.0)" : "scale(0.95)",
                         }}
                     />
 

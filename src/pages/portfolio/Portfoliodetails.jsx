@@ -6,6 +6,8 @@ import documentaryimg2 from "../../assets/images/climate.jpg";
 import documentaryimg3 from "../../assets/images/leadership.jfif";
 import documentaryimg4 from "../../assets/images/portfolio4.jfif";
 import backmenu from "../../assets/images/Menu.png";
+import Footer from "../../components/footer/Footer";
+
 const categories = [
     {
         name: "Documentary Filmmaker",
@@ -134,6 +136,8 @@ const PortfolioDetails = () => {
                     </div>
                 )}
             </section>
+
+            <Footer />
         </>
     );
 };
