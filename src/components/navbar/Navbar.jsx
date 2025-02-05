@@ -45,7 +45,7 @@ const Navbar = () => {
           <NavLink to="/commitee" className="py-5 pr-10 text-4xl" onClick={toggleSidebar}>
             About Us
           </NavLink>
-          <NavLink to="/games" className="py-5 pr-10 text-4xl" onClick={toggleSidebar}>
+          <NavLink to="/portfolio/documentary" className="py-5 pr-10 text-4xl" onClick={toggleSidebar}>
             My Portfolio
           </NavLink>
           <NavLink to="/taking-part" className="py-5 pr-10 text-4xl" onClick={toggleSidebar}>

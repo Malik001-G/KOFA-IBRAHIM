@@ -47,16 +47,16 @@ const testimonials = [
 ];
 const Reviews = () => {
     const [startIndex, setStartIndex] = useState(0);
-    const visibleCount = 3; // Number of full testimonials shown
-    const halfVisible = 1; // Half-visible on both sides
-    const autoplayInterval = 4000; // 4 seconds
+    const visibleCount = 3; 
+    const halfVisible = 1; 
+    const autoplayInterval = 8000;
 
     useEffect(() => {
         const interval = setInterval(() => {
             nextTestimonials();
         }, autoplayInterval);
 
-        return () => clearInterval(interval); // Cleanup on unmount
+        return () => clearInterval(interval);
     }, [startIndex]);
 
     const prevTestimonials = () => {
@@ -73,10 +73,10 @@ const Reviews = () => {
     return (
         <div
             className="relative bg-white py-16 px-12 lg:px-36 overflow-hidden"
-            onMouseEnter={() => clearInterval(window.carouselTimer)} // Pause on hover
+            onMouseEnter={() => clearInterval(window.carouselTimer)}
             onMouseLeave={() => {
                 window.carouselTimer = setInterval(nextTestimonials, autoplayInterval);
-            }} // Resume on hover out
+            }} 
         >
              <div className='flex items-center justify-between mb-10'>
                 <div className='w-8/12'>
@@ -87,7 +87,7 @@ const Reviews = () => {
                     <p className='text-base'>Explore my portfolio to see how creativity meets functionality.</p>
                 </div>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center"> 
                 {/* Left Arrow */}
                 {/* <button
                     onClick={prevTestimonials}
@@ -108,7 +108,7 @@ const Reviews = () => {
                                 className={`w-2/4 p-4 ${index >= startIndex && index < startIndex + visibleCount + halfVisible ? "opacity-100" : "opacity-50"
                                     } transform transition-all duration-300`}
                             >
-                                <div className="bg-[#F5F5F5] p-14 rounded-lg w-80 shadow-md text-center flex flex-col justify-between h-full">
+                                <div className="bg-[#F5F5F5] p-14 rounded-lg w-80 shadow text-center flex flex-col justify-between h-full">
                                     <p className="text-gray-700 italic">"{testimonial.quote}"</p>
                                     <div className='flex justify-center mt-3'>
                                     <img src={testimonial.img} className='w-14 rounded-full' alt="" />
