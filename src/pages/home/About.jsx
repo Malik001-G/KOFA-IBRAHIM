@@ -75,7 +75,7 @@ const About = () => {
                         }}
                     />
 
-                    <a href="#" class="rounded-full w-80 text-center hover:scale-95 duration-700 justify-center bg-white border border-[#4B4B4B] text-[#4B4B4B] focus:ring-0 inline-flex font-medium text-sm px-5 py-2.5 group focus:outline-none">Read more
+                    <a href="#" className="rounded-full w-80 text-center hover:scale-95 duration-700 justify-center bg-white border border-[#4B4B4B] text-[#4B4B4B] focus:ring-0 inline-flex font-medium text-sm px-5 py-2.5 group focus:outline-none">Read more
                         <img src={arrow} className='ml-2' alt="" />
                     </a>
 

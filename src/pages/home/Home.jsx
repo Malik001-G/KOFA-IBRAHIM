@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/footer/Footer";
-import Partners from "../../components/partners/Partners";
 import "./home.css";
 import Hero from "./Hero";
 import About from "./About";

@@ -1,7 +1,5 @@
 import React from "react";
 import arrow from '../../assets/images/schedule_arrow.svg'
-import ipinle from "../../assets/images/ipinle.svg";
-import Timer from './../../components/timer/Timer';
 import hero from '../../assets/images/hero_image.png'
 import "./hero.css";
 

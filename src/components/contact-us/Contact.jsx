@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Contactform from './Contactform'
-
+import './Contact.css'
 
 const Contact = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -8,28 +8,29 @@ const Contact = () => {
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
-      <h2 className="text-3xl font-bold text-center mb-6">
-        LET’S DISCOVER TOGETHER
-      </h2>
-      <p className="text-lg text-center mb-6">
-        Read insights and praises from mentors and peers who have guided.
-      </p>
-      
-      {/* Button to trigger the modal */}
-      <button
-        onClick={openModal}
-        className="bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors"
-      >
-        Contact Me
-      </button>
+    return (
+        <div className="flex flex-col items-center justify-center py-16 bg-white p-6">
+            <h2 className="text-4xl font-medium text-black heading text-center mb-5">
+                LET’S DISCOVER <br /> TOGETHER
+            </h2>
+            <p className="text-sm max-w-md text-center mb-6">
+                Have a project in mind, a question, or just want to connect? Reach out and let's discuss how we can bring ideas to life.     
+             </p>
 
-      {/* Modal Component */}
-      {isModalOpen && <Contactform closeModal={closeModal} />}
-    </div>
-  );
-  
+
+            {/* Button to trigger the modal */}
+            <button
+                onClick={openModal}
+                className="bg-black text-white py-3 px-5 rounded-full text-sm hover:transition-all duration-500 ease-linear hover:bg-black/75 transition-colors"
+            >
+                Contact Me
+            </button>
+
+            {/* Modal Component */}
+            {isModalOpen && <Contactform closeModal={closeModal} />}
+        </div>
+    );
+
 }
 
 export default Contact
