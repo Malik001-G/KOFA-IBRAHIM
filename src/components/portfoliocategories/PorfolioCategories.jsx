@@ -16,13 +16,13 @@ const PorfolioCategories = () => {
     ];
 
     return (
-        <section className='bg-white pb-16 px-12 lg:px-36'>
-            <div className='flex items-center justify-between mb-10'>
-                <div className='w-8/12'>
+        <section className='bg-white pb-16 px-6 lg:px-36'>
+            <div className='md:flex items-center justify-between mb-10'>
+                <div className='md:w-8/12 mb-4 md:`mb-0'>
                     <h2 className='text-black text-4xl mb-2 uppercase font-medium heading'>Portfolio</h2>
                     <h2 className='text-[#939393] text-4xl uppercase heading'>what i do </h2>
                 </div>
-                <div className='w-4/12'>
+                <div className='md:w-4/12'>
                     <p className='text-base'>Explore my portfolio to see how creativity meets functionality.</p>
                 </div>
             </div>
@@ -34,14 +34,15 @@ const PorfolioCategories = () => {
                         style={{ backgroundImage: `url(${category.bg})` }}
                         onClick={() => navigate(category.path)}
                     >
-                        <div className='flex justify-between items-center'>
+                        <div className='md:flex justify-between items-center'>
+                            <div className='order-last'>
+                                <h2 className='text-5xl text-white font-black bg-black bg-opacity-0'>{category.number}</h2>
+                            </div>
                             <div className='max-w-sm'>
                                 <h2 className="text-3xl font-semibold uppercase bg-black bg-opacity-30 p-2 text-white rounded-lg">{category.name}</h2>
                                 <p className="text-base mt-2 bg-black font-bold bg-opacity-30 p-1 rounded-lg">{category.caption}</p>
                             </div>
-                            <div>
-                                <h2 className='text-5xl text-white font-bold bg-black bg-opacity-0'>{category.number}</h2>
-                            </div>
+
                         </div>
 
 

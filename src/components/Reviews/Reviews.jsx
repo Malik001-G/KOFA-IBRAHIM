@@ -47,9 +47,9 @@ const testimonials = [
 ];
 const Reviews = () => {
     const [startIndex, setStartIndex] = useState(0);
-    const visibleCount = 3; 
-    const halfVisible = 1; 
-    const autoplayInterval = 8000;
+    const visibleCount = 3;
+    const halfVisible = 1;
+    const autoplayInterval = 5000;
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -72,22 +72,22 @@ const Reviews = () => {
     };
     return (
         <div
-            className="relative bg-white py-16 px-12 lg:px-36 overflow-hidden"
+            className="relative bg-white py-16 px-6 lg:px-36 overflow-hidden"
             onMouseEnter={() => clearInterval(window.carouselTimer)}
             onMouseLeave={() => {
                 window.carouselTimer = setInterval(nextTestimonials, autoplayInterval);
-            }} 
+            }}
         >
-             <div className='flex items-center justify-between mb-10'>
-                <div className='w-8/12'>
+            <div className='md:flex items-center justify-between mb-10'>
+                <div className='md:w-8/12 mb-2 md:mb-0'>
                     <h2 className='text-black text-4xl uppercase font-medium heading'>Expert</h2>
                     <h2 className='text-[#939393] text-4xl uppercase heading font-medium'>feedbacks </h2>
                 </div>
-                <div className='w-4/12'>
+                <div className='md:w-4/12'>
                     <p className='text-base'>Explore my portfolio to see how creativity meets functionality.</p>
                 </div>
             </div>
-            <div className="flex items-center"> 
+            <div className="flex items-center">
                 {/* Left Arrow */}
                 {/* <button
                     onClick={prevTestimonials}
@@ -103,15 +103,16 @@ const Reviews = () => {
                         style={{ transform: `translateX(-${startIndex * 25}%)` }}
                     >
                         {testimonials.map((testimonial, index) => (
-                            <div
-                                key={index}
-                                className={`w-2/4 p-4 ${index >= startIndex && index < startIndex + visibleCount + halfVisible ? "opacity-100" : "opacity-50"
-                                    } transform transition-all duration-300`}
-                            >
+                         <div
+                         key={index}
+                         className={`w-full md:w-2/3 p-4 ${index >= startIndex && index < startIndex + visibleCount ? "opacity-100" : "md:opacity-100"
+                             } transform transition-all duration-300`}
+                       >
+                       
                                 <div className="bg-[#F5F5F5] p-14 rounded-lg w-80 shadow text-center flex flex-col justify-between h-full">
                                     <p className="text-gray-700 italic">"{testimonial.quote}"</p>
                                     <div className='flex justify-center mt-3'>
-                                    <img src={testimonial.img} className='w-14 rounded-full' alt="" />
+                                        <img src={testimonial.img} className='w-14 rounded-full' alt="" />
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-semibold">{testimonial.name}</h3>

@@ -67,7 +67,7 @@ const PortfolioDetails = () => {
         <>
             <Navbar />
          
-            <section className="py-12 px-12 lg:px-36">
+            <section className="py-12 px-6 lg:px-36">
                 <Link to="/" className="flex mb-5 gap-2 items-center">
                 <img src={backmenu} className="w-10" alt="" />
                 <p>Go Back</p>
@@ -86,7 +86,7 @@ const PortfolioDetails = () => {
                             <p className="mt-6 text-gray-800 text-base">{selectedCategory.details}</p>
                         </div>
                         <h2 className="text-black mt-10 text-3xl font-semibold">Gallery</h2>
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-5">
+                        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-5">
                             {documentaryGallery.map((image, index) => (
                                 <button key={index} className="w-full h-48 hover:scale-95 duration-300 ease-in-out rounded-lg overflow-hidden" onClick={() => setSelectedImage(image)}>
                                     <img src={image} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover" />

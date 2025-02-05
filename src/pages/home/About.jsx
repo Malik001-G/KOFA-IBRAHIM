@@ -35,13 +35,13 @@ const About = () => {
 
     return (
         <>
-        <section ref={sectionRef} className="bg-white py-16 px-12 lg:px-36">
-            <div className='mb-10'>
+        <section ref={sectionRef} className="bg-white py-16 px-6 lg:px-36">
+            <div className='mb-8 lg:mb-10'>
                 <h2 className='text-black text-4xl mb-2 uppercase font-medium heading'>About</h2>
                 <h2 className='text-[#939393] text-4xl uppercase heading'>who am i?</h2>
             </div>
-            <div className="flex gap-10">
-                <div className='w-8/12 text-[#4B4B4B] text-xl'>
+            <div className="lg::flex gap-10">
+                <div className='lg:w-8/12 text-[#4B4B4B] text-lg lg:text-xl mb-5 md:mb-0'>
                     <p className='mb-5'>James Kofa Ibrahim is a distinguished documentary
                         filmmaker, leadership and strategy expert, climate change
                         advocate, and an academic researcher, currently pursuing a
@@ -61,28 +61,28 @@ const About = () => {
                         such as...
                     </p>
                 </div>
-                <div className='w-4/12'>
+                <div className='lg:w-4/12'>
                     <img
                         src={ProfileImage}
-                        className='w-96 rounded-3xl mb-5'
+                        className='w-full lg:w-96 rounded-3xl mb-5'
                         alt="Professional Image"
                         style={{
                             transition:
                                 "filter 1s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
                             filter: isVisible ? "grayscale(100%)" : "grayscale(0%)",
                             opacity: isVisible ? 1 : 0.8,
-                            transform: isVisible ? "scale(1.05)" : "scale(0.95)",
+                            transform: isVisible ? "lg:scale(1.05)" : "scale(0.95)",
                         }}
                     />
 
-                    <a href="#" className="rounded-full w-80 text-center hover:scale-95 duration-700 justify-center bg-white border border-[#4B4B4B] text-[#4B4B4B] focus:ring-0 inline-flex font-medium text-sm px-5 py-2.5 group focus:outline-none">Read more
+                    <a href="#" className="rounded-full w-full lg:w-80 text-center hover:scale-95 duration-700 justify-center bg-white border border-[#4B4B4B] text-[#4B4B4B] focus:ring-0 inline-flex font-medium text-sm px-5 py-2.5 group focus:outline-none">Read more
                         <img src={arrow} className='ml-2' alt="" />
                     </a>
 
                 </div>
             </div>
         </section>
-        <section className='pb-16 grid grid-cols-2 gap-3'>
+        <section className='pb-16 md:grid grid-cols-2 gap-3 space-y-3 md:space-y-0'>
             <img src={aboutimg1} alt="" />
             <img src={aboutimg2} alt="" />
         </section>

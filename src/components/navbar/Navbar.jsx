@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar px-12 lg:px-36 sticky top-0 z-50  py-4">
+      <div className="navbar px-6 md:px-10 lg:px-36 sticky top-0 z-50  py-4">
         <NavLink to="/">
           <h2 className="text-black text-xl font-medium">KOFA IBRAHIM</h2>
         </NavLink>
@@ -37,7 +37,7 @@ const Navbar = () => {
       ></div>
 
       {/* Sidebar menu */}
-      <div className={`sidebar px-12 lg:px-36 pt-32 rounded-bl-3xl ${isSidebarOpen ? "open" : ""}`}>
+      <div className={`sidebar px-6 lg:px-36 pt-32 rounded-bl-3xl ${isSidebarOpen ? "open" : ""}`}>
         <nav className="sidebar-links">
           <NavLink to="/" className="py-5 pr-10 text-4xl" onClick={toggleSidebar}>
             Home

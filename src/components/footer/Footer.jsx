@@ -1,60 +1,50 @@
-import "./footer.css";
-import React from "react";
-import logo from "../../assets/images/footer-logo.svg";
-import fb from "../../assets/images/fb.svg";
-import tw from "../../assets/images/tw.svg";
-import ln from "../../assets/images/ln.svg";
-import wh from "../../assets/images/wh.svg";
+import { FaLinkedin, FaInstagram, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
-const Footer = () => {
+import arrow from "../../assets/images/social-arrow.png"
+export default function Footer() {
   return (
-    <>
-      <div className="footer">
-        <div className="footer-top">
-          <div>
-            <img src={logo} alt="" />
-            <div className="footer-links">
-              <Link to="/">Home</Link>
-              <Link to="/commitee">The Committee</Link>
-              <Link to="/games">The Games</Link>
-              <Link to="/taking-part">Taking Part</Link>
-              <Link to="/about">About Ogun State</Link>
-              <Link to="/venue">Competition Venues</Link>
-            </div>
-          </div>
-          <div className="subscribe">
-            <p>
-              Subscribe to stay tuned for new web design and latest updates.
-              Let's do it!
-            </p>
-            <form action="">
-              <input type="text" placeholder="Enter your email Address" />
-              <button>Subscribe</button>
-            </form>
-          </div>
+    <footer className="bg-white flex justify-center text-black px-6 py-6 pb-10">
+      <div className="container lg:max-w-3xl md:flex items-center justify-between space-x-6">
+        <div className="uppercase text-center md:text-left text-2xl font-semibold">
+          <h2>Kofa Ibrahim</h2>
         </div>
-        <div className="footer-line"></div>
-        <div className="footer-bottom">
-          <p>NSF Gateway Games ©2024 – All right reserved.</p>
-          <div className="socials">
-            <a href="" target="_blank">
-              <img src={fb} alt="" />
-            </a>
-            <a href="" target="_blank">
-              <img src={tw} alt="" />
-            </a>
-            <a href="" target="_blank">
-              <img src={ln} alt="" />
-            </a>
-            <a href="" target="_blank">
-              <img src={wh} alt="" />
-            </a>
-          </div>
+        <div className="flex space-x-5">
+          <Link
+            to="https://www.linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold flex items-center space-x-1 transition-all border-b hover:border-b-2 duration-300 ease-linear border-gray-600 hover:border-black"
+          >
+            <p className="text-base">X</p> <img src={arrow} alt="" className="w-4 h-4 flex-shrink-0" />
+          </Link>
+          <Link
+            to="https://www.linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold flex items-center space-x-1 transition border-b hover:border-b-2 duration-300 ease-linear border-gray-600 hover:border-black"
+          >
+            <p className="text-base">Linkedin</p> <img src={arrow} alt="" className="w-4 h-4 flex-shrink-0" />
+          </Link>
+          <Link
+            to="https://www.linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold flex items-center space-x-1 transition border-b hover:border-b-2 duration-300 ease-linear border-gray-600 hover:border-black"
+          >
+            <p className="text-base">Instagram</p> <img src={arrow} alt="" className="w-4 h-4 flex-shrink-0" />
+          </Link>
+          <Link
+            to="https://www.linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold flex items-center space-x-1 transition border-b hover:border-b-2 duration-300 ease-linear border-gray-600 hover:border-black"
+          >
+            <p className="text-base">Google Scholar</p> <img src={arrow} alt="" className="w-4 h-4 flex-shrink-0" />
+          </Link>
+         
         </div>
-      </div>
-    </>
-  );
-};
 
-export default Footer;
+      </div>
+    </footer>
+  );
+}
