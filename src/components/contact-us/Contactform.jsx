@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Contactform = ({ closeModal }) => {
   const [formData, setFormData] = useState({
-    name: '',
+    from_name: '',
     email: '',
     message: '',
   });
@@ -54,7 +54,7 @@ const Contactform = ({ closeModal }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center"
+      className="fixed inset-0 bg-black/40 z-50 flex justify-center backdrop-blur-sm items-center"
       onClick={handleBackdropClick}
     >
       <motion.div
@@ -80,8 +80,8 @@ const Contactform = ({ closeModal }) => {
           <div className="mb-4">
             <input
               type="text"
-              name="name"
-              placeholder="Name"
+              name="from_name"
+              placeholder="name"
               value={formData.name}
               onChange={handleInputChange}
               required

@@ -38,11 +38,9 @@
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
   z-index: 20;
   padding: 2rem 1.5rem;
-  display: flex;
-  flex-direction: column;
   opacity: 0; /* Start with 0 opacity */
   transform: translate(100%, -100%); /* Move to top-right corner */
-  transition: opacity 1s ease-in-out, transform 0.6s ease-in-out; /* Adjusted transition */
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out; /* Adjusted transition */
 }
 
 .sidebar.open {
@@ -65,7 +63,7 @@
 /* Sidebar link styling */
 .sidebar-links a {
   color: #1f2633;
-  font-family: Paris2024-Variable;
+  font-family: "Crimson Pro", serif;   
   /* font-size: 40px; */
   /* font-style: normal; */
   font-weight: 350;
