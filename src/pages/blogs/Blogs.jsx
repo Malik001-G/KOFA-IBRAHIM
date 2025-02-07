@@ -25,7 +25,7 @@ const Blogs = () => {
               <div>
                 <p className='text-gray-400 text-xs mb-2'>2 minutes read</p>
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">{blog.title}</h5>
-                <p className="mb-3 text-[#141414] font-semibold">{blog.content.substring(0, 50)}...</p>
+                <p className="mb-3 text-[#141414] font-semibold">{blog.content.substring(0, 100)}...</p>
               </div>
               <p className='mt-2 text-sm italic text-[#7D7D7D]'>{blog.created_date}</p>
             </Link>
