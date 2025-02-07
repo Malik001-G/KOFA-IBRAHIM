@@ -59,7 +59,7 @@ const Reviews = () => {
                     clickable: true,
                 }}
                 autoplay={{
-                    delay: 5000,
+                    delay: 8000,
                     disableOnInteraction: false,
                 }}
                 breakpoints={{
