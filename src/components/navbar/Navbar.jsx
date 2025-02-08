@@ -99,7 +99,7 @@ const Navbar = () => {
           <NavLink to="/" className="py-5 pr-10 text-3xl md:text-4xl" onClick={toggleSidebar}>
             Home
           </NavLink>
-          <NavLink to="/commitee" className="py-5 pr-10 text-3xl md:text-4xl" onClick={toggleSidebar}>
+          <NavLink to="/about" className="py-5 pr-10 text-3xl md:text-4xl" onClick={toggleSidebar}>
             About Us
           </NavLink>
           <NavLink to="/portfolio/documentary" className="py-5 pr-10 text-3xl md:text-4xl" onClick={toggleSidebar}>
