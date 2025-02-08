@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../../components/footer/Footer'
 import ProfileImage from "../../assets/images/Bukola.svg";
-import Aboutimg from "../../assets/images/aboutImg.PNG";
+import Aboutimg from "../../assets/images/aboutimg.png";
 import Career_Milestone from '../../components/career-milestone/Career_Milestone';
 import Contact from '../../components/contact-us/Contact';
 
