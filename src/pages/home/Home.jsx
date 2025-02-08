@@ -7,8 +7,8 @@ import Career_Milestone from "../../components/career-milestone/Career_Milestone
 import Reviews from "../../components/Reviews/Reviews";
 import Contact from "../../components/contact-us/Contact";
 import Footer from "../../components/footer/Footer";
-import Blog from "./blog";
-
+import Blogsection from "./Blogsection";
+Blogsection
 
 const Home = () => {
 
@@ -20,7 +20,7 @@ const Home = () => {
       <About/>
       <PorfolioCategories/>
       <Career_Milestone/>
-      <Blog/>
+      <Blogsection/>
       <Reviews/>
       <Contact/>
       <Footer/>
