@@ -4,7 +4,7 @@ import ProfileImage from "../../assets/images/Bukola.svg";
 import arrow from '../../assets/images/read_more.svg'
 import aboutimg1 from '../../assets/images/aboutimg1.svg'
 import aboutimg2 from '../../assets/images/aboutimg2.svg'
-
+import { Link } from 'react-router-dom';
 
 const About = () => {
     const sectionRef = useRef(null);
@@ -75,9 +75,9 @@ const About = () => {
                         }}
                     />
 
-                    <a href="#" className="rounded-full w-full lg:w-80 text-center hover:scale-95 duration-700 justify-center bg-white border border-[#4B4B4B] text-[#4B4B4B] focus:ring-0 inline-flex font-medium text-sm px-5 py-2.5 group focus:outline-none">Read more
+                    <Link to={'/about'} className="rounded-full w-full lg:w-80 text-center hover:scale-95 duration-700 justify-center bg-white border border-[#4B4B4B] text-[#4B4B4B] focus:ring-0 inline-flex font-medium text-sm px-5 py-2.5 group focus:outline-none">Read more
                         <img src={arrow} className='ml-2' alt="" />
-                    </a>
+                    </Link>
 
                 </div>
             </div>

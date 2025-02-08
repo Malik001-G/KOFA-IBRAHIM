@@ -81,7 +81,7 @@ const Contactform = ({ closeModal }) => {
             <input
               type="text"
               name="from_name"
-              placeholder="name"
+              placeholder="Name"
               value={formData.name}
               onChange={handleInputChange}
               required
