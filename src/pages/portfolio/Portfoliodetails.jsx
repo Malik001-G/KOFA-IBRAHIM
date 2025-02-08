@@ -129,8 +129,8 @@ const PortfolioDetails = () => {
                 {/* Modal for Image Preview */}
                 {selectedImage && (
                     <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50" onClick={() => setSelectedImage(null)}>
-                        <div className="relative max-w-2xl w-full bg-white p-4 rounded-lg">
-                            <button className="absolute top-2 right-2 bg-gray-500 text-white font-semibold px-3 py-1 rounded-full" onClick={() => setSelectedImage(null)}>X</button>
+                        <div className="relative max-w-2xl w-full bg-white p-1 rounded-lg">
+                            <button className="absolute -top-2 right-0 bg-gray-500 text-white font-semibold px-3 py-1 rounded-full" onClick={() => setSelectedImage(null)}>X</button>
                             <img src={selectedImage} alt="Preview" className="w-full h-auto rounded-lg" />
                         </div>
                     </div>

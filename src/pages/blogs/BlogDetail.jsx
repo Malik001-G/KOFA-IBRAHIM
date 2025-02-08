@@ -29,7 +29,7 @@ const BlogDetail = () => {
                         <h2 className='text-xl font-medium'>{blog.sub_heading}</h2>
                         <p className='text-[#7D7D7D] text-sm italic'>{blog.created_date}</p>
                     </div>
-                    <img className="rounded-2xl my-4" src={blog.image} alt={blog.title} />
+                    <img className="rounded-2xl my-4 w-full" src={blog.image} alt={blog.title} />
                 </div>
                 <div className='mt-3'>
                     <p className="mt-4 text-lg">{blog.content}</p>
