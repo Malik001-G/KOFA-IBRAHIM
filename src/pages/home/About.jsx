@@ -75,7 +75,7 @@ const About = () => {
                         }}
                     />
 
-                    <Link to={'/about'} className="rounded-full w-full lg:w-80 text-center hover:scale-95 duration-700 justify-center bg-white border border-[#4B4B4B] text-[#4B4B4B] focus:ring-0 inline-flex font-medium text-sm px-5 py-2.5 group focus:outline-none">Read more
+                    <Link to={'/about'} className="rounded-full w-full lg:w-72 hover:bg-black hover:text-white text-center hover:scale-95 duration-700 justify-center bg-white border border-[#4B4B4B] text-[#4B4B4B] focus:ring-0 inline-flex font-medium text-sm px-5 py-2.5 group focus:outline-none">Read more
                         <img src={arrow} className='ml-2' alt="" />
                     </Link>
 

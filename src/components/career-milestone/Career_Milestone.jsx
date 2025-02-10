@@ -71,7 +71,7 @@ const Career_Milestone = () => {
             </div>
             <div className="flex justify-center mt-10">
                 <button type="button" onClick={handleDownload} className="px-5 py-3 text-xs uppercase font-medium text-center text-[#4B4B4B] border border-gray-600 bg-white rounded-full
-                items-center transition-all hover:ease-in-out inline-flex focus:ring-0 focus:outline-none">Download My Resume <img src={arrow} className="ml-2 w-3" alt="" /></button>
+                items-center transition-all hover:ease-linear hover:bg-black/85 hover:text-white duration-500 inline-flex focus:ring-0 focus:outline-none">Download My Resume <img src={arrow} className="ml-2 w-3" alt="" /></button>
             </div>
         </section>
     );
