@@ -47,9 +47,14 @@ const testimonials = [
 const Reviews = () => {
     return (
         <div className="relative bg-white py-16 px-6 lg:px-36 overflow-hidden">
-            <div className="text-center mb-10">
-                <h2 className="text-black text-4xl font-semibold uppercase">Expert Feedbacks</h2>
-                <p className="text-[#939393] text-lg">Explore my portfolio to see how creativity meets functionality.</p>
+            <div className='md:flex items-center justify-between mb-10'>
+                <div className='md:w-8/12 mb-4 md:mb-0'>
+                    <h2 className='text-black text-4xl uppercase font-medium heading'>Expert</h2>
+                    <h2 className='text-[#939393] text-4xl uppercase heading font-medium'>Feedbacks </h2>
+                </div>
+                <div className='md:w-4/12'>
+                    <p className='text-sm'>Dive into my blog where we share insights, tips, and stories about our design journey.</p>
+                </div>
             </div>
 
             <Swiper

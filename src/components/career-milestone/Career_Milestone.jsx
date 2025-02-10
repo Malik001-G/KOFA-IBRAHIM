@@ -61,7 +61,7 @@ const Career_Milestone = () => {
                     <h2 className='text-[#939393] text-4xl uppercase heading font-medium'>MILESTONES </h2>
                 </div>
                 <div className='md:w-4/12'>
-                    <p className='text-base'>Explore my portfolio to see how creativity meets functionality.</p>
+                    <p className='text-sm'>Explore my portfolio to see how creativity meets functionality.</p>
                 </div>
             </div>
             <div className="space-y-6">
