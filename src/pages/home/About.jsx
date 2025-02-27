@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import "./About.css";
-import ProfileImage from "../../assets/images/Bukola.svg";
+import ProfileImage from "../../assets/images/New/24.jpg";
 import arrow from '../../assets/images/read_more.svg'
-import aboutimg1 from '../../assets/images/aboutimg1.svg'
-import aboutimg2 from '../../assets/images/aboutimg2.svg'
+import aboutimg1 from '../../assets/images/New/y.jpg'
+import aboutimg2 from '../../assets/images/New/26.jpg'
 import { Link } from 'react-router-dom';
 
 const About = () => {
@@ -83,8 +83,8 @@ const About = () => {
             </div>
         </section>
         <section className='pb-16 md:grid grid-cols-2 gap-3 space-y-3 md:space-y-0'>
-            <img src={aboutimg1} alt="" />
-            <img src={aboutimg2} alt="" />
+            <img src={aboutimg1} className='h-full' alt="" />
+            <img src={aboutimg2} className='h-full' alt="" />
         </section>
         </>
     )

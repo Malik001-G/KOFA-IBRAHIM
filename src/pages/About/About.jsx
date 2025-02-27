@@ -1,8 +1,8 @@
 import React from 'react'
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../../components/footer/Footer'
-import ProfileImage from "../../assets/images/Bukola.svg";
-import Aboutimg from "../../assets/images/aboutimg.png";
+import ProfileImage from "../../assets/images/New/18.jpg";
+import Aboutimg from "../../assets/images/New/28.jpg";
 import Career_Milestone from '../../components/career-milestone/Career_Milestone';
 import Contact from '../../components/contact-us/Contact';
 
@@ -64,7 +64,7 @@ const About = () => {
                         </p>
                     </div>
                     <div className='w-full md:w-4/12'>
-                        <img src={ProfileImage} alt="" />
+                        <img src={ProfileImage} className='rounded-2xl' alt="" />
                     </div>
                 </div>
                 <div className="md:flex mb-10 gap-10">
@@ -99,8 +99,8 @@ const About = () => {
 
                 </div>
 
-                <div>
-                    <img src={Aboutimg} alt="" />
+                <div className='flex justify-center'>
+                    <img src={Aboutimg} className='w-11/12 rounded-2xl shadow-2xl h-96 object-cover' alt="" />
                 </div>
             </section>
             <Career_Milestone />

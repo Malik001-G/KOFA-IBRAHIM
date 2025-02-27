@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import documentaryimg1 from '../../assets/images/new.jfif'
-import documentaryimg2 from '../../assets/images/climate.jpg'
+import documentaryimg1 from '../../assets/images/New/u.jpg'
+import documentaryimg2 from '../../assets/images/New/g.jpg'
 import documentaryimg3 from '../../assets/images/leadership.jfif'
 import documentaryimg4 from '../../assets/images/portfolio4.jfif'
 

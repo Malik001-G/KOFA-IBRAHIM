@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import arrow from '../../assets/images/schedule_arrow.svg'
-import hero from '../../assets/images/hero_image.png'
+import hero from '../../assets/images/newimg1.jpg'
 import "./hero.css";
 import Contactform from "../../components/contact-us/Contactform";
 

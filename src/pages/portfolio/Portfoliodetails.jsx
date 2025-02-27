@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
-import documentaryimg1 from "../../assets/images/new.jfif";
-import documentaryimg2 from "../../assets/images/climate.jpg";
+import documentaryimg1 from "../../assets/images/New/d.jpg";
+import gallery1 from "../../assets/images/New/1.jpg";
+import gallery2 from "../../assets/images/New/4.jpg";
+import gallery3 from "../../assets/images/New/6.jpg";
+import gallery4 from "../../assets/images/New/11.jpg";
+import gallery5 from "../../assets/images/New/12.jpg";
+import gallery6 from "../../assets/images/New/b.jpg";
+import gallery7 from "../../assets/images/New/e.jpg";
+import gallery8 from "../../assets/images/New/h.jpg";
+import gallery9 from "../../assets/images/New/j.jpg";
+import documentaryimg2 from "../../assets/images/New/g.jpg";
 import documentaryimg3 from "../../assets/images/leadership.jfif";
 import documentaryimg4 from "../../assets/images/portfolio4.jfif";
 import backmenu from "../../assets/images/Menu.png";
@@ -55,7 +64,7 @@ const categories = [
     },
 ];
 
-const documentaryGallery = [documentaryimg1, documentaryimg2, documentaryimg3, documentaryimg4, documentaryimg2, documentaryimg1];
+const documentaryGallery = [gallery1, gallery2,gallery3, gallery4, gallery5, gallery6, gallery7, gallery8, gallery9];
 
 const PortfolioDetails = () => {
     const { id } = useParams();
@@ -91,9 +100,13 @@ const PortfolioDetails = () => {
                         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-5">
                             {documentaryGallery.map((image, index) => (
                                 <button key={index} className="w-full h-48 hover:scale-95 duration-300 ease-in-out rounded-lg overflow-hidden" onClick={() => setSelectedImage(image)}>
-                                    <img src={image} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover" />
+                                    <img src={image} alt={`Gallery ${index + 1}`} className="w-full h-full object-center object-cover" />
                                 </button>
                             ))}
+                        </div>
+
+                        <div  className="mt-20 text-center">
+                            <p className="text-lg md:text-2xl capitalize font-semibold">See more of our works <a href="http://tvsense.org" target="_blank" className="text-yellow-400 font-bold">here</a> </p>
                         </div>
                     </>
                 ) : selectedCategory ? (
