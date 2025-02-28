@@ -53,7 +53,7 @@ const Reviews = () => {
                     <h2 className='text-[#939393] text-4xl uppercase heading font-medium'>Feedbacks </h2>
                 </div>
                 <div className='md:w-4/12'>
-                    <p className='text-sm'>Dive into my blog where we share insights, tips, and stories about our design journey.</p>
+                    <p className='text-sm'>Valuable perspectives and constructive assessments from industry experts.</p>
                 </div>
             </div>
 

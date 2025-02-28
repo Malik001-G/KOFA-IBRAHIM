@@ -83,8 +83,8 @@ const About = () => {
             </div>
         </section>
         <section className='pb-16 md:grid grid-cols-2 gap-3 space-y-3 md:space-y-0'>
-            <img src={aboutimg1} className='h-full' alt="" />
-            <img src={aboutimg2} className='h-full' alt="" />
+            <img src={aboutimg1} className='h-fit lg:h-full' alt="" />
+            <img src={aboutimg2} className='h-fit lg:h-full' alt="" />
         </section>
         </>
     )

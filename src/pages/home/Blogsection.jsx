@@ -13,7 +13,7 @@ const Blogsection = () => {
                           <h2 className='text-[#939393] text-4xl uppercase heading'>insight </h2>
                       </div>
                       <div className='md:w-4/12'>
-                          <p className='text-sm'>Explore my portfolio to see how creativity meets functionality.</p>
+                          <p className='text-sm'>Insights, analysis, and stories that inspire thought and action..</p>
                       </div>
                   </div>
                   <div className="md:grid grid-cols-2 gap-8">

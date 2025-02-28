@@ -23,7 +23,7 @@ const PorfolioCategories = () => {
                     <h2 className='text-[#939393] text-4xl uppercase heading'>what i do </h2>
                 </div>
                 <div className='md:w-4/12'>
-                    <p className='text-sm'>Explore my portfolio to see how creativity meets functionality.</p>
+                    <p className='text-sm'>Explore the intersection of storytelling, leadership, and advocacy, where ideas inspire action and voices shape change.</p>
                 </div>
             </div>
             <div className="flex flex-col gap-4">

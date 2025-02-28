@@ -39,7 +39,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="font-semibold flex items-center space-x-1 transition border-b hover:border-b-2 duration-300 ease-linear border-gray-600 hover:border-black"
           >
-            <p className="text-base">Google Scholar</p> <img src={arrow} alt="" className="w-4 h-4 flex-shrink-0" />
+            <p className="text-base">Facebook</p> <img src={arrow} alt="" className="w-4 h-4 flex-shrink-0" />
           </Link>
          
         </div>
