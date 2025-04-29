@@ -1,24 +1,101 @@
-@keyframes gradient-animation {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
+/* Keep your existing CSS and add these if needed */
 .animated-text {
-    font-weight: bold;
-    background: linear-gradient(90deg, #7D7D7D, #3d3d3d);
-    font-family: "Crimson Pro", serif;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: #000;
+    position: relative;
+  }
+  
+  .modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+  
+    50% {
+      background-position: 100% 50%;
+    }
+  
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .animated-text {
+    background: linear-gradient(90deg, #000000, #7d7d7d, #3d3d3d, #000000);
     background-size: 300% 300%;
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
-    animation: gradient-animation 2.5s ease-in-out infinite;
-}
+    animation: gradient-animation 6s ease-in-out infinite;
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  
+  .animated-text::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #000000, #7d7d7d, #3d3d3d, #000000);
+    background-size: 300% 300%;
+    animation: gradient-animation 6s ease-in-out infinite, line-reveal 1.5s ease-out forwards;
+  }
+  
+  @keyframes line-reveal {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  
+  /* Name wrapper to ensure both parts stay together */
+  .name-wrapper {
+    display: inline-block;
+    white-space: nowrap;
+  }
+  
+  /* Individual name parts */
+  .name-part {
+    display: inline-block;
+  }
+  
+  /* Ensure the space between words is not too large */
+  .name-part + .name-part {
+    margin-left: 0em;
+  }
+  
+
+  
+  @keyframes name-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  

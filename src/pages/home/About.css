@@ -1,3 +1,59 @@
-.heading{
-    font-family: "Crimson Pro", serif;   
-}
+/* Base styles for the About component */
+.heading {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Subtle floating animation */
+  @keyframes subtle-float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  /* Image hover effect */
+  .image-hover {
+    transition: all 0.5s ease;
+  }
+  
+  .image-hover:hover {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+  }
+  
+  /* Custom selection style */
+  ::selection {
+    background: #000;
+    color: #fff;
+  }
+  
+  /* Animated border for images */
+  .animated-border {
+    position: relative;
+  }
+  
+  .animated-border::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .animated-border:hover::before {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-color: white;
+  }
+  

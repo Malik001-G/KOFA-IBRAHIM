@@ -1,0 +1,90 @@
+/* Base styles for the Blogs component */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Blog card hover effect */
+  .blog-card {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Custom selection style */
+  ::selection {
+    background: #000;
+    color: #fff;
+  }
+  
+  /* Animated underline effect */
+  .animated-underline {
+    position: relative;
+  }
+  
+  .animated-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+  
+  .animated-underline:hover::after {
+    width: 100%;
+  }
+  
+  /* Gradient overlay for text readability */
+  .image-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+  
+  /* Background pattern and decorative elements */
+  .bg-pattern {
+    background-image: radial-gradient(circle, #00000008 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  /* Subtle animation for background elements */
+  @keyframes float {
+    0% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(2deg);
+    }
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+  }
+  
+  .floating-element {
+    animation: float 15s ease-in-out infinite;
+  }
+  
+  /* Add triangle shape */
+  .triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+  
+  /* Add hexagon shape */
+  .hexagon {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
+  

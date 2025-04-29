@@ -15,6 +15,7 @@ const Home = () => {
 
   return (
     <>
+    <div className="overflow-x-hidden">
       <Navbar />
       <Hero/>
       <About/>
@@ -24,6 +25,7 @@ const Home = () => {
       <Reviews/>
       <Contact/>
       <Footer/>
+      </div>
     </>
   );
 };

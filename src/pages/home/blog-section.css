@@ -1,0 +1,91 @@
+/* Base styles for the Blog Section component */
+.heading {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Line clamp for blog excerpts */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Custom selection style */
+  ::selection {
+    background: #000;
+    color: #fff;
+  }
+  
+  /* Enhanced card hover effect */
+  .blog-card {
+    transition: all 0.3s ease;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Animated underline effect */
+  .animated-underline {
+    position: relative;
+  }
+  
+  .animated-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+  
+  .animated-underline:hover::after {
+    width: 100%;
+  }
+  
+  /* Image hover effect */
+  .image-hover {
+    transition: all 0.5s ease;
+  }
+  
+  .image-hover:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Newsletter input focus style */
+  input:focus {
+    outline: none;
+    border-color: #000;
+  }
+  
+  /* Featured post hover effect */
+  .featured-post:hover .featured-image {
+    transform: scale(1.05);
+  }
+  
+  /* Gradient overlay for text readability */
+  .image-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+  
+  /* Card border hover effect */
+  .card-border {
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  
+  .card-border:hover {
+    border-color: #e5e7eb;
+  }
+  

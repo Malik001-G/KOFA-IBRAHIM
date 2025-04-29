@@ -1,0 +1,101 @@
+/* Custom styles for the testimonial swiper */
+.testimonial-swiper {
+    padding-bottom: 40px !important;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .testimonial-swiper .swiper-slide {
+    height: auto !important;
+  }
+  
+  /* Equal height for all slides */
+  .testimonial-swiper .swiper-slide-active,
+  .testimonial-swiper .swiper-slide-next,
+  .testimonial-swiper .swiper-slide-prev {
+    height: auto !important;
+  }
+  
+  /* Custom pagination styles */
+  .testimonial-swiper .swiper-pagination {
+    bottom: 0 !important;
+  }
+  
+  .testimonial-swiper .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: #ccc;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+  
+  .testimonial-swiper .swiper-pagination-bullet-active {
+    background: #000;
+    width: 20px;
+    border-radius: 4px;
+  }
+  
+  /* Hover effect for testimonial cards */
+  .testimonial-card {
+    transition: all 0.3s ease;
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Quote mark styling */
+  .quote-mark {
+    font-family: "Georgia", serif;
+    font-size: 6rem;
+    line-height: 1;
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    opacity: 0.1;
+  }
+  
+  /* Ensure all cards have equal height */
+  .swiper-slide {
+    height: auto !important;
+    display: flex;
+  }
+  
+  .swiper-slide > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Fade in animation for testimonials */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  /* Staggered animation delay for multiple elements */
+  .stagger-delay-1 {
+    animation-delay: 0.1s;
+  }
+  
+  .stagger-delay-2 {
+    animation-delay: 0.2s;
+  }
+  
+  .stagger-delay-3 {
+    animation-delay: 0.3s;
+  }
+  

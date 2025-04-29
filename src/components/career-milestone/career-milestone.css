@@ -1,3 +1,58 @@
 h2{
     font-family: "Crimson Pro", serif;   
 }
+
+/* Base styles for the Career Milestone component */
+.heading {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Subtle hover effect for experience cards */
+  @keyframes subtle-pulse {
+    0% {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    50% {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    100% {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+  }
+  
+  /* Custom selection style */
+  ::selection {
+    background: #000;
+    color: #fff;
+  }
+  
+  /* Enhanced card hover effect */
+  .experience-card {
+    transition: all 0.3s ease;
+  }
+  
+  .experience-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Animated underline effect */
+  .animated-underline {
+    position: relative;
+  }
+  
+  .animated-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+  
+  .animated-underline:hover::after {
+    width: 100%;
+  }
+  
