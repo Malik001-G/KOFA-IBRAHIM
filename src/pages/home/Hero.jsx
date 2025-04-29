@@ -91,13 +91,21 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="modal-wrapper"
+              className="fixed inset-0 flex items-center justify-center z-50 bg-black/50 backdrop-blur-sm p-4"
+              onClick={(e) => {
+                if (e.target === e.currentTarget) closeModal()
+              }}
             >
               <motion.div
-                initial={{ scale: 0.9, y: 20 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.9, y: 20 }}
-                transition={{ duration: 0.3 }}
+                className="bg-white rounded-xl shadow-xl max-w-md w-full mx-auto overflow-hidden"
+                initial={{ y: 20 }}
+                animate={{ y: 0 }}
+                exit={{ y: 20 }}
+                transition={{
+                  duration: 0.4,
+                  ease: "easeOut",
+                }}
+                onClick={(e) => e.stopPropagation()}
               >
                 <Contactform closeModal={closeModal} />
               </motion.div>

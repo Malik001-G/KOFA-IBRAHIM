@@ -1,126 +1,138 @@
 /* Keep your existing CSS and add these if needed */
 .animated-text {
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: #000;
-    position: relative;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #000;
+  position: relative;
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  padding: 1rem;
+}
+
+/* Add this to ensure modal content has stable dimensions */
+.modal-wrapper > div {
+  width: 100%;
+  max-width: 28rem;
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .modal-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-text {
+  background: linear-gradient(90deg, #000000, #7d7d7d, #3d3d3d, #000000);
+  background-size: 300% 300%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradient-animation 6s ease-in-out infinite;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.animated-text::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #000000, #7d7d7d, #3d3d3d, #000000);
+  background-size: 300% 300%;
+  animation: gradient-animation 6s ease-in-out infinite, line-reveal 1.5s ease-out forwards;
+}
+
+@keyframes line-reveal {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Update the name-wrapper class to handle small screens better */
+.name-wrapper {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Add responsive handling for very small screens */
+@media (max-width: 380px) {
+  .name-wrapper {
+    white-space: normal;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 50;
-    background-color: rgba(0, 0, 0, 0.5);
   }
-  
-  @keyframes gradient-animation {
-    0% {
-      background-position: 0% 50%;
-    }
-  
-    50% {
-      background-position: 100% 50%;
-    }
-  
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-  .animated-text {
-    background: linear-gradient(90deg, #000000, #7d7d7d, #3d3d3d, #000000);
-    background-size: 300% 300%;
-    color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
-    animation: gradient-animation 6s ease-in-out infinite;
-    position: relative;
-    display: inline-block;
-    white-space: nowrap;
-  }
-  
-  .animated-text::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #000000, #7d7d7d, #3d3d3d, #000000);
-    background-size: 300% 300%;
-    animation: gradient-animation 6s ease-in-out infinite, line-reveal 1.5s ease-out forwards;
-  }
-  
-  @keyframes line-reveal {
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 100%;
-    }
-  }
-  
-  /* Update the name-wrapper class to handle small screens better */
-  .name-wrapper {
-    display: inline-block;
-    white-space: nowrap;
-  }
-  
-  /* Add responsive handling for very small screens */
-  @media (max-width: 380px) {
-    .name-wrapper {
-      white-space: normal;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .name-part {
-      display: block;
-      line-height: 1.1;
-    }
-  
-    .name-part + .name-part {
-      margin-left: 0;
-      margin-top: 0.1em;
-    }
-  
-    .animated-text::after {
-      bottom: -5px;
-    }
-  }
-  
-  /* Individual name parts */
-  .name-part {
-    display: inline-block;
-  }
-  
-  /* Ensure the space between words is not too large */
-  .name-part + .name-part {
-    margin-left: 0em;
-  }
-  
 
-  
-  @keyframes name-pulse {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.05);
-      opacity: 0.9;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
+  .name-part {
+    display: block;
+    line-height: 1.1;
   }
-  
+
+  .name-part + .name-part {
+    margin-left: 0;
+    margin-top: 0.1em;
+  }
+
+  .animated-text::after {
+    bottom: -5px;
+  }
+}
+
+/* Individual name parts */
+.name-part {
+  display: inline-block;
+}
+
+/* Ensure the space between words is not too large */
+.name-part + .name-part {
+  margin-left: 0em;
+}
+
+
+@keyframes name-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
