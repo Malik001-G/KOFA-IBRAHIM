@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
 import "./portfoliocategory.css"
@@ -17,6 +17,23 @@ const PorfolioCategories = () => {
   const containerRef = useRef(null)
   const isInView = useInView(containerRef, { once: false, amount: 0.1 })
   const [hoveredIndex, setHoveredIndex] = useState(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Check if device is mobile or tablet
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024)
+    }
+
+    // Initial check
+    checkMobile()
+
+    // Add event listener for window resize
+    window.addEventListener("resize", checkMobile)
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
   // Parallax scroll effect
   const { scrollYProgress } = useScroll({
@@ -172,44 +189,48 @@ const PorfolioCategories = () => {
             } ${index % 2 === 0 ? "md:mt-12" : ""}`}
             variants={cardVariants}
             custom={index}
-            whileHover="hover"
-            onHoverStart={() => setHoveredIndex(index)}
-            onHoverEnd={() => setHoveredIndex(null)}
+            whileHover={!isMobile ? "hover" : undefined}
+            onHoverStart={() => !isMobile && setHoveredIndex(index)}
+            onHoverEnd={() => !isMobile && setHoveredIndex(null)}
             onClick={() => navigate(initiative.path)}
           >
             <div className="group cursor-pointer h-full">
               {/* Card container with perspective */}
               <motion.div
                 className="relative overflow-hidden rounded-xl h-[400px] md:h-[500px] perspective-1000 w-full"
-                whileHover={{
-                  scale: 1.02,
-                  transition: { duration: 0.3, ease: "easeOut" },
-                }}
+                whileHover={
+                  !isMobile
+                    ? {
+                        scale: 1.02,
+                        transition: { duration: 0.3, ease: "easeOut" },
+                      }
+                    : undefined
+                }
               >
                 {/* Background image with grayscale effect */}
                 <motion.div
-                  className="absolute inset-0 w-full h-full bg-cover bg-center filter grayscale transition-all duration-700"
+                  className="absolute inset-0 w-full h-full bg-cover bg-center transition-all duration-700"
                   style={{ backgroundImage: `url(${initiative.bg})` }}
                   animate={{
-                    scale: hoveredIndex === index ? 1.1 : 1,
-                    filter: hoveredIndex === index ? "grayscale(0%)" : "grayscale(100%)",
+                    scale: hoveredIndex === index && !isMobile ? 1.1 : 1,
+                    filter: hoveredIndex === index || isMobile ? "grayscale(0%)" : "grayscale(100%)",
                   }}
                   transition={{ duration: 0.7, ease: [0.04, 0.62, 0.23, 0.98] }}
                 />
 
                 {/* Darker gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30 opacity-90 group-hover:opacity-80 transition-opacity duration-700"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30 opacity-90 transition-opacity duration-700"></div>
 
                 {/* Number indicator with parallax effect - BOLDER */}
                 <motion.div
                   className="absolute top-6 right-6 z-10"
                   animate={{
-                    y: hoveredIndex === index ? -5 : 0,
-                    opacity: hoveredIndex === index ? 1 : 0.7,
+                    y: hoveredIndex === index && !isMobile ? -5 : 0,
+                    opacity: hoveredIndex === index || isMobile ? 1 : 0.7,
                   }}
                   transition={{ duration: 0.4 }}
                 >
-                  <span className="text-white text-7xl md:text-9xl font-black opacity-50 group-hover:opacity-80 transition-opacity duration-500 drop-shadow-lg">
+                  <span className="text-white text-7xl md:text-9xl font-black opacity-50 transition-opacity duration-500 drop-shadow-lg">
                     {initiative.number}
                   </span>
                 </motion.div>
@@ -221,16 +242,16 @@ const PorfolioCategories = () => {
                     <motion.h3
                       className="text-white text-2xl md:text-3xl font-extrabold mb-3 uppercase tracking-wider drop-shadow-md"
                       animate={{
-                        y: hoveredIndex === index ? 0 : 10,
-                        opacity: hoveredIndex === index ? 1 : 0.9,
+                        y: hoveredIndex === index && !isMobile ? 0 : isMobile ? 0 : 10,
+                        opacity: hoveredIndex === index || isMobile ? 1 : 0.9,
                       }}
                       transition={{ duration: 0.4 }}
                     >
                       {initiative.name}
                       <motion.div
-                        className="h-[3px] bg-white mt-2 w-0 group-hover:w-full transition-all duration-500"
-                        initial={{ width: 0 }}
-                        animate={{ width: hoveredIndex === index ? "100%" : "0%" }}
+                        className="h-[3px] bg-white mt-2 transition-all duration-500"
+                        initial={{ width: isMobile ? "100%" : 0 }}
+                        animate={{ width: hoveredIndex === index || isMobile ? "100%" : "0%" }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                       />
                     </motion.h3>
@@ -238,11 +259,11 @@ const PorfolioCategories = () => {
 
                   {/* Description with fade in - BOLDER */}
                   <motion.p
-                    className="text-white text-sm md:text-base font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500 max-w-md drop-shadow-md"
-                    initial={{ opacity: 0, y: 20 }}
+                    className="text-white text-sm md:text-base font-medium max-w-md drop-shadow-md"
+                    initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 20 }}
                     animate={{
-                      opacity: hoveredIndex === index ? 1 : 0,
-                      y: hoveredIndex === index ? 0 : 20,
+                      opacity: hoveredIndex === index || isMobile ? 1 : 0,
+                      y: hoveredIndex === index || isMobile ? 0 : 20,
                     }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
@@ -251,11 +272,11 @@ const PorfolioCategories = () => {
 
                   {/* CTA Button with slide up animation - BOLDER */}
                   <motion.button
-                    className="mt-4 px-6 py-2 border-2 border-white text-white text-sm font-bold rounded-full overflow-hidden relative group-hover:bg-white group-hover:text-black transition-all duration-500"
-                    initial={{ opacity: 0, y: 20 }}
+                    className="mt-4 px-6 py-2 border-2 border-white text-white text-sm font-bold rounded-full overflow-hidden relative hover:bg-white hover:text-black transition-all duration-500"
+                    initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 20 }}
                     animate={{
-                      opacity: hoveredIndex === index ? 1 : 0,
-                      y: hoveredIndex === index ? 0 : 20,
+                      opacity: hoveredIndex === index || isMobile ? 1 : 0,
+                      y: hoveredIndex === index || isMobile ? 0 : 20,
                     }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                     whileHover={{ scale: 1.05 }}

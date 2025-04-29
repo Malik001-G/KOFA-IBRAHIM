@@ -39,3 +39,29 @@
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.7));
   }
   
+  /* Mobile-specific styles */
+  @media (max-width: 1023px) {
+    /* Ensure content is always visible on mobile */
+    .perspective-1000 {
+      transform-style: flat;
+    }
+  
+    /* Reduce animation complexity on mobile */
+    .transition-all {
+      transition-property: opacity, transform;
+      transition-duration: 0.3s;
+    }
+  
+    /* Ensure text is always readable */
+    .text-white {
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+  
+    /* Make buttons more tappable */
+    button {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.5rem 1rem;
+    }
+  }
+  

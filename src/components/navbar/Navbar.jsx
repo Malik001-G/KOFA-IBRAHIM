@@ -268,7 +268,7 @@ const Navbar = () => {
               >
                 A
               </motion.span>
-              <motion.span className="inline-block mx-2"></motion.span>
+              <motion.span className="inline-block ml-2"></motion.span>
               <motion.span
                 className="inline-block"
                 whileHover={(i) => ({
