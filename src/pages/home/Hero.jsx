@@ -19,7 +19,7 @@ const Hero = () => {
         <div className="container mx-auto px-6 md:px-10 lg:px-36">
           <div className="py-8 mx-auto max-w-screen-lg lg:py-16 text-center">
             <motion.h1
-              className="mb-6 text-6xl md:text-8xl font-black animated-text tracking-tight leading-none lg:text-9xl mx-auto"
+              className="mb-6 text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black animated-text tracking-tight leading-none mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
