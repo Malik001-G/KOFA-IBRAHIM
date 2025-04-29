@@ -362,7 +362,7 @@ const Navbar = () => {
               <motion.img
                 src={close_nav}
                 alt="Close menu"
-                className="w-16 cursor-pointer"
+                className="w-12 cursor-pointer"
                 initial={{ rotate: -90 }}
                 animate={{ rotate: 0 }}
                 transition={{ duration: 0.3 }}
@@ -371,7 +371,7 @@ const Navbar = () => {
               <motion.img
                 src={toggler}
                 alt="Open menu"
-                className="w-16 cursor-pointer"
+                className="w-12 cursor-pointer"
                 initial={{ opacity: 0.8 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
