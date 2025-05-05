@@ -219,143 +219,143 @@ const Navbar = () => {
         animate="visible"
         variants={navbarVariants}
       >
-        <NavLink to="/" className="flex flex-col items-start">
-          <div className="overflow-hidden">
-            <motion.h2
-              className="text-black text-2xl font-bold"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ scale: 1.05 }}
+          <NavLink to="/" className="flex flex-col items-start">
+            <div className="overflow-hidden">
+              <motion.h2
+                className="text-black text-2xl font-bold"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <motion.span
+                  className="inline-block"
+                  whileHover={(i) => ({
+                    y: -5,
+                    transition: { duration: 0.2, delay: i * 0.05 },
+                  })}
+                  custom={0}
+                >
+                  K
+                </motion.span>
+                <motion.span
+                  className="inline-block"
+                  whileHover={(i) => ({
+                    y: -5,
+                    transition: { duration: 0.2, delay: i * 0.05 },
+                  })}
+                  custom={1}
+                >
+                  O
+                </motion.span>
+                <motion.span
+                  className="inline-block"
+                  whileHover={(i) => ({
+                    y: -5,
+                    transition: { duration: 0.2, delay: i * 0.05 },
+                  })}
+                  custom={2}
+                >
+                  F
+                </motion.span>
+                <motion.span
+                  className="inline-block"
+                  whileHover={(i) => ({
+                    y: -5,
+                    transition: { duration: 0.2, delay: i * 0.05 },
+                  })}
+                  custom={3}
+                >
+                  A
+                </motion.span>
+                <motion.span className="inline-block ml-2"></motion.span>
+                <motion.span
+                  className="inline-block"
+                  whileHover={(i) => ({
+                    y: -5,
+                    transition: { duration: 0.2, delay: i * 0.05 },
+                  })}
+                  custom={4}
+                >
+                  I
+                </motion.span>
+                <motion.span
+                  className="inline-block"
+                  whileHover={(i) => ({
+                    y: -5,
+                    transition: { duration: 0.2, delay: i * 0.05 },
+                  })}
+                  custom={5}
+                >
+                  B
+                </motion.span>
+                <motion.span
+                  className="inline-block"
+                  whileHover={(i) => ({
+                    y: -5,
+                    transition: { duration: 0.2, delay: i * 0.05 },
+                  })}
+                  custom={6}
+                >
+                  R
+                </motion.span>
+                <motion.span
+                  className="inline-block"
+                  whileHover={(i) => ({
+                    y: -5,
+                    transition: { duration: 0.2, delay: i * 0.05 },
+                  })}
+                  custom={7}
+                >
+                  A
+                </motion.span>
+                <motion.span
+                  className="inline-block"
+                  whileHover={(i) => ({
+                    y: -5,
+                    transition: { duration: 0.2, delay: i * 0.05 },
+                  })}
+                  custom={8}
+                >
+                  H
+                </motion.span>
+                <motion.span
+                  className="inline-block"
+                  whileHover={(i) => ({
+                    y: -5,
+                    transition: { duration: 0.2, delay: i * 0.05 },
+                  })}
+                  custom={9}
+                >
+                  I
+                </motion.span>
+                <motion.span
+                  className="inline-block"
+                  whileHover={(i) => ({
+                    y: -5,
+                    transition: { duration: 0.2, delay: i * 0.05 },
+                  })}
+                  custom={10}
+                >
+                  M
+                </motion.span>
+              </motion.h2>
+            </div>
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="h-[1px] bg-black mb-1"
+            />
+            <motion.p
+              className="italic text-xs font-normal ml-1"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <motion.span
-                className="inline-block"
-                whileHover={(i) => ({
-                  y: -5,
-                  transition: { duration: 0.2, delay: i * 0.05 },
-                })}
-                custom={0}
-              >
-                K
-              </motion.span>
-              <motion.span
-                className="inline-block"
-                whileHover={(i) => ({
-                  y: -5,
-                  transition: { duration: 0.2, delay: i * 0.05 },
-                })}
-                custom={1}
-              >
-                O
-              </motion.span>
-              <motion.span
-                className="inline-block"
-                whileHover={(i) => ({
-                  y: -5,
-                  transition: { duration: 0.2, delay: i * 0.05 },
-                })}
-                custom={2}
-              >
-                F
-              </motion.span>
-              <motion.span
-                className="inline-block"
-                whileHover={(i) => ({
-                  y: -5,
-                  transition: { duration: 0.2, delay: i * 0.05 },
-                })}
-                custom={3}
-              >
-                A
-              </motion.span>
-              <motion.span className="inline-block ml-2"></motion.span>
-              <motion.span
-                className="inline-block"
-                whileHover={(i) => ({
-                  y: -5,
-                  transition: { duration: 0.2, delay: i * 0.05 },
-                })}
-                custom={4}
-              >
-                I
-              </motion.span>
-              <motion.span
-                className="inline-block"
-                whileHover={(i) => ({
-                  y: -5,
-                  transition: { duration: 0.2, delay: i * 0.05 },
-                })}
-                custom={5}
-              >
-                B
-              </motion.span>
-              <motion.span
-                className="inline-block"
-                whileHover={(i) => ({
-                  y: -5,
-                  transition: { duration: 0.2, delay: i * 0.05 },
-                })}
-                custom={6}
-              >
-                R
-              </motion.span>
-              <motion.span
-                className="inline-block"
-                whileHover={(i) => ({
-                  y: -5,
-                  transition: { duration: 0.2, delay: i * 0.05 },
-                })}
-                custom={7}
-              >
-                A
-              </motion.span>
-              <motion.span
-                className="inline-block"
-                whileHover={(i) => ({
-                  y: -5,
-                  transition: { duration: 0.2, delay: i * 0.05 },
-                })}
-                custom={8}
-              >
-                H
-              </motion.span>
-              <motion.span
-                className="inline-block"
-                whileHover={(i) => ({
-                  y: -5,
-                  transition: { duration: 0.2, delay: i * 0.05 },
-                })}
-                custom={9}
-              >
-                I
-              </motion.span>
-              <motion.span
-                className="inline-block"
-                whileHover={(i) => ({
-                  y: -5,
-                  transition: { duration: 0.2, delay: i * 0.05 },
-                })}
-                custom={10}
-              >
-                M
-              </motion.span>
-            </motion.h2>
-          </div>
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="h-[1px] bg-black mb-1"
-          />
-          <motion.p
-            className="italic text-xs font-normal ml-1"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            Ideas. Solutions. Stories.
-          </motion.p>
-        </NavLink>
+              Ideas. Solutions. Stories.
+            </motion.p>
+          </NavLink>
         <div className="reg-men">
           <motion.div className="menu" onClick={toggleSidebar} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
             {isSidebarOpen ? (

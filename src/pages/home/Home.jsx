@@ -8,6 +8,7 @@ import Reviews from "../../components/Reviews/Reviews";
 import Contact from "../../components/contact-us/Contact";
 import Footer from "../../components/footer/Footer";
 import Blogsection from "./Blogsection";
+import CreativeHero from "./CreativeHero";
 Blogsection
 
 const Home = () => {
@@ -16,7 +17,8 @@ const Home = () => {
   return (
     <>
     <div className="overflow-x-hidden">
-      <Navbar />
+      <CreativeHero/>
+      {/* <Navbar />
       <Hero/>
       <About/>
       <PorfolioCategories/>
@@ -24,7 +26,7 @@ const Home = () => {
       <Blogsection/>
       <Reviews/>
       <Contact/>
-      <Footer/>
+      <Footer/> */}
       </div>
     </>
   );
