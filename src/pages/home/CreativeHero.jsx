@@ -1,123 +1,140 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-motion"
-import { NavLink, Link } from "react-router-dom"
-import emailjs from "emailjs-com"
+import { useState, useEffect, useRef } from "react";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import { NavLink, Link } from "react-router-dom";
+import emailjs from "emailjs-com";
+
+const MotionLink = motion(Link);
 
 const CreativeHero = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [isHoveringName, setIsHoveringName] = useState(false)
-  const [isHoveringMenu, setIsHoveringMenu] = useState(false)
-  const [activeMenu, setActiveMenu] = useState(null)
-  const [letterHover, setLetterHover] = useState(null)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const nameRef = useRef(null)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHoveringName, setIsHoveringName] = useState(false);
+  const [isHoveringMenu, setIsHoveringMenu] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [letterHover, setLetterHover] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const nameRef = useRef(null);
 
   // Form state
   const [formData, setFormData] = useState({
     from_name: "",
     email: "",
     message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [successMessage, setSuccessMessage] = useState("")
-  const [errorMessage, setErrorMessage] = useState("")
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   // Mouse parallax effect - REDUCED as requested
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   // Reduced parallax values
-  const backgroundX = useTransform(mouseX, [-500, 500], [5, -5])
-  const backgroundY = useTransform(mouseY, [-500, 500], [5, -5])
+  const backgroundX = useTransform(mouseX, [-500, 500], [5, -5]);
+  const backgroundY = useTransform(mouseY, [-500, 500], [5, -5]);
 
-  const nameX = useTransform(mouseX, [-500, 500], [8, -8])
-  const nameY = useTransform(mouseY, [-500, 500], [8, -8])
+  const nameX = useTransform(mouseX, [-500, 500], [8, -8]);
+  const nameY = useTransform(mouseY, [-500, 500], [8, -8]);
 
   // Track mouse position for parallax effect
   useEffect(() => {
     const handleMouseMove = (e) => {
-      const { clientX, clientY } = e
-      const centerX = window.innerWidth / 2
-      const centerY = window.innerHeight / 2
+      const { clientX, clientY } = e;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
 
-      mouseX.set(clientX - centerX)
-      mouseY.set(clientY - centerY)
-      setMousePosition({ x: clientX, y: clientY })
-    }
+      mouseX.set(clientX - centerX);
+      mouseY.set(clientY - centerY);
+      setMousePosition({ x: clientX, y: clientY });
+    };
 
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [mouseX, mouseY])
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (isModalOpen || isMobileMenuOpen) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"
+      document.body.style.overflow = "auto";
     }
 
     return () => {
-      document.body.style.overflow = "auto"
-    }
-  }, [isModalOpen, isMobileMenuOpen])
+      document.body.style.overflow = "auto";
+    };
+  }, [isModalOpen, isMobileMenuOpen]);
 
   // Menu items
   const menuItems = [
     { name: "About", path: "/about" },
-    { name: "Portfolio", path: "/portfolio" },
     { name: "Initiatives", path: "/initiatives" },
-    { name: "Blog", path: "/blogs" },
+    { name: "Blogs", path: "/blogs" },
     { name: "Contact", path: "#", action: () => setIsModalOpen(true) },
-  ]
+  ];
 
   // Split name for letter animations
-  const firstName = "KOFA"
-  const lastName = "IBRAHIM"
+  const firstName = "KOFA";
+  const lastName = "IBRAHIM";
 
   // Form handling functions
   const handleInputChange = (e) => {
-    const { name, value } = e.target
-    setFormData({ ...formData, [name]: value })
-  }
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
-      closeModal()
+      closeModal();
     }
-  }
+  };
 
   const closeModal = () => {
-    setIsModalOpen(false)
-  }
+    setIsModalOpen(false);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSuccessMessage("")
-    setErrorMessage("")
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSuccessMessage("");
+    setErrorMessage("");
 
-    emailjs.sendForm("default_service", "template_dlg37sn", e.target, "JRI_W7aPIVDiM_NZ9").then(
-      () => {
-        setIsSubmitting(false)
-        setSuccessMessage("Thank you for reaching out! I'll get back to you shortly.")
-        setFormData({ from_name: "", email: "", message: "" })
+    emailjs
+      .sendForm(
+        "default_service",
+        "template_dlg37sn",
+        e.target,
+        "JRI_W7aPIVDiM_NZ9"
+      )
+      .then(
+        () => {
+          setIsSubmitting(false);
+          setSuccessMessage(
+            "Thank you for reaching out! I'll get back to you shortly."
+          );
+          setFormData({ from_name: "", email: "", message: "" });
 
-        // Auto close modal after success
-        setTimeout(() => {
-          closeModal()
-          setSuccessMessage("")
-        }, 3000)
-      },
-      () => {
-        setIsSubmitting(false)
-        setErrorMessage("There was an error sending your message. Please try again.")
-      },
-    )
-  }
+          // Auto close modal after success
+          setTimeout(() => {
+            closeModal();
+            setSuccessMessage("");
+          }, 3000);
+        },
+        () => {
+          setIsSubmitting(false);
+          setErrorMessage(
+            "There was an error sending your message. Please try again."
+          );
+        }
+      );
+  };
 
   // Animation variants for modal
   const modalVariants = {
@@ -140,7 +157,7 @@ const CreativeHero = () => {
         ease: "easeIn",
       },
     },
-  }
+  };
 
   const overlayVariants = {
     hidden: { opacity: 0 },
@@ -156,7 +173,7 @@ const CreativeHero = () => {
         duration: 0.3,
       },
     },
-  }
+  };
 
   const formItemVariants = {
     hidden: { opacity: 0, y: 10 },
@@ -168,7 +185,7 @@ const CreativeHero = () => {
         duration: 0.4,
       },
     }),
-  }
+  };
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black text-white flex flex-col items-center justify-center">
@@ -266,10 +283,10 @@ const CreativeHero = () => {
         {/* Organic light tendrils */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(12)].map((_, i) => {
-            const startX = Math.random() * 100
-            const startY = Math.random() * 100
-            const endX = startX + (Math.random() * 40 - 20)
-            const endY = startY + (Math.random() * 40 - 20)
+            const startX = Math.random() * 100;
+            const startY = Math.random() * 100;
+            const endX = startX + (Math.random() * 40 - 20);
+            const endY = startY + (Math.random() * 40 - 20);
 
             return (
               <motion.div
@@ -306,7 +323,7 @@ const CreativeHero = () => {
                   delay: Math.random() * 5,
                 }}
               />
-            )
+            );
           })}
         </div>
 
@@ -325,8 +342,16 @@ const CreativeHero = () => {
                 filter: "blur(50px)",
               }}
               animate={{
-                x: [Math.random() * 100 - 50, Math.random() * 100 - 50, Math.random() * 100 - 50],
-                y: [Math.random() * 100 - 50, Math.random() * 100 - 50, Math.random() * 100 - 50],
+                x: [
+                  Math.random() * 100 - 50,
+                  Math.random() * 100 - 50,
+                  Math.random() * 100 - 50,
+                ],
+                y: [
+                  Math.random() * 100 - 50,
+                  Math.random() * 100 - 50,
+                  Math.random() * 100 - 50,
+                ],
                 opacity: [0.1, 0.3, 0.1],
               }}
               transition={{
@@ -343,14 +368,14 @@ const CreativeHero = () => {
         {/* Visionary light paths - like neural networks */}
         <div className="absolute inset-0 overflow-hidden opacity-20">
           {[...Array(15)].map((_, i) => {
-            const startX = Math.random() * 100
-            const startY = Math.random() * 100
-            const controlX1 = startX + (Math.random() * 30 - 15)
-            const controlY1 = startY + (Math.random() * 30 - 15)
-            const controlX2 = startX + (Math.random() * 30 - 15)
-            const controlY2 = startY + (Math.random() * 30 - 15)
-            const endX = startX + (Math.random() * 30 - 15)
-            const endY = startY + (Math.random() * 30 - 15)
+            const startX = Math.random() * 100;
+            const startY = Math.random() * 100;
+            const controlX1 = startX + (Math.random() * 30 - 15);
+            const controlY1 = startY + (Math.random() * 30 - 15);
+            const controlX2 = startX + (Math.random() * 30 - 15);
+            const controlY2 = startY + (Math.random() * 30 - 15);
+            const endX = startX + (Math.random() * 30 - 15);
+            const endY = startY + (Math.random() * 30 - 15);
 
             return (
               <motion.div
@@ -374,7 +399,7 @@ const CreativeHero = () => {
                   repeatDelay: Math.random() * 5,
                 }}
               />
-            )
+            );
           })}
         </div>
 
@@ -532,7 +557,7 @@ const CreativeHero = () => {
             className="h-[1px] bg-white mb-1"
           />
           <motion.p
-            className="italic text-xs font-normal ml-1 text-white"
+            className="italic text-xs  font-normal ml-5 text-white"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -556,7 +581,11 @@ const CreativeHero = () => {
                 key={item.name}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.1, type: "spring" }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.5 + index * 0.1,
+                  type: "spring",
+                }}
                 onHoverStart={() => setActiveMenu(item.name)}
                 onHoverEnd={() => setActiveMenu(null)}
                 className="relative py-2"
@@ -564,7 +593,9 @@ const CreativeHero = () => {
                 {item.action ? (
                   <button
                     onClick={item.action}
-                    className={`text-white text-base font-medium relative py-2 bg-transparent border-none cursor-pointer outline-none ${activeMenu === item.name ? "font-semibold" : ""}`}
+                    className={`text-white text-base font-medium relative py-2 bg-transparent border-none cursor-pointer outline-none ${
+                      activeMenu === item.name ? "font-semibold" : ""
+                    }`}
                   >
                     {item.name}
                     {activeMenu === item.name && (
@@ -580,7 +611,9 @@ const CreativeHero = () => {
                 ) : (
                   <Link
                     to={item.path}
-                    className={`text-white text-base font-medium relative py-2 ${activeMenu === item.name ? "font-semibold" : ""}`}
+                    className={`text-white text-base font-medium relative py-2 ${
+                      activeMenu === item.name ? "font-semibold" : ""
+                    }`}
                   >
                     {item.name}
                     {activeMenu === item.name && (
@@ -609,7 +642,7 @@ const CreativeHero = () => {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
-          <div className="w-6 h-6 relative flex items-center justify-center">
+          <div className="w-6 h-6 relative  flex items-center justify-center">
             <motion.span
               className="absolute w-6 h-0.5 bg-white block"
               animate={{
@@ -619,7 +652,7 @@ const CreativeHero = () => {
               transition={{ duration: 0.3 }}
             />
             <motion.span
-              className="absolute w-6 h-0.5 bg-white block"
+              className="absolute w-6 h-0.5 bg-white block mt-5"
               animate={{
                 opacity: isMobileMenuOpen ? 0 : 1,
                 x: isMobileMenuOpen ? 20 : 0,
@@ -640,7 +673,10 @@ const CreativeHero = () => {
         {/* Mobile Menu Overlay */}
         <motion.div
           className="fixed inset-0 bg-black/95 z-40 md:hidden flex flex-col justify-center items-center"
-          initial={{ opacity: 0, clipPath: "circle(0% at calc(100% - 2.5rem) 2.5rem)" }}
+          initial={{
+            opacity: 0,
+            clipPath: "circle(0% at calc(100% - 2.5rem) 2.5rem)",
+          }}
           animate={{
             opacity: isMobileMenuOpen ? 1 : 0,
             clipPath: isMobileMenuOpen
@@ -672,12 +708,15 @@ const CreativeHero = () => {
                   {item.action ? (
                     <button
                       onClick={() => {
-                        item.action()
-                        setIsMobileMenuOpen(false)
+                        item.action();
+                        setIsMobileMenuOpen(false);
                       }}
                       className="text-white text-2xl font-medium bg-transparent border-none cursor-pointer outline-none"
                     >
-                      <motion.span whileHover={{ scale: 1.1, x: 10 }} transition={{ duration: 0.2 }}>
+                      <motion.span
+                        whileHover={{ scale: 1.1, x: 10 }}
+                        transition={{ duration: 0.2 }}
+                      >
                         {item.name}
                       </motion.span>
                     </button>
@@ -687,7 +726,10 @@ const CreativeHero = () => {
                       className="text-white text-2xl font-medium"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      <motion.span whileHover={{ scale: 1.1, x: 10 }} transition={{ duration: 0.2 }}>
+                      <motion.span
+                        whileHover={{ scale: 1.1, x: 10 }}
+                        transition={{ duration: 0.2 }}
+                      >
                         {item.name}
                       </motion.span>
                     </Link>
@@ -709,7 +751,7 @@ const CreativeHero = () => {
           onHoverEnd={() => setIsHoveringName(false)}
         >
           {/* Elegant fade-in animation for the name */}
-          <div className="text-center mb-6">
+          <div className="text-center mb-3">
             <motion.h1
               className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter"
               initial={{ opacity: 0, y: 50 }}
@@ -739,13 +781,13 @@ const CreativeHero = () => {
               </motion.span>
             </motion.h1>
 
-            <motion.div
+            {/* <motion.div
               className="h-0.5 bg-white/50 w-0 mx-auto mt-4"
               initial={{ width: 0 }}
               animate={{ width: "40%" }}
               transition={{ duration: 1.5, delay: 1.2, ease: "easeOut" }}
               whileHover={{ width: "60%", backgroundColor: "rgba(255, 255, 255, 0.8)" }}
-            />
+            /> */}
           </div>
 
           {/* Animated underline with gradient effect */}
@@ -764,29 +806,37 @@ const CreativeHero = () => {
 
           {/* Tagline with staggered word reveal */}
           <div className="flex justify-center flex-wrap mt-8 overflow-hidden">
-            {["Documentary", "Filmmaker", "•", "Leadership", "Expert", "•", "Climate", "Advocate"].map(
-              (word, index) => (
-                <motion.span
-                  key={index}
-                  className="text-center text-lg font-light tracking-widest mx-1 inline-block"
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 2 + index * 0.1,
-                    type: "spring",
-                    stiffness: 100,
-                  }}
-                >
-                  {word}
-                </motion.span>
-              ),
-            )}
+            {[
+              "Documentary",
+              "Filmmaker",
+              "•",
+              "Leadership",
+              "Expert",
+              "•",
+              "Climate",
+              "Advocate",
+            ].map((word, index) => (
+              <motion.span
+                key={index}
+                className="text-center text-lg font-light tracking-widest mx-1 inline-block"
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 2 + index * 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
           </div>
 
           {/* Call to action button */}
-          <motion.button
-            className="mt-12 px-8 py-3 bg-transparent border-2 border-white rounded-full text-white font-medium overflow-hidden relative group"
+          <MotionLink
+            to="/initiatives"
+            className="mt-12 px-8 py-3 bg-transparent border-2 border-white hover:bg-white transition-all ease-linear duration-300 rounded-full text-white font-medium overflow-hidden relative group inline-block"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 2.8 }}
@@ -802,7 +852,7 @@ const CreativeHero = () => {
             <span className="relative z-10 group-hover:text-black transition-colors duration-300">
               Discover My Work
             </span>
-          </motion.button>
+          </MotionLink>
         </motion.div>
       </div>
 
@@ -910,47 +960,49 @@ const CreativeHero = () => {
       </motion.div>
 
       {/* Scroll indicator with enhanced animation */}
-      <motion.div
-        className="fixed bottom-8 left-8 md:left-16 flex flex-col items-center gap-2 z-10 opacity-70 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 2.5 }}
-        whileHover={{ scale: 1.1 }}
-      >
-        <motion.div
-          animate={{
-            y: [0, 10, 0],
-            opacity: [0.5, 1, 0.5],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M12 5v14M5 12l7 7 7-7" />
-          </svg>
-        </motion.div>
-        <motion.span
-          className="text-xs tracking-widest uppercase"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 3 }}
-        >
-          Explore
-        </motion.span>
-      </motion.div>
+  
+<MotionLink
+  to="/about"
+  className="fixed bottom-8 left-8 md:left-16 flex flex-col items-center gap-2 z-10 opacity-70 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 2.5 }}
+  whileHover={{ scale: 1.1 }}
+>
+  <motion.div
+    animate={{
+      y: [0, 10, 0],
+      opacity: [0.5, 1, 0.5],
+    }}
+    transition={{
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 5v14M5 12l7 7 7-7" />
+    </svg>
+  </motion.div>
+  <motion.span
+    className="text-xs tracking-widest uppercase"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5, delay: 3 }}
+  >
+    Explore
+  </motion.span>
+</MotionLink>
 
       {/* Contact Form Modal */}
       <AnimatePresence>
@@ -990,8 +1042,8 @@ const CreativeHero = () => {
                 variants={formItemVariants}
                 custom={1}
               >
-                Got a project in mind, or simply looking to collaborate? Complete the form below and we'll get back to
-                you.
+                Got a project in mind, or simply looking to collaborate?
+                Complete the form below and we'll get back to you.
               </motion.p>
 
               {successMessage && (
@@ -1017,7 +1069,11 @@ const CreativeHero = () => {
               )}
 
               <form onSubmit={handleSubmit}>
-                <motion.div className="mb-4" variants={formItemVariants} custom={2}>
+                <motion.div
+                  className="mb-4"
+                  variants={formItemVariants}
+                  custom={2}
+                >
                   <input
                     type="text"
                     name="from_name"
@@ -1029,7 +1085,11 @@ const CreativeHero = () => {
                   />
                 </motion.div>
 
-                <motion.div className="mb-4" variants={formItemVariants} custom={3}>
+                <motion.div
+                  className="mb-4"
+                  variants={formItemVariants}
+                  custom={3}
+                >
                   <input
                     type="email"
                     name="email"
@@ -1041,7 +1101,11 @@ const CreativeHero = () => {
                   />
                 </motion.div>
 
-                <motion.div className="mb-6" variants={formItemVariants} custom={4}>
+                <motion.div
+                  className="mb-6"
+                  variants={formItemVariants}
+                  custom={4}
+                >
                   <textarea
                     name="message"
                     placeholder="Message"
@@ -1097,7 +1161,7 @@ const CreativeHero = () => {
         )}
       </AnimatePresence>
     </div>
-  )
-}
+  );
+};
 
-export default CreativeHero
+export default CreativeHero;
