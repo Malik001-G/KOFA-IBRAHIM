@@ -72,7 +72,7 @@ export default function Footer() {
           {/* Logo and info section */}
           <motion.div variants={itemVariants} className="space-y-4">
             <motion.h2
-              className="uppercase text-2xl md:text-3xl font-bold relative inline-block"
+              className="uppercase text-2xl md:text-3xl text-black  font-bold relative inline-block"
               whileHover={{ x: 5 }}
               transition={{ duration: 0.2 }}
             >

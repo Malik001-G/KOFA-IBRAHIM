@@ -348,7 +348,7 @@ const Navbar = () => {
               className="h-[1px] bg-black mb-1"
             />
             <motion.p
-              className="italic text-xs font-normal ml-1"
+              className="italic text-xs font-normal ml-1 text-black"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
