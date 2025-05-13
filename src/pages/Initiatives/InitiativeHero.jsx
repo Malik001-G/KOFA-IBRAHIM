@@ -97,7 +97,7 @@ const InitiativeHero = () => {
   return (
     <motion.section
       ref={containerRef}
-      className="relative w-screen h-[900px] md:h-[800px] lg:h-[610px] overflow-hidden bg-black text-white flex items-center"
+      className="relative w-screen h-[1200px] sm:h-[1000px] md:h-[800px] lg:h-[610px] overflow-hidden bg-black text-white flex items-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}

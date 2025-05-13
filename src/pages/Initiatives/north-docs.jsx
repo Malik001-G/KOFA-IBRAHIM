@@ -172,7 +172,7 @@ const NorthDocs = () => {
   }, [cursorX, cursorY])
 
   return (
-    <div className="bg-black text-white" ref={containerRef}>
+    <div className="" ref={containerRef}>
       <Navbar />
 
       {/* Hero Section with Cinematic Parallax */}
@@ -272,7 +272,7 @@ const NorthDocs = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <h2 className="text-4xl font-bold mb-6">The Mission</h2>
+              <h2 className="text-4xl text-white font-bold mb-6">The Mission</h2>
               <p className="text-base text-gray-300 mb-6">
                 North Docs is dedicated to documenting and preserving the rich cultural heritage and contemporary
                 stories of Northern Nigeria and Africa through compelling visual narratives.
@@ -282,7 +282,7 @@ const NorthDocs = () => {
                 global stage while creating a visual archive of traditions, histories, and lived experiences that might
                 otherwise be lost to time.
               </p>
-              <div className="flex flex-wrap gap-4 mt-8">
+              <div className="flex flex-wrap gap-4 mt-8 text-white">
                 <div className="flex items-center text-sm gap-2 px-4 py-2 bg-white/10 rounded-full group hover:bg-white/20 transition-all duration-300">
                   <Film size={18} className="group-hover:text-yellow-400 transition-colors duration-300" />
                   <span>Cultural Preservation</span>
@@ -338,7 +338,7 @@ const NorthDocs = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <h2 className="text-3xl font-bold mb-4">Featured Documentaries</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Featured Documentaries</h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
               Explore award-winning documentaries that capture the essence of Northern Nigeria's rich cultural tapestry.
             </p>
@@ -358,7 +358,7 @@ const NorthDocs = () => {
                 variants={fadeIn}
               >
                 <div className={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                  <h3 className="text-3xl font-bold mb-3">{doc.title}</h3>
+                  <h3 className="text-3xl font-bold text-white mb-3">{doc.title}</h3>
 
                   <div className="flex flex-wrap gap-4 mb-6">
                     <div className="flex items-center gap-1 text-gray-300">
@@ -377,7 +377,7 @@ const NorthDocs = () => {
 
                   <p className="text-lg text-gray-300 mb-6">{doc.description}</p>
 
-                  <div className="mb-8">
+                  <div className="mb-8 text-white">
                     <h4 className="text-lg font-semibold mb-3">Awards</h4>
                     <div className="flex flex-wrap gap-2">
                       {doc.awards.map((award, i) => (
@@ -397,7 +397,7 @@ const NorthDocs = () => {
                         setSelectedDocumentary(doc)
                         setIsVideoModalOpen(true)
                       }}
-                      className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full hover:text-white transition-all duration-500"
+                      className="flex items-center text-sm gap-2 px-6 py-2 bg-white text-black rounded-full hover:text-white transition-all duration-500"
                       style={{
                         "--hover-color": doc.color,
                       }}
@@ -411,25 +411,9 @@ const NorthDocs = () => {
                       }}
                     >
                       <Play size={18} fill="currentColor" />
-                      <span>Watch Trailer</span>
+                      <span>Watch</span>
                     </button>
-                    <Link
-                      to={`/documentaries/${doc.id}`}
-                      className="px-6 py-3 border border-white rounded-full hover:text-white transition-all duration-500"
-                      style={{
-                        "--hover-color": doc.color,
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = doc.color
-                        e.currentTarget.style.borderColor = doc.color
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = "transparent"
-                        e.currentTarget.style.borderColor = "white"
-                      }}
-                    >
-                      Learn More
-                    </Link>
+                   
                   </div>
                 </div>
 
@@ -477,7 +461,7 @@ const NorthDocs = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <h2 className="text-4xl font-bold mb-4">Documentary Impact</h2>
+            <h2 className="text-4xl text-white font-bold mb-4">Documentary Impact</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               North Docs films have reached audiences worldwide, preserving cultural heritage and changing perceptions.
             </p>
@@ -528,7 +512,7 @@ const NorthDocs = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <h2 className="text-4xl font-bold mb-4">Behind the Scenes</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Behind the Scenes</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Explore the filmmaking process and the stories behind the documentaries.
             </p>
@@ -566,7 +550,7 @@ const NorthDocs = () => {
             ))}
           </div>
 
-          <motion.div
+          {/* <motion.div
             className="mt-12 text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -580,7 +564,7 @@ const NorthDocs = () => {
               <span>View Full Gallery</span>
               <ArrowRight size={18} />
             </Link>
-          </motion.div>
+          </motion.div> */}
         </div>
       </section>
 
@@ -595,7 +579,7 @@ const NorthDocs = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true, amount: 0.3 }}
               >
-                <h2 className="text-3xl font-bold mb-4">Get Involved</h2>
+                <h2 className="text-3xl text-white font-bold mb-4">Get Involved</h2>
                 <p className="text-lg text-gray-300 mb-6">
                   North Docs welcomes collaboration with filmmakers, researchers, cultural institutions, and communities
                   interested in preserving Northern Nigeria's rich heritage.
@@ -641,7 +625,7 @@ const NorthDocs = () => {
       </section>
 
       {/* Back to Initiatives */}
-      <div className="container mx-auto max-w-6xl px-6 md:px-10 lg:px-36 py-12">
+      <div className="container mx-auto max-w-7xl px-6 md:px-10 lg:px-36 py-12">
         <Link
           to="/initiatives"
           className="inline-flex items-center text-sm gap-2 px-6 py-3 border border-gray-600 rounded-full hover:bg-gray-800 transition-all duration-300"

@@ -213,7 +213,7 @@ const Navbar = () => {
     <>
       <motion.div
         className={`navbar fixed top-0 left-0 right-0 px-6 md:px-10 lg:px-36 z-[100] py-4 transition-all duration-300 ${
-          scrolled ? "bg-white shadow-md" : "bg-white bg-opacity-95"
+          scrolled ? "bg-white shadow-md" : "bg-white"
         }`}
         initial="hidden"
         animate="visible"

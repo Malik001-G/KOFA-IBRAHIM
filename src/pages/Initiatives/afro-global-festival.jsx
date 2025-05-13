@@ -246,7 +246,7 @@ const AfroGlobalFestival = () => {
   }, [isGalleryModalOpen])
 
   return (
-    <div className="bg-black text-white" ref={containerRef}>
+    <div className="bg-black" ref={containerRef}>
       <Navbar />
 
       {/* Hero Section with Parallax */}
@@ -351,7 +351,7 @@ const AfroGlobalFestival = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <h2 className="text-4xl font-bold mb-6">About The Festival</h2>
+              <h2 className="text-4xl text-white font-bold mb-6">About The Festival</h2>
               <p className="text-lg text-gray-300 mb-6">
                 The Afro-Global Festival of Arts and Culture is a week-long celebration that brings together artists,
                 performers, filmmakers, and cultural practitioners from across Africa and its diaspora.
@@ -361,7 +361,7 @@ const AfroGlobalFestival = () => {
                 platform for cultural exchange, artistic innovation, and the celebration of Africa's rich and diverse
                 creative expressions.
               </p>
-              <div className="flex flex-wrap gap-4 mt-8">
+              <div className="flex flex-wrap gap-4 mt-8 text-white">
                 <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full group hover:bg-white/20 transition-all duration-300">
                   <Music size={18} className="group-hover:text-yellow-400 transition-colors duration-300" />
                   <span>Music</span>
@@ -421,7 +421,7 @@ const AfroGlobalFestival = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <h2 className="text-4xl font-bold mb-4">Festival Events</h2>
+            <h2 className="text-4xl text-white font-bold mb-4">Festival Events</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Explore our diverse program of performances, exhibitions, screenings, and workshops.
             </p>
@@ -446,7 +446,7 @@ const AfroGlobalFestival = () => {
             {filterEvents(activeTab === "all" ? "all" : activeTab).map((event, index) => (
               <motion.div
                 key={event.id}
-                className="bg-gray-800 rounded-xl overflow-hidden group hover:shadow-xl transition-all duration-500"
+                className="bg-gray-800 rounded-xl text-white overflow-hidden group hover:shadow-xl transition-all duration-500"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -485,7 +485,7 @@ const AfroGlobalFestival = () => {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-white transition-colors duration-300">
+                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-white transition-colors duration-300">
                     {event.title}
                   </h3>
 
@@ -601,7 +601,7 @@ const AfroGlobalFestival = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <h2 className="text-4xl font-bold mb-4">Featured Artists</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Featured Artists</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Meet some of the extraordinary talents showcasing their work at this year's festival.
             </p>
@@ -671,7 +671,7 @@ const AfroGlobalFestival = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <h2 className="text-4xl font-bold mb-4">Festival Gallery</h2>
+            <h2 className="text-4xl text-white font-bold mb-4">Festival Gallery</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               A glimpse of the vibrant experiences from previous editions of the festival.
             </p>
@@ -868,10 +868,10 @@ const AfroGlobalFestival = () => {
       </section> */}
 
       {/* Back to Initiatives */}
-      <div className="container mx-auto max-w-6xl px-6 py-12">
+      <div className="container mx-auto max-w-7xl px-6 md:px-10 lg:px-36 py-12">
         <Link
           to="/initiatives"
-          className="inline-flex items-center gap-2 px-6 py-3 border border-gray-600 rounded-full hover:bg-gray-800 transition-all duration-300"
+          className="inline-flex items-center gap-2 px-6 py-3 text-white border border-gray-600 rounded-full hover:bg-gray-800 transition-all duration-300"
         >
           <ArrowLeft size={18} />
           <span>Back to All Initiatives</span>
