@@ -557,7 +557,7 @@ const CreativeHero = () => {
             className="h-[1px] bg-white mb-1"
           />
           <motion.p
-            className="italic text-xs  font-normal ml-5 text-white"
+            className="text-xs  font-normal ml-5 text-white"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
