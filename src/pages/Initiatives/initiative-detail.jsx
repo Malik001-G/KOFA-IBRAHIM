@@ -102,7 +102,7 @@ const InitiativeDetail = ({
       </motion.section>
 
       {/* Content Section */}
-      <section className="py-20  bg-white">
+      <section className="py-5  bg-white">
         <div className="container mx-auto px-6 md:px-10 lg:px-36">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Sidebar */}

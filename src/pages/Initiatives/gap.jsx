@@ -246,19 +246,19 @@ const GAP = () => {
   }, [isGalleryOpen])
 
   return (
-    <div className="bg-black overflow-hidden" ref={containerRef}>
+    <div className="bg-black overflow-hidden text-white" ref={containerRef}>
       <Navbar />
 
       {/* Hero Section with Calmer Design */}
       <motion.section
         ref={heroRef}
-        className="relative h-screen overflow-hidden flex items-center justify-center"
+        className="relative min-h-[500px] overflow-hidden flex items-center justify-center"
         initial="hidden"
         animate={isHeroInView ? "visible" : "hidden"}
       >
         <motion.div className="absolute inset-0 z-0" style={{ y: parallaxY, opacity, scale }}>
           <div
-            className="w-full h-[120%] bg-cover bg-center"
+            className="w-full min-h-[500px] bg-cover bg-center"
             style={{
               backgroundImage: `url(${gapHeroImage})`,
               filter: "brightness(0.3) contrast(1.1)",
@@ -280,21 +280,21 @@ const GAP = () => {
               animate={{ width: "auto", opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <span className="text-sm font-medium tracking-wider">CLIMATE STORYTELLING & ADVOCACY</span>
+              <span className="text-xs font-medium tracking-wider">CLIMATE STORYTELLING & ADVOCACY</span>
             </motion.div>
 
             <motion.h1
-              className="text-6xl md:text-8xl font-bold mb-6"
+              className="text-6xl md:text-6xl font-bold mb-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.7 }}
             >
-              <span className="block text-white">Global African</span>
-              <span className="block text-slate-300 hover:text-white transition-colors duration-500">Perspectives</span>
+              <span className="block text-white">Global African               <span className=" text-slate-300 hover:text-white transition-colors duration-500">Perspectives</span>
+</span>
             </motion.h1>
 
             <motion.p
-              className="text-2xl md:text-3xl mb-8 text-gray-300 font-light"
+              className="text-base md:text-xl mb-8 text-gray-300 font-light"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.9 }}
@@ -308,16 +308,16 @@ const GAP = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.1 }}
             >
-              <button
+              {/* <button
                 onClick={() => setIsVideoPlaying(true)}
                 className="group flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-slate-200 transition-all duration-500 transform hover:scale-105"
               >
                 <Play size={20} fill="black" />
                 <span>Watch Our Story</span>
-              </button>
+              </button> */}
               <a
                 href="#niger-floods"
-                className="px-8 py-4 border border-white rounded-full font-medium hover:bg-white hover:text-black transition-all duration-500 transform hover:scale-105"
+                className="px-5 py-3 text-sm border border-white rounded-full font-medium hover:bg-white hover:text-black transition-all duration-500 transform hover:scale-105"
               >
                 Niger Floods Documentation
               </a>

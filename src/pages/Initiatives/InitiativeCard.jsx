@@ -3,225 +3,128 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom"
-import './initiatives.css'
+
 const InitiativeCard = ({ initiative, isFeatured, index }) => {
   const [isHovered, setIsHovered] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const navigate = useNavigate()
 
-  // Check if device is mobile
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    // Initial check
-    checkMobile()
-
-    // Add event listener for window resize
-    window.addEventListener("resize", checkMobile)
-
-    // Cleanup
-    return () => window.removeEventListener("resize", checkMobile)
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener("resize", check)
+    return () => window.removeEventListener("resize", check)
   }, [])
 
-  // Animation variants
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        delay: index * 0.1,
-        ease: [0.04, 0.62, 0.23, 0.98],
-      },
-    },
-  }
+  const handleClick = () => navigate(initiative.path)
 
-  // Handle card click
-  const handleCardClick = () => {
-    navigate(initiative.path)
-  }
+  if (isFeatured) {
+    return (
+      <motion.div
+        className="group relative overflow-hidden rounded-3xl shadow-2xl cursor-pointer bg-white/10 backdrop-blur-md border border-white/20 h-full"
+        initial={{ opacity: 0, rotateY: 15 }}
+        whileInView={{ opacity: 1, rotateY: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: index * 0.1 }}
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+        onClick={handleClick}
+        whileHover={{ scale: 1.04, boxShadow: "0 20px 40px rgba(0,0,0,0.25)" }}
+      >
+        <div className="relative h-[420px] sm:h-[480px] md:h-[520px] w-full">
+          {/* Image */}
+          <motion.div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${initiative.bg})` }}
+            animate={{ scale: isHovered && !isMobile ? 1.1 : 1 }}
+            transition={{ duration: 0.8 }}
+          />
 
-  return isFeatured ? (
-    // Featured initiative card (full width)
-    <motion.div
-      className="relative overflow-hidden rounded-xl cursor-pointer"
-      variants={cardVariants}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      onClick={handleCardClick}
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.3 }}
-    >
-      <div className="relative h-[400px] md:h-[550px] w-full">
-        {/* Background image with grayscale effect */}
-        <motion.div
-          className="absolute inset-0 w-full h-full bg-cover bg-center filter grayscale transition-all duration-700"
-          style={{ backgroundImage: `url(${initiative.bg})` }}
-          animate={{
-            scale: isHovered || isMobile ? 1.05 : 1,
-            filter: isHovered || isMobile ? "grayscale(0%)" : "grayscale(100%)",
-          }}
-          transition={{ duration: 0.7, ease: [0.04, 0.62, 0.23, 0.98] }}
-        />
+          {/* Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
 
-        {/* Gradient overlay - darker for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40 opacity-90 transition-opacity duration-700"></div>
-
-        {/* Content container */}
-        <motion.div className="absolute bottom-0 left-0 right-0 p-5 md:p-8 lg:p-12 z-20 max-w-full md:max-w-3xl">
-          {/* Title with line animation */}
-          <div className="overflow-hidden">
-            <motion.h3
-              className="text-white text-2xl md:text-3xl lg:text-5xl font-extrabold mb-3 md:mb-4 uppercase tracking-wider drop-shadow-md line-clamp-2 md:line-clamp-none"
-              animate={{
-                y: isHovered ? 0 : 10,
-                opacity: isHovered || isMobile ? 1 : 0.9,
-              }}
-              transition={{ duration: 0.4 }}
-            >
-              {initiative.name}
-              <motion.div
-                className="h-[3px] bg-white mt-2 md:mt-3 w-0 transition-all duration-500"
-                initial={{ width: 0 }}
-                animate={{
-                  width: isHovered || isMobile ? "100%" : "0%",
-                }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              />
-            </motion.h3>
+          {/* Badge */}
+          <div className="absolute top-6 left-6 bg-white/25 backdrop-blur px-4 py-2 rounded-full border border-white/40">
+            <span className="text-xl font-bold text-white">{initiative.number}</span>
           </div>
 
-          {/* Description - always visible on mobile */}
-          <motion.p
-            className="text-white text-sm md:text-base lg:text-xl font-medium max-w-full md:max-w-2xl drop-shadow-md line-clamp-3 md:line-clamp-none"
-            initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 20 }}
-            animate={{
-              opacity: isHovered || isMobile ? 1 : 0,
-              y: isHovered || isMobile ? 0 : 20,
-            }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {isMobile ? initiative.shortDesc : initiative.description}
-          </motion.p>
+          {/* Content */}
+          <div className="absolute inset-x-0 bottom-0 p-8 md:p-10">
+            <div className="max-w-lg">
+              <motion.h3
+                className="text-white text-3xl md:text-4xl font-black mb-4 tracking-tight drop-shadow-2xl"
+                animate={{ y: isHovered ? -6 : 0 }}
+              >
+                {initiative.name}
+                <motion.div
+                  className="h-1 bg-white/80 mt-3 origin-left"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: isHovered || isMobile ? 1 : 0.2 }}
+                  transition={{ duration: 0.6 }}
+                />
+              </motion.h3>
 
-          {/* Services list - hidden on mobile to save space */}
-          {!isMobile && (
-            <motion.ul
-              className="mt-4 md:mt-6 space-y-1 md:space-y-2 text-white text-xs md:text-sm lg:text-base opacity-0 transition-opacity duration-500 hidden md:block"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: isHovered ? 0.9 : 0,
-                y: isHovered ? 0 : 20,
-              }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              {initiative.services.slice(0, 3).map((service, idx) => (
-                <li key={idx} className="flex items-center">
-                  <span className="mr-2">•</span>
-                  {service}
-                </li>
-              ))}
-            </motion.ul>
-          )}
+              <motion.p
+                className="text-gray-200 text-base md:text-lg leading-relaxed mb-6 line-clamp-3"
+                initial={{ opacity: 0.9 }}
+                animate={{ opacity: 1 }}
+              >
+                {isMobile ? initiative.shortDesc : initiative.description}
+              </motion.p>
 
-          {/* CTA Button - always visible on mobile */}
-          <motion.button
-            className="mt-4 md:mt-6 px-4 py-2 md:px-8 md:py-3 border-2 border-white text-white text-xs md:text-sm lg:text-base font-bold rounded-full overflow-hidden relative transition-all duration-500"
-            initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 20 }}
-            animate={{
-              opacity: isHovered || isMobile ? 1 : 0,
-              y: isHovered || isMobile ? 0 : 20,
-            }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {initiative.cta}
-          </motion.button>
-        </motion.div>
-      </div>
-    </motion.div>
-  ) : (
-    // Regular initiative card
+              {/* Services preview */}
+              {!isMobile && (
+                <motion.div
+                  className="flex flex-wrap gap-3 mb-6"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: isHovered ? 1 : 0.7 }}
+                >
+                  {initiative.services.slice(0, 3).map((s, i) => (
+                    <span key={i} className="px-3 py-1 bg-white/20 rounded-full text-xs text-white backdrop-blur">
+                      {s}
+                    </span>
+                  ))}
+                </motion.div>
+              )}
+
+              <motion.button
+                className="px-8 py-3 bg-white text-black font-bold rounded-full shadow-xl"
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.94 }}
+              >
+                {initiative.cta} →
+              </motion.button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    )
+  }
+
+  // Regular Card (slightly taller for balance)
+  return (
     <motion.div
-      className="relative overflow-hidden rounded-xl cursor-pointer h-full"
-      variants={cardVariants}
+      className="relative overflow-hidden rounded-2xl cursor-pointer shadow-lg h-full bg-white/5 backdrop-blur border border-gray-200/50"
+      whileHover={{ y: -8, shadow: "0 15px 30px rgba(0,0,0,0.15)" }}
+      onClick={handleClick}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      onClick={handleCardClick}
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.3 }}
     >
-      <div className="relative h-[300px] sm:h-[350px] w-full">
-        {/* Background image with grayscale effect */}
+      <div className="relative h-[380px]">
         <motion.div
-          className="absolute inset-0 w-full h-full bg-cover bg-center filter grayscale transition-all duration-700"
+          className="absolute inset-0 bg-cover bg-center grayscale"
           style={{ backgroundImage: `url(${initiative.bg})` }}
-          animate={{
-            scale: isHovered || isMobile ? 1.05 : 1,
-            filter: isHovered || isMobile ? "grayscale(0%)" : "grayscale(100%)",
-          }}
-          transition={{ duration: 0.7, ease: [0.04, 0.62, 0.23, 0.98] }}
+          animate={{ filter: isHovered ? "grayscale(0%)" : "grayscale(60%)" }}
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
 
-        {/* Gradient overlay - darker for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40 opacity-90 transition-opacity duration-700"></div>
-
-        {/* Content container */}
-        <motion.div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20">
-          {/* Title with line animation */}
-          <div className="overflow-hidden">
-            <motion.h3
-              className="text-white text-lg sm:text-xl font-extrabold mb-2 uppercase tracking-wider drop-shadow-md line-clamp-2"
-              animate={{
-                y: isHovered ? 0 : 10,
-                opacity: isHovered || isMobile ? 1 : 0.9,
-              }}
-              transition={{ duration: 0.4 }}
-            >
-              {initiative.name}
-              <motion.div
-                className="h-[2px] bg-white mt-2 w-0 transition-all duration-500"
-                initial={{ width: 0 }}
-                animate={{
-                  width: isHovered || isMobile ? "100%" : "0%",
-                }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              />
-            </motion.h3>
-          </div>
-
-          {/* Short description - always visible on mobile */}
-          <motion.p
-            className="text-white text-xs sm:text-sm opacity-0 max-w-full line-clamp-3"
-            initial={{ opacity: isMobile ? 0.9 : 0, y: isMobile ? 0 : 10 }}
-            animate={{
-              opacity: isHovered || isMobile ? 0.9 : 0,
-              y: isHovered || isMobile ? 0 : 10,
-            }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {initiative.shortDesc}
-          </motion.p>
-
-          {/* CTA Button - always visible on mobile */}
-          <motion.button
-            className="mt-3 px-3 py-1 sm:px-4 sm:py-1.5 border-2 border-white text-white text-xs font-bold rounded-full overflow-hidden relative transition-all duration-500"
-            initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 20 }}
-            animate={{
-              opacity: isHovered || isMobile ? 1 : 0,
-              y: isHovered || isMobile ? 0 : 20,
-            }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {initiative.cta}
-          </motion.button>
-        </motion.div>
+        <div className="absolute bottom-0 p-6 w-full">
+          <h3 className="text-white text-xl font-bold mb-2 drop-shadow-lg">{initiative.name}</h3>
+          <p className="text-gray-200 text-sm mb-4 line-clamp-2">{initiative.shortDesc}</p>
+          <button className="text-white text-sm underline underline-offset-4">
+            {initiative.cta} →
+          </button>
+        </div>
       </div>
     </motion.div>
   )

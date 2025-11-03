@@ -65,84 +65,84 @@ const MMAHero = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
-  return (
+return (
+  <motion.div
+    ref={heroRef}
+    className="relative min-h-[70vh] md:min-h-[85vh] w-full overflow-hidden flex items-center"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1 }}
+  >
     <motion.div
-      ref={heroRef}
-      className="relative h-screen w-full overflow-hidden"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      className="absolute inset-0 z-0"
+      style={{
+        transform: `perspective(1000px) rotateX(${mousePosition.y * 5}deg) rotateY(${mousePosition.x * -5}deg) scale(1.05)`,
+      }}
+      transition={{ type: "spring", damping: 15 }}
     >
-      <motion.div
-        className="absolute inset-0 z-0"
+      <div
+        className="w-full h-full bg-cover bg-center filter grayscale hover:grayscale-0 transition-all duration-1000"
         style={{
-          transform: `perspective(1000px) rotateX(${mousePosition.y * 5}deg) rotateY(${mousePosition.x * -5}deg) scale(1.05)`,
+          backgroundImage: `url(${mmaImage})`,
+          filter: "brightness(0.28)",
+          backgroundPosition: "center 15%", // Subtle crop for balance
         }}
-        transition={{ type: "spring", damping: 15 }}
-      >
-        <div
-          className="w-full h-[110%] bg-cover bg-center filter grayscale hover:grayscale-0 transition-all duration-1000"
-          style={{
-            backgroundImage: `url(${mmaImage})`,
-            filter: "brightness(0.23)",
-          }}
-        />
-        {/* Cinematic letterbox effect */}
-        {/* <div className="absolute top-0 left-0 right-0 h-[5vh] bg-black z-10"></div> */}
-        {/* <div className="absolute bottom-0 left-0 right-0 h-[5vh] bg-black z-10"></div> */}
-      </motion.div>
+      />
+    </motion.div>
 
-      {/* Animated patterns */}
-      <div className="absolute inset-0 z-5 opacity-20">
-        <div className="absolute top-0 left-0 w-full h-full">
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute bg-white rounded-full"
-              style={{
-                width: Math.random() * 300 + 100,
-                height: Math.random() * 300 + 100,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                opacity: 0.05,
-              }}
-              animate={{
-                y: [0, Math.random() * 100 - 50],
-                x: [0, Math.random() * 100 - 50],
-              }}
-              transition={{
-                duration: Math.random() * 20 + 10,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "reverse",
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
+    {/* Animated patterns - reduced count & size */}
+    <div className="absolute inset-0 z-5 opacity-15 pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-full">
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute bg-white rounded-full"
+            style={{
+              width: Math.random() * 200 + 80,
+              height: Math.random() * 200 + 80,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              opacity: 0.04,
+            }}
+            animate={{
+              y: [0, Math.random() * 60 - 30],
+              x: [0, Math.random() * 60 - 30],
+            }}
+            transition={{
+              duration: Math.random() * 25 + 15,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
+          />
+        ))}
       </div>
+    </div>
 
-      <div className="container mx-auto px-6 md:px-10 lg:px-36 relative z-20 h-full flex flex-col justify-center">
+    {/* Content Container - Compact & balanced */}
+    <div className="relative z-20 w-full px-6 md:px-10 lg:px-36">
+      <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-3xl"
+          className="max-w-2xl" // Reduced from max-w-3xl
         >
           <motion.div
             initial={{ opacity: 0, width: 0 }}
             animate={{ opacity: 1, width: "auto" }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="inline-block mb-4 px-4 py-1 border border-white/30 rounded-full backdrop-blur-sm overflow-hidden"
+            className="inline-block mb-4 px-4 py-1.5 border border-white/25 rounded-full backdrop-blur-sm overflow-hidden"
           >
-            <span className="text-sm font-medium tracking-wider text-white whitespace-nowrap">
-              LEADERSHIP & STRATEGY
+            <span className="text-xs font-medium tracking-widest text-white uppercase">
+              Leadership & Strategy
             </span>
           </motion.div>
 
           <div className="overflow-hidden">
             <motion.h1
-              className="text-2xl md:text-5xl font-bold text-white mb-2"
-              initial={{ y: 100, opacity: 0 }}
+              className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-1 leading-snug"
+              initial={{ y: 80, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
@@ -152,8 +152,8 @@ const MMAHero = () => {
 
           <div className="overflow-hidden">
             <motion.h1
-              className="text-2xl md:text-5xl font-bold text-white mb-6 hover:text-yellow-400 transition-colors duration-500"
-              initial={{ y: 100, opacity: 0 }}
+              className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 hover:text-yellow-300 transition-colors duration-500 leading-snug"
+              initial={{ y: 80, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
@@ -162,14 +162,14 @@ const MMAHero = () => {
           </div>
 
           <motion.div
-            className="h-px bg-white/30 w-0 mb-6"
+            className="h-px bg-white/35 w-0 mb-6"
             initial={{ width: 0 }}
-            animate={{ width: "100%" }}
+            animate={{ width: "80%" }} // Shorter line
             transition={{ duration: 1.2, delay: 0.9 }}
           />
 
           <motion.p
-            className="text-sm md:text-lg text-gray-200 mb-8 max-w-xl"
+            className="text-sm md:text-base text-gray-200 mb-8 max-w-lg leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.1 }}
@@ -179,59 +179,60 @@ const MMAHero = () => {
 
           <motion.div
             className="flex flex-wrap gap-4"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.3 }}
           >
             <a
               href="#services"
-              className="group px-8 py-3 bg-white text-sm text-black rounded-full font-medium hover:bg-yellow-400 transition-all duration-500 flex items-center gap-2"
+              className="group px-7 py-3 bg-white text-black text-sm font-semibold rounded-full hover:bg-yellow-400 transition-all duration-500 flex items-center gap-2.5 shadow-xl"
             >
               <span>Explore Services</span>
               <motion.div
                 animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, repeatType: "loop", ease: "easeInOut" }}
+                transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
               >
                 <ArrowRight size={18} />
               </motion.div>
             </a>
             <a
               href="#approach"
-              className="px-8 py-3 border border-white text-sm rounded-full font-medium hover:bg-white hover:text-black transition-all duration-500"
+              className="px-7 py-3 border border-white text-white text-sm font-semibold rounded-full hover:bg-white hover:text-black transition-all duration-500 backdrop-blur-sm"
             >
               Our Approach
             </a>
           </motion.div>
         </motion.div>
       </div>
+    </div>
 
-      {/* Scroll indicator */}
+    {/* Scroll indicator - Smaller & subtler */}
+    <motion.div
+      className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 hidden md:block"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.7 }}
+      transition={{ delay: 1.8, duration: 0.8 }}
+    >
       <motion.div
-        className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
+        className="w-8 h-12 border border-white/60 rounded-full flex justify-center"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
       >
         <motion.div
-          className="w-8 h-12 border-2 border-white rounded-full flex justify-center"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, repeatType: "loop", ease: "easeInOut" }}
-        >
-          <motion.div
-            className="w-1 h-3 bg-white rounded-full mt-2"
-            animate={{ y: [0, 6, 0] }}
-            transition={{
-              duration: 1.5,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "loop",
-              ease: "easeInOut",
-              delay: 0.2,
-            }}
-          />
-        </motion.div>
+          className="w-1 h-2.5 bg-white/70 rounded-full mt-2"
+          animate={{ y: [0, 6, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "easeInOut",
+            delay: 0.3,
+          }}
+        />
       </motion.div>
     </motion.div>
-  )
+  </motion.div>
+)
 }
 
 // Custom Content Component
@@ -555,7 +556,7 @@ const MMAContent = () => {
       </div>
 
       {/* Stats Section */}
-      <motion.div
+      {/* <motion.div
         ref={statsRef}
         className="mt-16 py-12 px-8 bg-gray-50 rounded-2xl"
         initial={{ opacity: 0 }}
@@ -587,7 +588,7 @@ const MMAContent = () => {
             )
           })}
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Leadership Approach */}
       <motion.div
@@ -934,8 +935,8 @@ const MMAContent = () => {
 
         <div className="relative z-10 bg-black/80 p-12 rounded-2xl text-white">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Leadership?</h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <h2 className="text-xl md:text-3xl font-bold mb-6">Ready to Transform Your Leadership?</h2>
+            <p className="text-base text-gray-300 mb-8 max-w-2xl mx-auto">
               Take the first step toward developing the leadership capabilities that will drive sustainable success for
               your organization.
             </p>

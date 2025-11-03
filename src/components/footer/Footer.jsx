@@ -62,7 +62,7 @@ export default function Footer() {
   return (
     <motion.footer
       ref={footerRef}
-      className="bg-white px-6 md:px-10 lg:px-36 py-12 md:py-16 border-t border-gray-100"
+      className="bg-white text-black px-6 md:px-10 lg:px-36 py-12 md:py-16 border-t border-gray-100"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}

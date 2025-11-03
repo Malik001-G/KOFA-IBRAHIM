@@ -32,7 +32,7 @@ function App() {
           <Route path="/initiatives/afro-global-festival" element={<AfroGlobalFestival />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<BlogDetail />} />
-          {/* <Route path="/portfolio/:id" element={<Portfoliodetails />} /> */}
+          <Route path="/portfolio/:id" element={<Portfoliodetails />} />
         </Routes>
       </BrowserRouter>
     </>
