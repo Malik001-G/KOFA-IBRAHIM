@@ -44,9 +44,9 @@ const InitiativeCard = ({ initiative, isFeatured, index }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
 
           {/* Badge */}
-          <div className="absolute top-6 left-6 bg-white/25 backdrop-blur px-4 py-2 rounded-full border border-white/40">
+          {/* <div className="absolute top-6 left-6 bg-white/25 backdrop-blur px-4 py-2 rounded-full border border-white/40">
             <span className="text-xl font-bold text-white">{initiative.number}</span>
-          </div>
+          </div> */}
 
           {/* Content */}
           <div className="absolute inset-x-0 bottom-0 p-8 md:p-10">
@@ -88,11 +88,11 @@ const InitiativeCard = ({ initiative, isFeatured, index }) => {
               )}
 
               <motion.button
-                className="px-8 py-3 bg-white text-black font-bold rounded-full shadow-xl"
+                className="px-8 text-sm py-3 bg-white text-black font-bold rounded-full shadow-xl"
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.94 }}
               >
-                {initiative.cta} →
+                {initiative.cta} 
               </motion.button>
             </div>
           </div>

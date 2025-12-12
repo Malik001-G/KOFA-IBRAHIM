@@ -30,8 +30,8 @@ function App() {
           {/* <Route path="/initiatives/academia" element={<Academia />} /> */}
           <Route path="/initiatives/media-research" element={<MediaResearchFusion />} />
           <Route path="/initiatives/afro-global-festival" element={<AfroGlobalFestival />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blogs/:id" element={<BlogDetail />} />
+          {/* <Route path="/blogs" element={<Blogs />} /> */}
+          {/* <Route path="/blogs/:id" element={<BlogDetail />} /> */}
           <Route path="/portfolio/:id" element={<Portfoliodetails />} />
         </Routes>
       </BrowserRouter>

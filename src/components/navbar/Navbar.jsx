@@ -405,16 +405,17 @@ const Navbar = () => {
         initial="closed"
         animate={isSidebarOpen ? "open" : "closed"}
       >
-        <nav className="sidebar-links w-full lg:w-9/12 mb-8 lg:mb-0 flex flex-col">
-          {["Home", "About Us", "Blogs", "Initiatives"].map((item, index) => {
-            const path =
-              item === "Home"
-                ? "/"
-                : item === "About Us"
-                  ? "/about"
-                    : item === "Blogs"
-                      ? "/blogs"
-                      : "/initiatives"
+        <nav className="sidebar-links w-full lg:w-8/12 mb-8 lg:mb-0 flex flex-col">
+          {["Home", "About Us", "Initiatives"].map((item, index) => {
+           const path =
+  item === "Home"
+    ? "/"
+    : item === "About Us"
+      ? "/about"
+      // : item === "Blogs"
+      //   ? "/blogs"
+      : "/initiatives";
+
 
             return (
               <motion.div key={item} variants={linkVariants} custom={index}>
@@ -431,7 +432,7 @@ const Navbar = () => {
             )
           })}
         </nav>
-        <motion.div variants={contactVariants} className="lg:w-4/12">
+        <motion.div variants={contactVariants} className="lg:w-5/12">
           <h2 className="font-bold text-2xl mb-3">Let's Connect & Collaborate</h2>
           <p className="text-sm mt-2 text-gray-700">
             Have a project in mind, a question, or just want to connect? Reach out and let's discuss how we can bring

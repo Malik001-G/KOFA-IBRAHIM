@@ -57,7 +57,7 @@ const InitiativeDetail = ({
       {/* Hero Section */}
       <motion.section
         ref={scrollRef}
-        className="initiative-hero relative h-screen overflow-hidden"
+        className="initiative-hero relative  overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -102,7 +102,7 @@ const InitiativeDetail = ({
       </motion.section>
 
       {/* Content Section */}
-      <section className="py-5  bg-white">
+      <section className="py-20  bg-white">
         <div className="container mx-auto px-6 md:px-10 lg:px-36">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Sidebar */}
@@ -138,13 +138,13 @@ const InitiativeDetail = ({
 
                
 
-                  <Link
+                  {/* <Link
                     to={`/contact?initiative=${initiative.id}`}
                     className="inline-flex items-center gap-2 text-black font-medium hover:text-gray-700 transition-colors duration-300 group"
                   >
                     Get in touch{" "}
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </motion.div>

@@ -54,7 +54,7 @@ const Contactform = ({ closeModal }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black/40 z-50 flex justify-center backdrop-blur-sm items-center"
+      className="fixed inset-0 bg-black/40 text-black z-50 flex justify-center backdrop-blur-sm items-center"
       onClick={handleBackdropClick}
     >
       <motion.div

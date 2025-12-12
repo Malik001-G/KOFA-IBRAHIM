@@ -1,40 +1,71 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import { motion, useScroll, useTransform, useInView, AnimatePresence, useMotionValue, useSpring } from "framer-motion"
-import { Link } from "react-router-dom"
-import Navbar from "../../components/navbar/Navbar"
-import Footer from "../../components/footer/Footer"
-import { Play, Film, Award, Calendar, Clock, User, X, ArrowLeft, Eye, ArrowRight } from "lucide-react"
-
+import { useState, useEffect, useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useInView,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
+import { Link } from "react-router-dom";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
+import {
+  Play,
+  Film,
+  Award,
+  Calendar,
+  Clock,
+  User,
+  X,
+  ArrowLeft,
+  Eye,
+  ArrowRight,
+} from "lucide-react";
+import Contactform from "../../components/contact-us/Contactform"; // ← SAME FORM AS CONTACT PAGE
+import "../../components/contact-us/contact.css";
 // Import real images
 // import northDocsHeroImage from "../../assets/images/New/g.jpg"
 // import documentaryImage1 from "../../assets/images/documentary1.jpg"
 // import documentaryImage2 from "../../assets/images/documentary2.jpg"
 // import documentaryImage3 from "../../assets/images/documentary3.jpg"
-// import directorImage from "../../assets/images/director.jpg"
+import directorImage from "../../assets/images/New/m.jpg";
 // import behindScenes1 from "../../assets/images/behind-scenes1.jpg"
 // import behindScenes2 from "../../assets/images/behind-scenes2.jpg"
 // import behindScenes3 from "../../assets/images/behind-scenes3.jpg"
 
-const NorthDocs = () => {
-  const [selectedDocumentary, setSelectedDocumentary] = useState(null)
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
-  const [selectedImage, setSelectedImage] = useState(null)
-  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false)
-  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0)
+const useContactModal = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const open = () => setIsOpen(true);
+  const close = () => setIsOpen(false);
+  return { isOpen, open, close };
+};
 
-  const containerRef = useRef(null)
-  const heroRef = useRef(null)
-  const isHeroInView = useInView(heroRef, { once: false, amount: 0.3 })
+const NorthDocs = () => {
+  const [selectedDocumentary, setSelectedDocumentary] = useState(null);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
+  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
+  const {
+    isOpen: isContactModalOpen,
+    open: openContactModal,
+    close: closeContactModal,
+  } = useContactModal();
+  const containerRef = useRef(null);
+  const heroRef = useRef(null);
+  const isHeroInView = useInView(heroRef, { once: false, amount: 0.3 });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
-  })
+  });
 
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -150])
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.8])
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
 
   const documentaries = [
     {
@@ -47,7 +78,10 @@ const NorthDocs = () => {
         "An intimate portrait of Kano's ancient city walls and the communities that have lived within them for centuries. This documentary explores the rich cultural heritage, traditional crafts, and oral histories that continue to thrive in Nigeria's second-largest city.",
       image:
         "https://images.unsplash.com/photo-1578926375605-eaf7559b1458?q=80&w=1000&auto=format&fit=crop",
-      awards: ["Best Documentary - Lagos Film Festival", "Cultural Heritage Award - Pan-African Film Festival"],
+      awards: [
+        "Best Documentary - Lagos Film Festival",
+        "Cultural Heritage Award - Pan-African Film Festival",
+      ],
       videoUrl: "#",
       color: "rgb(245, 158, 11)", // Amber color for hover
     },
@@ -85,7 +119,7 @@ const NorthDocs = () => {
       videoUrl: "#",
       color: "rgb(79, 70, 229)", // Indigo color for hover
     },
-  ]
+  ];
 
   // Behind the scenes images
   const behindScenesImages = [
@@ -95,7 +129,7 @@ const NorthDocs = () => {
     "https://images.unsplash.com/photo-1632186683159-cf88c5ce62ed?q=80&w=1000&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1632187981988-40f3cbaeef5f?q=80&w=1000&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=1000&auto=format&fit=crop",
-  ]
+  ];
 
   // Animation variants
   const fadeIn = {
@@ -105,7 +139,7 @@ const NorthDocs = () => {
       y: 0,
       transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
     },
-  }
+  };
 
   const staggerContainer = {
     hidden: { opacity: 0 },
@@ -116,7 +150,7 @@ const NorthDocs = () => {
         delayChildren: 0.3,
       },
     },
-  }
+  };
 
   const scaleUp = {
     hidden: { scale: 0.95, opacity: 0 },
@@ -125,51 +159,54 @@ const NorthDocs = () => {
       opacity: 1,
       transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
     },
-  }
+  };
 
   // Handle gallery navigation
   const handleGalleryNavigation = (direction) => {
     if (direction === "next") {
-      setCurrentGalleryIndex((prev) => (prev + 1) % behindScenesImages.length)
+      setCurrentGalleryIndex((prev) => (prev + 1) % behindScenesImages.length);
     } else {
-      setCurrentGalleryIndex((prev) => (prev - 1 + behindScenesImages.length) % behindScenesImages.length)
+      setCurrentGalleryIndex(
+        (prev) =>
+          (prev - 1 + behindScenesImages.length) % behindScenesImages.length
+      );
     }
-  }
+  };
 
   useEffect(() => {
     // Scroll to top when component mounts
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
 
     // Prevent scrolling when modals are open
     if (isVideoModalOpen || isGalleryModalOpen) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"
+      document.body.style.overflow = "auto";
     }
 
     return () => {
-      document.body.style.overflow = "auto"
-    }
-  }, [isVideoModalOpen, isGalleryModalOpen])
+      document.body.style.overflow = "auto";
+    };
+  }, [isVideoModalOpen, isGalleryModalOpen]);
 
   // Mouse cursor effects
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const cursorX = useMotionValue(0)
-  const cursorY = useMotionValue(0)
-  const springConfig = { damping: 25, stiffness: 700 }
-  const cursorXSpring = useSpring(cursorX, springConfig)
-  const cursorYSpring = useSpring(cursorY, springConfig)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const cursorX = useMotionValue(0);
+  const cursorY = useMotionValue(0);
+  const springConfig = { damping: 25, stiffness: 700 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-      cursorX.set(e.clientX)
-      cursorY.set(e.clientY)
-    }
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
+    };
 
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [cursorX, cursorY])
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [cursorX, cursorY]);
 
   return (
     <div className="" ref={containerRef}>
@@ -177,90 +214,94 @@ const NorthDocs = () => {
 
       {/* Hero Section with Cinematic Parallax */}
       <motion.section
-      ref={heroRef}
-      className="relative h-[90vh] overflow-hidden flex items-center justify-center"
-      initial="hidden"
-      animate={isHeroInView ? "visible" : "hidden"}
-    >
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{ y: parallaxY, opacity }}
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <div
-          className="w-full h-full bg-cover bg-center filter grayscale hover:grayscale-0 transition-all duration-1000"
-          style={{
-            backgroundImage: `url("/images/northern-nigeria-durbar.jpg")`,
-            filter: "brightness(0.23)",
-          }}
-        />
-        {/* Cinematic letterbox effect */}
-        {/* <div className="absolute top-0 left-0 right-0 h-[5vh] bg-black z-10"></div> */}
-        {/* <div className="absolute bottom-0 left-0 right-0 h-[5vh] bg-black z-10"></div> */}
-      </motion.div>
-
-      <motion.div
-        className="container mx-auto px-6 md:px-10 lg:px-36 relative z-20 text-white"
-        variants={staggerContainer}
+        ref={heroRef}
+        className="relative h-[90vh] overflow-hidden flex items-center justify-center"
+        initial="hidden"
+        animate={isHeroInView ? "visible" : "hidden"}
       >
         <motion.div
-          variants={fadeIn}
-          className="inline-block mb-4 px-4 py-1 border border-white/30 rounded-full backdrop-blur-sm"
+          className="absolute inset-0 z-0"
+          style={{ y: parallaxY, opacity }}
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-sm font-medium tracking-wider">DOCUMENTARY INITIATIVE</span>
+          <div
+            className="w-full h-full bg-cover bg-center filter grayscale hover:grayscale-0 transition-all duration-1000"
+            style={{
+              backgroundImage: `url("/images/northern-nigeria-durbar.jpg")`,
+              filter: "brightness(0.23)",
+            }}
+          />
+          {/* Cinematic letterbox effect */}
+          {/* <div className="absolute top-0 left-0 right-0 h-[5vh] bg-black z-10"></div> */}
+          {/* <div className="absolute bottom-0 left-0 right-0 h-[5vh] bg-black z-10"></div> */}
         </motion.div>
 
-        <motion.h1
-          variants={fadeIn}
-          className="text-5xl md:text-4xl font-bold mb-6 max-w-4xl"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-        >
-          <span className="block">Documenting Northern Nigeria's</span>
-          <span className="block text-white hover:text-yellow-400 transition-colors duration-500">Untold Stories</span>
-        </motion.h1>
-
-        <motion.p
-          variants={fadeIn}
-          className="text-xl md:text-lg max-w-2xl mb-8 text-gray-300"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          Authentic visual narratives that preserve cultural heritage and amplify voices from across Northern Nigeria.
-        </motion.p>
-
         <motion.div
-          variants={fadeIn}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.7 }}
-          className="flex flex-wrap gap-4"
+          className="container mx-auto px-6 md:px-10 lg:px-36 relative z-20 text-white"
+          variants={staggerContainer}
         >
-
-          <a
-            href="#documentaries"
-            className="px-8 py-3 border text-sm border-white rounded-full font-medium hover:bg-white hover:text-black transition-all duration-500"
+          <motion.div
+            variants={fadeIn}
+            className="inline-block mb-4 px-4 py-1 border border-white/30 rounded-full backdrop-blur-sm"
           >
-            Explore Documentaries
-          </a>
-        </motion.div>
-      </motion.div>
+            <span className="text-sm font-medium tracking-wider">
+              DOCUMENTARY INITIATIVE
+            </span>
+          </motion.div>
 
-      <motion.div
-        className="absolute bottom-5 left-0 right-0 flex justify-center z-20"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-      >
-        <div className="animate-bounce">
-          <ArrowDown className="text-white" size={32} />
-        </div>
-      </motion.div>
-    </motion.section>
+          <motion.h1
+            variants={fadeIn}
+            className="text-5xl md:text-4xl font-bold mb-6 max-w-4xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            <span className="block">Documenting Northern Nigeria's</span>
+            <span className="block text-white hover:text-yellow-400 transition-colors duration-500">
+              Untold Stories
+            </span>
+          </motion.h1>
+
+          <motion.p
+            variants={fadeIn}
+            className="text-xl md:text-lg max-w-2xl mb-8 text-gray-300"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            Authentic visual narratives that preserve cultural heritage and
+            amplify voices from across Northern Nigeria.
+          </motion.p>
+
+          <motion.div
+            variants={fadeIn}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.7 }}
+            className="flex flex-wrap gap-4"
+          >
+            <a
+              href="#documentaries"
+              className="px-8 py-3 border text-sm border-white rounded-full font-medium hover:bg-white hover:text-black transition-all duration-500"
+            >
+              Explore Documentaries
+            </a>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-5 left-0 right-0 flex justify-center z-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+        >
+          <div className="animate-bounce">
+            <ArrowDown className="text-white" size={32} />
+          </div>
+        </motion.div>
+      </motion.section>
 
       {/* Mission Statement */}
       <section className="py-24 px-6 md:px-10 lg:px-36 bg-black">
@@ -272,55 +313,79 @@ const NorthDocs = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <h2 className="text-4xl text-white font-bold mb-6">The Mission</h2>
+              <h2 className="text-4xl text-white font-bold mb-6">
+                The Mission
+              </h2>
               <p className="text-base text-gray-300 mb-6">
-                North Docs is dedicated to documenting and preserving the rich cultural heritage and contemporary
-                stories of Northern Nigeria and Africa through compelling visual narratives.
+                North Docs is dedicated to documenting and preserving the rich
+                cultural heritage and contemporary stories of Northern Nigeria
+                and Africa through compelling visual narratives.
               </p>
               <p className="text-base text-gray-300 mb-6">
-                Each documentary shines a light on untold stories, amplifying voices that deserve to be heard on the
-                global stage while creating a visual archive of traditions, histories, and lived experiences that might
-                otherwise be lost to time.
+                Each documentary shines a light on untold stories, amplifying
+                voices that deserve to be heard on the global stage while
+                creating a visual archive of traditions, histories, and lived
+                experiences that might otherwise be lost to time.
               </p>
               <div className="flex flex-wrap gap-4 mt-8 text-white">
                 <div className="flex items-center text-sm gap-2 px-4 py-2 bg-white/10 rounded-full group hover:bg-white/20 transition-all duration-300">
-                  <Film size={18} className="group-hover:text-yellow-400 transition-colors duration-300" />
+                  <Film
+                    size={18}
+                    className="group-hover:text-yellow-400 transition-colors duration-300"
+                  />
                   <span>Cultural Preservation</span>
                 </div>
                 <div className="flex items-center text-sm gap-2 px-4 py-2 bg-white/10 rounded-full group hover:bg-white/20 transition-all duration-300">
-                  <Award size={18} className="group-hover:text-green-400 transition-colors duration-300" />
+                  <Award
+                    size={18}
+                    className="group-hover:text-green-400 transition-colors duration-300"
+                  />
                   <span>Award-winning</span>
                 </div>
                 <div className="flex items-center text-sm gap-2 px-4 py-2 bg-white/10 rounded-full group hover:bg-white/20 transition-all duration-300">
-                  <Calendar size={18} className="group-hover:text-blue-400 transition-colors duration-300" />
+                  <Calendar
+                    size={18}
+                    className="group-hover:text-blue-400 transition-colors duration-300"
+                  />
                   <span>Since 2018</span>
                 </div>
               </div>
             </motion.div>
-
             <motion.div
-              className="relative h-[500px] rounded-2xl overflow-hidden group"
+              className="relative h-[500px] rounded-2xl overflow-hidden"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-black/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <div className="absolute top-10 left-10 right-10 bottom-10 border border-white/20 rounded-xl z-20" />
+              {/* Light subtle overlay (optional – removes darkness) */}
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent z-10" />
+
+              {/* Decorative border */}
+              <div className="absolute top-2 left-2 right-2 bottom-2 border border-white/30 rounded-xl z-20 pointer-events-none" />
+
+              {/* Background Image – Bright & Colorful by Default */}
               <div
-                className="absolute inset-0 bg-cover bg-center filter grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="absolute inset-0 bg-cover bg-center"
                 style={{
-                  backgroundImage: `url(${"https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?q=80&w=1000&auto=format&fit=crop"})`,
+                  backgroundImage: `url("${directorImage}")`,
                 }}
               />
-              <div className="absolute inset-0 flex items-end p-8">
-                <div className="bg-black/80 backdrop-blur-sm p-6 rounded-xl max-w-xs transform translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  <h3 className="text-xl font-bold mb-2">From the Director</h3>
-                  <p className="text-gray-300">
-                    "These documentaries are more than films—they're a bridge between generations, preserving stories
-                    that might otherwise fade into history."
+
+              {/* Quote Card – Always Visible */}
+              <div className="absolute inset-0 flex items-end p-2">
+                <div className="bg-black/80 backdrop-blur-md p-7 rounded-xl max-w-md transform translate-y-0 opacity-100">
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    From the Director
+                  </h3>
+                  <p className="text-gray-200 leading-relaxed">
+                    "These documentaries are more than films—they're a bridge
+                    between generations, preserving stories that might otherwise
+                    fade into history."
                   </p>
-                  <p className="mt-2 text-sm text-gray-400">— Ibrahim Musa, Founder</p>
+                  <p className="mt-4 text-sm text-gray-400 font-medium">
+                    — Ibrahim Musa, Founder
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -329,7 +394,10 @@ const NorthDocs = () => {
       </section>
 
       {/* Featured Documentaries */}
-      <section id="documentaries" className="py-24 px-6 md:px-10 lg:px-36 bg-gray-900">
+      <section
+        id="documentaries"
+        className="py-24 px-6 md:px-10 lg:px-36 bg-gray-900"
+      >
         <div className="container mx-auto max-w-6xl">
           <motion.div
             className="text-center mb-16"
@@ -338,9 +406,12 @@ const NorthDocs = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <h2 className="text-3xl font-bold text-white mb-4">Featured Documentaries</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Featured Documentaries
+            </h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Explore award-winning documentaries that capture the essence of Northern Nigeria's rich cultural tapestry.
+              Explore award-winning documentaries that capture the essence of
+              Northern Nigeria's rich cultural tapestry.
             </p>
           </motion.div>
 
@@ -354,11 +425,17 @@ const NorthDocs = () => {
             {documentaries.map((doc, index) => (
               <motion.div
                 key={doc.id}
-                className={`grid grid-cols-1 ${index % 2 === 0 ? "lg:grid-cols-[1fr_1.5fr]" : "lg:grid-cols-[1.5fr_1fr]"} gap-12 items-center`}
+                className={`grid grid-cols-1 ${
+                  index % 2 === 0
+                    ? "lg:grid-cols-[1fr_1.5fr]"
+                    : "lg:grid-cols-[1.5fr_1fr]"
+                } gap-12 items-center`}
                 variants={fadeIn}
               >
                 <div className={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                  <h3 className="text-3xl font-bold text-white mb-3">{doc.title}</h3>
+                  <h3 className="text-3xl font-bold text-white mb-3">
+                    {doc.title}
+                  </h3>
 
                   <div className="flex flex-wrap gap-4 mb-6">
                     <div className="flex items-center gap-1 text-gray-300">
@@ -375,7 +452,9 @@ const NorthDocs = () => {
                     </div>
                   </div>
 
-                  <p className="text-lg text-gray-300 mb-6">{doc.description}</p>
+                  <p className="text-lg text-gray-300 mb-6">
+                    {doc.description}
+                  </p>
 
                   <div className="mb-8 text-white">
                     <h4 className="text-lg font-semibold mb-3">Awards</h4>
@@ -394,34 +473,33 @@ const NorthDocs = () => {
                   <div className="flex flex-wrap gap-4">
                     <button
                       onClick={() => {
-                        setSelectedDocumentary(doc)
-                        setIsVideoModalOpen(true)
+                        setSelectedDocumentary(doc);
+                        setIsVideoModalOpen(true);
                       }}
                       className="flex items-center text-sm gap-2 px-6 py-2 bg-white text-black rounded-full hover:text-white transition-all duration-500"
                       style={{
                         "--hover-color": doc.color,
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = doc.color
-                        e.currentTarget.style.color = "white"
+                        e.currentTarget.style.backgroundColor = doc.color;
+                        e.currentTarget.style.color = "white";
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = "white"
-                        e.currentTarget.style.color = "black"
+                        e.currentTarget.style.backgroundColor = "white";
+                        e.currentTarget.style.color = "black";
                       }}
                     >
                       <Play size={18} fill="currentColor" />
                       <span>Watch</span>
                     </button>
-                   
                   </div>
                 </div>
 
                 <motion.div
                   className="relative aspect-video rounded-xl overflow-hidden group cursor-pointer"
                   onClick={() => {
-                    setSelectedDocumentary(doc)
-                    setIsVideoModalOpen(true)
+                    setSelectedDocumentary(doc);
+                    setIsVideoModalOpen(true);
                   }}
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
@@ -438,10 +516,18 @@ const NorthDocs = () => {
                       style={{
                         "--hover-color": doc.color,
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = `${doc.color}40`)}
-                      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.2)")}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.backgroundColor = `${doc.color}40`)
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.backgroundColor =
+                          "rgba(255, 255, 255, 0.2)")
+                      }
                     >
-                      <Play size={32} className="text-white group-hover:text-white transition-colors duration-500" />
+                      <Play
+                        size={32}
+                        className="text-white group-hover:text-white transition-colors duration-500"
+                      />
                     </div>
                   </div>
                 </motion.div>
@@ -461,9 +547,12 @@ const NorthDocs = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <h2 className="text-4xl text-white font-bold mb-4">Documentary Impact</h2>
+            <h2 className="text-4xl text-white font-bold mb-4">
+              Documentary Impact
+            </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              North Docs films have reached audiences worldwide, preserving cultural heritage and changing perceptions.
+              North Docs films have reached audiences worldwide, preserving
+              cultural heritage and changing perceptions.
             </p>
           </motion.div>
 
@@ -472,17 +561,20 @@ const NorthDocs = () => {
               {
                 number: "500K+",
                 label: "Global Viewers",
-                description: "Documentaries have been viewed by audiences across 45+ countries",
+                description:
+                  "Documentaries have been viewed by audiences across 45+ countries",
               },
               {
                 number: "12",
                 label: "International Awards",
-                description: "Recognition from prestigious film festivals and cultural institutions",
+                description:
+                  "Recognition from prestigious film festivals and cultural institutions",
               },
               {
                 number: "8",
                 label: "Cultural Archives",
-                description: "Preservation of endangered cultural practices and oral histories",
+                description:
+                  "Preservation of endangered cultural practices and oral histories",
               },
             ].map((stat, index) => (
               <motion.div
@@ -493,8 +585,12 @@ const NorthDocs = () => {
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 viewport={{ once: true, amount: 0.3 }}
               >
-                <div className="text-4xl font-bold mb-2 text-white group-hover:text-yellow-400">{stat.number}</div>
-                <div className="text-xl font-semibold mb-4 text-gray-200">{stat.label}</div>
+                <div className="text-4xl font-bold mb-2 text-white group-hover:text-yellow-400">
+                  {stat.number}
+                </div>
+                <div className="text-xl font-semibold mb-4 text-gray-200">
+                  {stat.label}
+                </div>
                 <p className="text-gray-400">{stat.description}</p>
               </motion.div>
             ))}
@@ -503,7 +599,7 @@ const NorthDocs = () => {
       </section>
 
       {/* Behind the Scenes */}
-      <section className="py-24  bg-gray-900">
+      {/* <section className="py-24  bg-gray-900">
         <div className="container mx-auto px-6 md:px-10 lg:px-36 max-w-7xl">
           <motion.div
             className="text-center mb-16"
@@ -550,7 +646,7 @@ const NorthDocs = () => {
             ))}
           </div>
 
-          {/* <motion.div
+          <motion.div
             className="mt-12 text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -564,14 +660,14 @@ const NorthDocs = () => {
               <span>View Full Gallery</span>
               <ArrowRight size={18} />
             </Link>
-          </motion.div> */}
+          </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Get Involved */}
-      <section className="py-24 px-6 bg-gradient-to-b from-gray-900 to-black">
+      <section className="py-24 lg:px-6 bg-gradient-to-b from-gray-900 to-black">
         <div className="container mx-auto px-6 md:px-10 lg:px-36 max-w-7xl">
-          <div className="bg-gray-800 rounded-3xl p-12 border border-gray-700 hover:border-white transition-all duration-500">
+          <div className="bg-gray-800 rounded-3xl p-5 border border-gray-700 hover:border-white transition-all duration-500">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
@@ -579,18 +675,21 @@ const NorthDocs = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true, amount: 0.3 }}
               >
-                <h2 className="text-3xl text-white font-bold mb-4">Get Involved</h2>
+                <h2 className="text-3xl text-white font-bold mb-4">
+                  Get Involved
+                </h2>
                 <p className="text-lg text-gray-300 mb-6">
-                  North Docs welcomes collaboration with filmmakers, researchers, cultural institutions, and communities
-                  interested in preserving Northern Nigeria's rich heritage.
+                  North Docs welcomes collaboration with filmmakers,
+                  researchers, cultural institutions, and communities interested
+                  in preserving Northern Nigeria's rich heritage.
                 </p>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full hover:bg-transparent hover:text-white hover:border hover:border-white transition-all duration-500"
+                <button
+                  onClick={openContactModal}
+                  className="inline-flex text-sm items-center gap-2 px-6 py-3 bg-white text-black rounded-full hover:bg-yellow-400 transition-all duration-500 font-medium"
                 >
                   <span>Contact the Team</span>
                   <ArrowRight size={18} />
-                </Link>
+                </button>
               </motion.div>
 
               <motion.div
@@ -600,7 +699,9 @@ const NorthDocs = () => {
                 viewport={{ once: true, amount: 0.3 }}
               >
                 <div className="bg-black p-6 rounded-xl">
-                  <h3 className="text-xl font-bold mb-4">Collaboration Opportunities</h3>
+                  <h3 className="text-xl font-bold mb-4">
+                    Collaboration Opportunities
+                  </h3>
                   <ul className="space-y-3">
                     {[
                       "Documentary co-production",
@@ -624,11 +725,45 @@ const NorthDocs = () => {
         </div>
       </section>
 
+      <AnimatePresence>
+        {isContactModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/15 backdrop-blur-lg flex items-center justify-center z-50 p-4"
+            onClick={closeContactModal}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 50, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.9, y: 50, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-6">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-2xl font-bold">Get in Touch</h3>
+                  <button
+                    onClick={closeContactModal}
+                    className="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors"
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
+                <Contactform closeModal={closeContactModal} />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Back to Initiatives */}
       <div className="container mx-auto max-w-7xl px-6 md:px-10 lg:px-36 py-12">
         <Link
           to="/initiatives"
-          className="inline-flex items-center text-sm gap-2 px-6 py-3 border border-gray-600 rounded-full hover:bg-gray-800 transition-all duration-300"
+          className="inline-flex items-center text-sm gap-2 px-6 py-3 border border-gray-600 rounded-full hover:bg-gray-800 hover:text-white transition-all duration-300"
         >
           <ArrowLeft size={18} />
           <span>Back to All Initiatives</span>
@@ -662,8 +797,12 @@ const NorthDocs = () => {
               <div className="w-full h-full flex items-center justify-center bg-gray-900">
                 <div className="text-center p-8">
                   <Play size={48} className="mx-auto mb-4 opacity-50" />
-                  <h3 className="text-xl font-bold mb-2">{selectedDocumentary.title} - Trailer</h3>
-                  <p className="text-gray-400">Video would play here in a real implementation</p>
+                  <h3 className="text-xl font-bold mb-2">
+                    {selectedDocumentary.title} - Trailer
+                  </h3>
+                  <p className="text-gray-400">
+                    Video would play here in a real implementation
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -697,7 +836,10 @@ const NorthDocs = () => {
 
               <div className="relative h-[80vh]">
                 <img
-                  src={behindScenesImages[currentGalleryIndex] || "/placeholder.svg"}
+                  src={
+                    behindScenesImages[currentGalleryIndex] ||
+                    "/placeholder.svg"
+                  }
                   alt={`Gallery image ${currentGalleryIndex + 1}`}
                   className="w-full h-full object-contain"
                 />
@@ -721,7 +863,9 @@ const NorthDocs = () => {
                     <button
                       key={index}
                       className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        currentGalleryIndex === index ? "bg-white w-4" : "bg-white/50"
+                        currentGalleryIndex === index
+                          ? "bg-white w-4"
+                          : "bg-white/50"
                       }`}
                       onClick={() => setCurrentGalleryIndex(index)}
                     />
@@ -745,8 +889,8 @@ const NorthDocs = () => {
 
       <Footer />
     </div>
-  )
-}
+  );
+};
 
 // Helper components
 const ArrowDown = ({ className, size }) => (
@@ -764,6 +908,6 @@ const ArrowDown = ({ className, size }) => (
   >
     <path d="M12 5v14M5 12l7 7 7-7" />
   </svg>
-)
+);
 
-export default NorthDocs
+export default NorthDocs;

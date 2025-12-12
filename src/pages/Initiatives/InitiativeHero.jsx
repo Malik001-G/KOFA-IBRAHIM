@@ -90,6 +90,14 @@ const InitiativeHero = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
+            Kofa Ibrahim
+          </motion.p>
+          <motion.p
+            className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Our Focus Areas
           </motion.p>
 

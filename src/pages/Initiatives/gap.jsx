@@ -27,8 +27,18 @@ import {
 
 // Import images - you can replace these with your actual Niger project images
 import gapHeroImage from "../../assets/images/leadership.jfif"
+import Contactform from "../../components/contact-us/Contactform"
+
+
+const useContactModal = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const openModal = () => setIsModalOpen(true)
+  const closeModal = () => setIsModalOpen(false)
+  return { isModalOpen, openModal, closeModal }
+}
 
 const GAP = () => {
+  const { isModalOpen, openModal, closeModal } = useContactModal()
   const [activeSection, setActiveSection] = useState(0)
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
   const [selectedFloodCategory, setSelectedFloodCategory] = useState(0)
@@ -709,20 +719,21 @@ const GAP = () => {
             </p>
 
             <div className="flex flex-wrap gap-6 justify-center">
-              <motion.button
+             <motion.button
+                onClick={openModal}   // ← Changed from static to openModal
                 className="px-8 py-4 bg-slate-700 text-white font-bold rounded-full hover:bg-slate-600 transition-all duration-300 transform hover:scale-105"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Support Our Work
               </motion.button>
-              <motion.button
+              {/* <motion.button
                 className="px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Become a Climate Storyteller
-              </motion.button>
+              </motion.button> */}
             </div>
           </motion.div>
         </div>
@@ -835,6 +846,30 @@ const GAP = () => {
               >
                 <X size={20} className="text-white" />
               </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+            onClick={closeModal}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white rounded-xl shadow-xl max-w-md w-full mx-auto overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Contactform closeModal={closeModal} />
             </motion.div>
           </motion.div>
         )}

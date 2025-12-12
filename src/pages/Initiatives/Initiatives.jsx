@@ -10,12 +10,14 @@ import Contact from "../../components/contact-us/Contact"
 import "./initiatives.css"
 
 // Import your images
-import mmaImage from "../../assets/images/New/u.jpg"
+import mmaImage from "../../assets/images/New/2.jpg"
+
 import northDocsImage from "../../assets/images/New/g.jpg"
 import gapImage from "../../assets/images/leadership.jfif"
 import academiaImage from "../../assets/images/New/26.jpg"
 import mediaResearchImage from "../../assets/images/New/24.jpg"
 import afroGlobalImage from "../../assets/images/New/k.jpg"
+import north from "../../assets/images/northern-nigeria-durbar.jpg"
 
 const Initiatives = () => {
   const [activeFilter, setActiveFilter] = useState("all")
@@ -42,7 +44,7 @@ const Initiatives = () => {
       number: "01",
       cta: "Explore Leadership Solutions",
       category: "leadership",
-      featured: true,
+      featured: false,
       services: [
         "Executive Leadership Coaching",
         "Organizational Strategy Development",
@@ -55,14 +57,14 @@ const Initiatives = () => {
       id: "north-docs",
       name: "North Docs",
       path: "/initiatives/north-docs",
-      bg: northDocsImage,
+      bg: north,
       shortDesc: "Documentary filmmaking that brings to life the rich, diverse stories of Northern Nigeria and Africa.",
       description:
         "North Docs is dedicated to documenting and preserving the rich cultural heritage and contemporary stories of Northern Nigeria and Africa. Through compelling visual narratives, we shine a light on untold stories, amplifying voices that deserve to be heard on the global stage.",
       number: "02",
       cta: "Discover Our Documentaries",
       category: "media",
-      featured: false,
+      featured: true,
       services: [
         "Documentary Film Production",
         "Cultural Heritage Documentation",
@@ -91,26 +93,26 @@ const Initiatives = () => {
         "Climate Communication Strategies",
       ],
     },
-    {
-      id: "academia",
-      name: "Academia & Research",
-      path: "/initiatives/academia",
-      bg: academiaImage,
-      shortDesc: "Ongoing research on leadership failure in Africa, mental health, and post-conflict reconstruction.",
-      description:
-        "Our academic research focuses on critical areas including leadership challenges in Africa, mental health in post-conflict settings, and effective reconstruction strategies. We bridge theory and practice, producing rigorous research that informs policy and drives positive change in communities across the continent.",
-      number: "04",
-      cta: "Access Research Insights",
-      category: "research",
-      featured: false,
-      services: [
-        "Academic Research Projects",
-        "Policy Papers and Publications",
-        "Research Collaborations",
-        "Academic Conferences and Presentations",
-        "Research-Based Consulting",
-      ],
-    },
+    // {
+    //   id: "academia",
+    //   name: "Academia & Research",
+    //   path: "/initiatives/academia",
+    //   bg: academiaImage,
+    //   shortDesc: "Ongoing research on leadership failure in Africa, mental health, and post-conflict reconstruction.",
+    //   description:
+    //     "Our academic research focuses on critical areas including leadership challenges in Africa, mental health in post-conflict settings, and effective reconstruction strategies. We bridge theory and practice, producing rigorous research that informs policy and drives positive change in communities across the continent.",
+    //   number: "04",
+    //   cta: "Access Research Insights",
+    //   category: "research",
+    //   featured: false,
+    //   services: [
+    //     "Academic Research Projects",
+    //     "Policy Papers and Publications",
+    //     "Research Collaborations",
+    //     "Academic Conferences and Presentations",
+    //     "Research-Based Consulting",
+    //   ],
+    // },
     {
       id: "media-research",
       name: "Media-Research Fusion",
@@ -131,26 +133,26 @@ const Initiatives = () => {
         "Impact Assessment Studies",
       ],
     },
-    {
-      id: "afro-global-festival",
-      name: "AFRO-GLOBAL FESTIVAL OF ARTS AND CULTURE",
-      path: "/initiatives/afro-global-festival",
-      bg: afroGlobalImage,
-      shortDesc: "A celebration of African arts, culture, and creative expression across the global diaspora.",
-      description:
-        "The Afro-Global Festival of Arts and Culture is a vibrant celebration that showcases the rich diversity of African artistic and cultural expressions. This festival brings together artists, performers, and cultural practitioners from across Africa and its diaspora, creating a platform for cultural exchange, creative collaboration, and the promotion of African heritage on the global stage.",
-      number: "06",
-      cta: "Experience the Festival",
-      category: "media",
-      featured: true,
-      services: [
-        "Cultural Exhibitions and Performances",
-        "Artist Workshops and Masterclasses",
-        "Film Screenings and Visual Arts",
-        "Music and Dance Showcases",
-        "Cultural Exchange Programs",
-      ],
-    },
+    // {
+    //   id: "afro-global-festival",
+    //   name: "AFRO-GLOBAL FESTIVAL OF ARTS AND CULTURE",
+    //   path: "/initiatives/afro-global-festival",
+    //   bg: afroGlobalImage,
+    //   shortDesc: "A celebration of African arts, culture, and creative expression across the global diaspora.",
+    //   description:
+    //     "The Afro-Global Festival of Arts and Culture is a vibrant celebration that showcases the rich diversity of African artistic and cultural expressions. This festival brings together artists, performers, and cultural practitioners from across Africa and its diaspora, creating a platform for cultural exchange, creative collaboration, and the promotion of African heritage on the global stage.",
+    //   number: "06",
+    //   cta: "Experience the Festival",
+    //   category: "media",
+    //   featured: true,
+    //   services: [
+    //     "Cultural Exhibitions and Performances",
+    //     "Artist Workshops and Masterclasses",
+    //     "Film Screenings and Visual Arts",
+    //     "Music and Dance Showcases",
+    //     "Cultural Exchange Programs",
+    //   ],
+    // },
   ]
 
   const categories = [
@@ -192,7 +194,7 @@ const Initiatives = () => {
         <motion.div className="absolute bottom-56 -right-40 w-80 h-80 rounded-full bg-gradient-to-tl from-teal-100 to-cyan-100 opacity-15 blur-3xl" style={{ y: useTransform(scrollYProgress, [0, 1], [0, 60]) }} />
 
         {/* Filters */}
-        <motion.div className="max-w-7xl mx-auto mb-16" variants={itemVariants}>
+        {/* <motion.div className="hidden md:block max-w-7xl mx-auto mb-16" variants={itemVariants}>
           <div className="flex flex-wrap justify-center gap-5">
             {categories.map(cat => (
               <motion.button
@@ -208,45 +210,63 @@ const Initiatives = () => {
               </motion.button>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Horizontal Scrollable Featured Carousel */}
         {activeFilter === "all" && featuredInitiatives.length > 0 && (
-          <motion.div className="max-w-7xl mx-auto mb-28" variants={itemVariants}>
-            <motion.h2
-              className="text-center text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700 mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              Spotlight Initiatives
-            </motion.h2>
+        <motion.div className="max-w-7xl mx-auto mb-28" variants={itemVariants}>
+  <motion.h2
+    className="text-center text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700 mb-12"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+  >
+    Spotlight Initiative
+  </motion.h2>
 
-            {/* Tiny custom scrollbar */}
-            <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+  {featuredInitiatives.length === 1 ? (
+    // Single initiative: full-width centered big card, no scroll
+    <div className="flex justify-center">
+      <motion.div
+        className="w-full max-w-4xl"  // Adjust max width as needed for "big card"
+        initial={{ opacity: 0, scale: 0.92 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <InitiativeCard initiative={featuredInitiatives[0]} isFeatured={true} index={0} />
+      </motion.div>
+    </div>
+  ) : (
+    // Multiple initiatives: original horizontal scroll carousel
+    <>
+      <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+        <motion.div
+          className="flex gap-8 pb-8"
+          initial={{ x: 100 }}
+          whileInView={{ x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {featuredInitiatives.map((initiative, idx) => (
+            <div key={initiative.id} className="flex-none w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[30vw]">
+              {/* Adjusted lg:w-[30vw] for better fit when multiple cards */}
               <motion.div
-                className="flex gap-8 pb-8"
-                initial={{ x: 100 }}
-                whileInView={{ x: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: idx * 0.15 }}
+                viewport={{ once: true }}
               >
-                {featuredInitiatives.map((initiative, idx) => (
-                  <div key={initiative.id} className="flex-none w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[38vw]">
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.92 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: idx * 0.15 }}
-                      viewport={{ once: true }}
-                    >
-                      <InitiativeCard initiative={initiative} isFeatured={true} index={idx} />
-                    </motion.div>
-                  </div>
-                ))}
+                <InitiativeCard initiative={initiative} isFeatured={true} index={idx} />
               </motion.div>
             </div>
+          ))}
+        </motion.div>
+      </div>
 
-            <p className="text-center text-gray-500 mt-6 text-sm">← Scroll horizontally to explore →</p>
-          </motion.div>
+      <p className="text-center text-gray-500 mt-6 text-sm">← Scroll horizontally to explore →</p>
+    </>
+  )}
+</motion.div>
         )}
 
         {/* Regular Grid */}
