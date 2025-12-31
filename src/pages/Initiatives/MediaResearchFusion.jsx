@@ -590,9 +590,9 @@ const MediaResearchFusion = () => {
               <button className="px-8 py-3 bg-white text-black rounded-md font-medium hover:bg-gray-200 transition-colors">
                 Start a Collaboration
               </button>
-              <button className="px-8 py-3 border border-white rounded-md font-medium hover:bg-gray-800 transition-colors">
+              {/* <button className="px-8 py-3 border border-white rounded-md font-medium hover:bg-gray-800 transition-colors">
                 View Our Portfolio
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

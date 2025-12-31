@@ -17,13 +17,16 @@ import {
   ArrowUpRight,
   Quote,
   ArrowLeft,
+  Shield,
+  MessageSquare,
+  Lightbulb,
 } from "lucide-react"
 
 import mmaImage from "../../assets/images/New/2.jpg"
 import leadershipImage from "../../assets/images/leadership.jfif"
 import InitiativeDetail from "./initiative-detail"
-import Contactform from "../../components/contact-us/Contactform"   // ← SAME FORM AS CONTACT PAGE
-import "../../components/contact-us/contact.css"                     // ← SAME STYLES
+import Contactform from "../../components/contact-us/Contactform"
+import "../../components/contact-us/contact.css"
 
 // ==================================================================
 // 1. MODAL STATE (shared)
@@ -51,7 +54,7 @@ const MMAPage = () => {
         contentComponent={MMAContentWithModal}
       />
 
-      {/* EXACT SAME MODAL FROM CONTACT PAGE */}
+      {/* CONTACT MODAL */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
@@ -171,7 +174,7 @@ const MMAHero = () => {
               className="inline-block mb-4 px-4 py-1.5 border border-white/25 rounded-full backdrop-blur-sm"
             >
               <span className="text-xs font-medium tracking-widest text-white uppercase">
-                Leadership & Strategy
+                Strategy & Advisory
               </span>
             </motion.div>
 
@@ -210,7 +213,7 @@ const MMAHero = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.1 }}
             >
-              Transforming leadership potential into exceptional performance across Africa.
+              Making sense of complex realities through evidence, research, and strategic communication.
             </motion.p>
 
             <motion.div
@@ -223,7 +226,7 @@ const MMAHero = () => {
                 href="#services"
                 className="group px-7 py-3 bg-white text-black text-sm font-semibold rounded-full hover:bg-yellow-400 transition-all duration-500 flex items-center gap-2.5 shadow-xl"
               >
-                <span>Explore Services</span>
+                <span>What We Do</span>
                 <motion.div
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
@@ -272,7 +275,7 @@ const MMAHero = () => {
 }
 
 // ==================================================================
-// 4. CONTENT (only CTA changed)
+// 4. CONTENT (refined based on owner's info)
 // ==================================================================
 const MMAContent = ({ openModal }) => {
   const approachRef = useRef(null)
@@ -281,10 +284,6 @@ const MMAContent = ({ openModal }) => {
   const servicesRef = useRef(null)
   const isServicesInView = useInView(servicesRef, { once: true, amount: 0.1 })
 
-  const statsRef = useRef(null)
-  const isStatsInView = useInView(statsRef, { once: true, amount: 0.5 })
-
-  const [activeTestimonial, setActiveTestimonial] = useState(0)
   const [hoveredService, setHoveredService] = useState(null)
 
   // Mouse cursor
@@ -302,155 +301,101 @@ const MMAContent = ({ openModal }) => {
     return () => window.removeEventListener("mousemove", move)
   }, [cursorX, cursorY])
 
-  // Auto-rotate testimonials
-  useEffect(() => {
-    const id = setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
-    }, 8000)
-    return () => clearInterval(id)
-  }, [])
-
   // ================== DATA ==================
-  const approaches = [
-    {
-      title: "Authentic Leadership",
-      icon: Users,
-      description: "Developing leaders who lead with integrity, self-awareness, and genuine connection to their teams and mission.",
-      color: "rgb(245, 158, 11)",
-      keyPoints: ["Self-awareness development", "Values-based decision making", "Emotional intelligence training", "Transparent communication"],
-    },
-    {
-      title: "Strategic Vision",
-      icon: Target,
-      description: "Crafting clear, compelling visions that align organizational capabilities with market opportunities.",
-      color: "rgb(16, 185, 129)",
-      keyPoints: ["Future-focused planning", "Stakeholder alignment", "Opportunity identification", "Resource optimization"],
-    },
-    {
-      title: "Adaptive Capacity",
-      icon: TrendingUp,
-      description: "Building resilient leadership that thrives in uncertainty and navigates complex challenges effectively.",
-      color: "rgb(79, 70, 229)",
-      keyPoints: ["Change management expertise", "Crisis leadership training", "Agile methodology adoption", "Scenario planning"],
-    },
-    {
-      title: "Transformative Impact",
-      icon: Zap,
-      description: "Creating lasting change that extends beyond immediate results to transform organizations and communities.",
-      color: "rgb(220, 38, 38)",
-      keyPoints: ["Sustainable development focus", "Organizational culture change", "Leadership pipeline building", "Community engagement"],
-    },
-  ]
+  const coreIdea = {
+    statement: "Good decisions fail when leaders misunderstand people, context, and behavior.",
+    description: "The firm translates deep field insight, research, and cultural intelligence into clear strategic direction for decision-makers operating in fragile, post-conflict, and rapidly changing environments."
+  }
 
   const services = [
     {
-      title: "Executive Coaching",
-      icon: Briefcase,
-      description: "Personalized coaching for senior leaders to enhance self-awareness, decision-making, and strategic thinking capabilities.",
+      title: "Leadership & Strategy Frameworks",
+      icon: Target,
+      description: "Design comprehensive frameworks for navigating complex and fragile environments with clarity and confidence.",
       color: "rgb(245, 158, 11)",
-      features: ["One-on-one coaching sessions", "360° leadership assessments", "Personalized development plans", "Ongoing performance support"],
+      features: [
+        "Context-specific strategy development",
+        "Leadership decision-making models",
+        "Organizational adaptability frameworks",
+        "Risk assessment and mitigation"
+      ],
     },
     {
-      title: "Strategic Planning",
+      title: "Post-Conflict Support",
+      icon: Shield,
+      description: "Support reconstruction, rehabilitation, and reintegration efforts in post-conflict settings.",
+      color: "rgb(16, 185, 129)",
+      features: [
+        "Reconstruction planning",
+        "Community rehabilitation programs",
+        "Reintegration strategies",
+        "Peacebuilding initiatives"
+      ],
+    },
+    {
+      title: "Strategic Communication",
+      icon: MessageSquare,
+      description: "Develop evidence-based communication and narrative strategies that drive understanding and action.",
+      color: "rgb(79, 70, 229)",
+      features: [
+        "Narrative strategy development",
+        "Stakeholder engagement plans",
+        "Crisis communication",
+        "Public affairs advisory"
+      ],
+    },
+    {
+      title: "Policy & Institutional Reform",
       icon: BarChart,
-      description: "Comprehensive strategy development that aligns organizational vision with actionable roadmaps for sustainable growth.",
-      color: "rgb(16, 185, 129)",
-      features: ["Market analysis and positioning", "Vision and mission refinement", "Strategic objective setting", "Implementation roadmapping"],
-    },
-    {
-      title: "Leadership Programs",
-      icon: Users,
-      description: "Transformative training programs that develop leadership capabilities at all organizational levels.",
-      color: "rgb(79, 70, 229)",
-      features: ["Emerging leaders development", "Executive team alignment", "Leadership competency building", "Succession planning"],
-    },
-    {
-      title: "Change Management",
-      icon: Globe,
-      description: "Guiding organizations through transitions with strategies that minimize disruption and maximize adoption.",
+      description: "Advise on policy development, institutional reform, and social behavior change initiatives.",
       color: "rgb(220, 38, 38)",
-      features: ["Change readiness assessment", "Stakeholder engagement planning", "Communication strategy development", "Resistance management"],
+      features: [
+        "Policy analysis and design",
+        "Institutional capacity building",
+        "Social behavior change programs",
+        "Governance reform support"
+      ],
+    },
+    {
+      title: "Leadership Training",
+      icon: Users,
+      description: "Train leaders and teams on effective decision-making in high-risk and high-uncertainty contexts.",
+      color: "rgb(236, 72, 153)",
+      features: [
+        "Executive decision-making training",
+        "Crisis leadership development",
+        "Team resilience building",
+        "Adaptive leadership programs"
+      ],
     },
   ]
 
-  const caseStudies = [
+  const approaches = [
     {
-      title: "National Healthcare System Transformation",
-      challenge: "A national healthcare provider faced declining performance metrics and employee engagement.",
-      approach: "Implemented a comprehensive leadership development program for 120 executives and middle managers, coupled with organizational restructuring.",
-      results: "42% improvement in patient satisfaction scores, 28% reduction in staff turnover, and successful implementation of digital health initiatives.",
-      image: mmaImage,
-      metrics: [{ value: "42%", label: "Improved Satisfaction" }, { value: "28%", label: "Reduced Turnover" }, { value: "120", label: "Leaders Trained" }],
-    },
-    {
-      title: "Tech Startup Scale-up Strategy",
-      challenge: "A promising fintech startup struggled with scaling operations while maintaining its innovative culture.",
-      approach: "Developed a strategic growth roadmap, leadership coaching for the founding team, and implementation of agile management practices.",
-      results: "Successful expansion to three new markets, 300% revenue growth over 18 months, and secured Series B funding of $12M.",
-      image: mmaImage,
-      metrics: [{ value: "300%", label: "Revenue Growth" }, { value: "$12M", label: "Funding Secured" }, { value: "3", label: "New Markets" }],
-    },
-  ]
-
-  const testimonials = [
-    {
-      quote: "The leadership program delivered by Master Methods & Advisors transformed how I approach my role as CEO. The insights were practical, the coaching was personalized, and the results have been remarkable for both myself and my organization.",
-      author: "Amina Okafor",
-      position: "CEO, TechInnovate Africa",
-      initials: "AO",
+      title: "Evidence-Based",
+      icon: BarChart,
+      description: "Every recommendation is grounded in rigorous research, field data, and contextual analysis.",
       color: "rgb(245, 158, 11)",
     },
     {
-      quote: "The strategic planning facilitation provided clarity and direction during a critical growth phase. The MMA team's ability to understand our unique challenges and opportunities was impressive.",
-      author: "David Mensah",
-      position: "Director, Pan-African Health Initiative",
-      initials: "DM",
+      title: "Context-Aware",
+      icon: Globe,
+      description: "Deep understanding of local realities, cultural dynamics, and social complexities.",
       color: "rgb(16, 185, 129)",
     },
     {
-      quote: "Working with MMA has been transformative for our leadership team. Their approach combines global best practices with deep understanding of African contexts, creating solutions that truly work for our organization.",
-      author: "Sarah Nkosi",
-      position: "HR Director, Continental Bank",
-      initials: "SN",
+      title: "Action-Oriented",
+      icon: Zap,
+      description: "Translating insights into clear, implementable strategies for decision-makers.",
       color: "rgb(79, 70, 229)",
     },
+    {
+      title: "Field-Tested",
+      icon: Target,
+      description: "Solutions refined through real-world application in fragile and complex environments.",
+      color: "rgb(220, 38, 38)",
+    },
   ]
-
-  const stats = [
-    { value: "250+", label: "Organizations Served", icon: Briefcase },
-    { value: "1,200+", label: "Leaders Developed", icon: Users },
-    { value: "18", label: "African Countries", icon: Globe },
-    { value: "92%", label: "Client Satisfaction", icon: Star },
-  ]
-
-  // ================== COUNTER ==================
-  const CounterAnimation = ({ value, isInView }) => {
-    const [count, setCount] = useState("0")
-    const hasRun = useRef(false)
-
-    useEffect(() => {
-      if (!isInView || hasRun.current) return
-      hasRun.current = true
-
-      const num = parseInt(value.replace(/\D/g, "")) || 0
-      const suffix = value.replace(/\d+/g, "")
-      let start = 0
-      const duration = 2000
-      const startTime = performance.now()
-
-      const step = (now) => {
-        const elapsed = now - startTime
-        const progress = Math.min(elapsed / duration, 1)
-        const eased = progress * (2 - progress)
-        const current = Math.floor(eased * num)
-        setCount(`${current}${suffix}`)
-        if (progress < 1) requestAnimationFrame(step)
-      }
-      requestAnimationFrame(step)
-    }, [isInView, value])
-
-    return <span>{count}</span>
-  }
 
   // ================== RENDER ==================
   return (
@@ -458,82 +403,56 @@ const MMAContent = ({ openModal }) => {
       {/* Intro */}
       <div className="prose prose-lg max-w-none">
         <p className="text-base leading-relaxed mb-8">
-          Master Methods & Advisors (MMA) stands at the forefront of leadership development and strategic consulting across Africa. The initiative is built on the understanding that effective leadership is the cornerstone of organizational success and societal progress.
+          Master Methods & Advisors is a strategy and advisory firm that helps institutions, governments, and organizations make sense of complex social, leadership, and post-conflict realities using evidence, research, and strategic communication.
         </p>
 
-        <div className="highlight-box bg-gray-50 border-gray-400 hover:border-black rounded-l-xl transition-all duration-500 ease-linear p-6">
-          <h3 className="hover:text-yellow-600 transition-colors duration-300 flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center">
-              <Target size={16} />
-            </span>
-            The Mission
-          </h3>
-          <p>
-            To cultivate a new generation of African leaders equipped with the mindset, skills, and strategies needed to drive sustainable growth and meaningful impact.
-          </p>
+        <div className="highlight-box bg-gradient-to-r from-gray-50 to-gray-100 border-gray-400 hover:border-black rounded-xl transition-all duration-500 ease-linear p-8 my-12">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center flex-shrink-0 mt-1">
+              <Lightbulb size={24} />
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold mb-4 hover:text-yellow-600 transition-colors duration-300">
+                Built Around One Idea
+              </h3>
+              <p className="text-lg font-semibold text-gray-900 mb-3 italic">
+                "{coreIdea.statement}"
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                {coreIdea.description}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Stats */}
-      {/* <motion.div
-        ref={statsRef}
-        className="mt-16 py-12 px-8 bg-gray-50 rounded-2xl"
-        initial={{ opacity: 0 }}
-        animate={isStatsInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat, i) => {
-            const Icon = stat.icon
-            return (
-              <motion.div
-                key={i}
-                className="text-center group"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isStatsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mx-auto mb-4 group-hover:bg-black transition-all duration-300">
-                  <Icon size={24} className="text-gray-700 group-hover:text-white transition-colors" />
-                </div>
-                <div className="text-3xl font-bold mb-1 group-hover:text-yellow-600 transition-colors">
-                  <CounterAnimation value={stat.value} isInView={isStatsInView} />
-                </div>
-                <div className="text-gray-600 group-hover:text-gray-900">{stat.label}</div>
-              </motion.div>
-            )
-          })}
-        </div>
-      </motion.div> */}
-
-      {/* Approach */}
-      <motion.div id="approach" ref={approachRef} className="mt-16">
+      {/* Our Approach */}
+      <motion.div id="approach" ref={approachRef} className="mt-20">
         <motion.div className="flex items-center gap-3 mb-8" initial={{ opacity: 0, x: -20 }} animate={isApproachInView ? { opacity: 1, x: 0 } : {}}>
           <div className="w-12 h-1 bg-black" />
-          <h2 className="text-3xl font-bold">Our Leadership Approach</h2>
+          <h2 className="text-3xl font-bold">Our Approach</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-         {approaches.map((approach, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {approaches.map((approach, index) => {
             const Icon = approach.icon
             return (
               <motion.div
                 key={approach.title}
-                className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:border-gray-400 transition-all duration-300 group"
+                className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-gray-400 transition-all duration-300 group"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isApproachInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
                 whileHover={{ y: -5 }}
               >
                 <div
-                  className="w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300"
+                  className="w-14 h-14 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300"
                   style={{
                     backgroundColor: `${approach.color}10`,
                   }}
                 >
                   <Icon
-                    size={32}
+                    size={28}
                     className="text-gray-700 group-hover:text-black transition-colors duration-300"
                     style={{
                       "--hover-color": approach.color,
@@ -543,7 +462,7 @@ const MMAContent = ({ openModal }) => {
                   />
                 </div>
                 <h3
-                  className="text-2xl font-bold mb-3 group-hover:text-black transition-colors duration-300"
+                  className="text-xl font-bold mb-2 group-hover:text-black transition-colors duration-300"
                   style={{
                     "--hover-color": approach.color,
                   }}
@@ -552,24 +471,9 @@ const MMAContent = ({ openModal }) => {
                 >
                   {approach.title}
                 </h3>
-                <p className="text-gray-700 group-hover:text-gray-900 transition-colors duration-300 mb-6">
+                <p className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors duration-300">
                   {approach.description}
                 </p>
-                <ul className="space-y-2">
-                  {approach.keyPoints.map((point, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <div
-                        className="mt-1 min-w-[16px] h-4 w-4 rounded-full flex items-center justify-center"
-                        style={{ backgroundColor: `${approach.color}20` }}
-                      >
-                        <Check size={10} style={{ color: approach.color }} />
-                      </div>
-                      <span className="text-gray-600 group-hover:text-gray-900 transition-colors duration-300">
-                        {point}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
               </motion.div>
             )
           })}
@@ -580,11 +484,15 @@ const MMAContent = ({ openModal }) => {
       <motion.div id="services" ref={servicesRef} className="mt-24">
         <motion.div className="flex items-center gap-3 mb-8" initial={{ opacity: 0, x: -20 }} animate={isServicesInView ? { opacity: 1, x: 0 } : {}}>
           <div className="w-12 h-1 bg-black" />
-          <h2 className="text-3xl font-bold">Our Services</h2>
+          <h2 className="text-3xl font-bold">What We Do</h2>
         </motion.div>
 
+        <p className="text-gray-700 mb-12 max-w-3xl">
+          Master Methods & Advisors works with clients across institutions, governments, and organizations to:
+        </p>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-         {services.map((service, index) => {
+          {services.map((service, index) => {
             const Icon = service.icon
             const isHovered = hoveredService === index
 
@@ -599,7 +507,7 @@ const MMAContent = ({ openModal }) => {
                 onMouseEnter={() => setHoveredService(index)}
                 onMouseLeave={() => setHoveredService(null)}
               >
-                {/* Background gradient that appears on hover */}
+                {/* Background gradient on hover */}
                 <motion.div
                   className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
                   style={{
@@ -668,125 +576,13 @@ const MMAContent = ({ openModal }) => {
                     </motion.ul>
                   )}
                 </AnimatePresence>
-
-                <div className="mt-6 pt-4 border-t border-gray-100">
-                  <a
-                    href={`/services/${service.title.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="inline-flex items-center gap-2 text-gray-700 font-medium group-hover:text-black transition-colors duration-300"
-                  >
-                    Learn more
-                    <ArrowUpRight
-                      size={16}
-                      className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
-                    />
-                  </a>
-                </div>
               </motion.div>
             )
           })}
         </div>
       </motion.div>
 
-      {/* Case Studies */}
-      <div className="mt-24">
-        <div className="flex items-center gap-3 mb-12">
-          <div className="w-12 h-1 bg-black" />
-          <h2 className="text-3xl font-bold">Impact Stories</h2>
-        </div>
-
-        <div className="space-y-24">
-          {caseStudies.map((c, i) => (
-            <motion.div
-              key={c.title}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-                <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:border-gray-400 transition-all">
-                  <div className="inline-block px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700 mb-6">
-                    Case Study {i + 1}
-                  </div>
-                  <h3 className="text-2xl font-bold mb-6 hover:text-yellow-600">{c.title}</h3>
-                  <div className="space-y-6 mb-8">
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Challenge</h4>
-                      <p className="text-gray-700 bg-gray-50 p-4 rounded-lg">{c.challenge}</p>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Approach</h4>
-                      <p className="text-gray-700 bg-gray-50 p-4 rounded-lg">{c.approach}</p>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Results</h4>
-                      <p className="text-gray-700 bg-gray-50 p-4 rounded-lg">{c.results}</p>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    {c.metrics.map((m, j) => (
-                      <div key={j} className="text-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
-                        <div className="text-2xl font-bold text-black">{m.value}</div>
-                        <div className="text-sm text-gray-600">{m.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="relative h-[400px] rounded-xl overflow-hidden group">
-                <img src={c.image} alt={c.title} className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700" />
-                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Testimonials */}
-      {/* <div className="mt-24 bg-gray-50 p-12 rounded-2xl relative overflow-hidden">
-        <Quote size={300} className="absolute -top-20 -left-20 text-black opacity-5" />
-        <div className="relative z-10">
-          <div className="flex items-center gap-3 mb-12">
-            <div className="w-12 h-1 bg-black" />
-            <h2 className="text-3xl font-bold">Client Testimonials</h2>
-          </div>
-          <div className="max-w-4xl mx-auto">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTestimonial}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="text-center"
-              >
-                <div
-                  className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center text-white text-2xl font-bold"
-                  style={{ backgroundColor: testimonials[activeTestimonial].color }}
-                >
-                  {testimonials[activeTestimonial].initials}
-                </div>
-                <p className="text-xl italic text-gray-700 mb-8 leading-relaxed">
-                  "{testimonials[activeTestimonial].quote}"
-                </p>
-                <div className="font-bold text-lg mb-1">{testimonials[activeTestimonial].author}</div>
-                <div className="text-gray-600">{testimonials[activeTestimonial].position}</div>
-              </motion.div>
-            </AnimatePresence>
-            <div className="flex justify-center gap-2 mt-8">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveTestimonial(i)}
-                  className={`w-3 h-3 rounded-full transition-all ${activeTestimonial === i ? "bg-black w-8" : "bg-gray-300"}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-      {/* CALL TO ACTION – OPENS MODAL */}
+      {/* CALL TO ACTION */}
       <div className="mt-24 relative">
         <div className="absolute inset-0 overflow-hidden rounded-2xl">
           <div
@@ -801,27 +597,25 @@ const MMAContent = ({ openModal }) => {
         <div className="relative z-10 bg-black/80 p-12 rounded-2xl text-white">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-xl md:text-3xl font-bold mb-6">
-              Ready to Transform Your Leadership?
+              Ready to Work With Us?
             </h2>
             <p className="text-base text-gray-300 mb-8 max-w-2xl mx-auto">
-              Take the first step toward developing the leadership capabilities that will drive sustainable success for your organization.
+              Partner with Master Methods & Advisors to navigate complexity with evidence, insight, and strategic clarity.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <button
                 onClick={openModal}
                 className="inline-flex items-center text-sm gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-yellow-400 transition-all duration-300 group"
               >
-                <span>Schedule a Consultation</span>
+                <span>Get in Touch</span>
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </div>
           </div>
         </div>
-
-        
       </div>
-      
-    <div className="mt-20">
+
+      <div className="mt-20">
         <Link
           to="/initiatives"
           className="inline-flex items-center text-sm gap-2 px-6 py-3 border border-gray-600 rounded-full hover:bg-gray-800 hover:text-white transition-all duration-300"
@@ -842,7 +636,6 @@ const MMAContent = ({ openModal }) => {
         }}
       />
     </div>
-    
   )
 }
 
@@ -854,19 +647,19 @@ const initiative = {
   name: "Master Methods & Advisors",
   path: "/initiatives/mma",
   bg: mmaImage,
-  shortDesc: "Leadership and strategy expertise for organizations and individuals seeking transformative growth.",
+  shortDesc: "Strategy and advisory for complex social, leadership, and post-conflict realities.",
   description:
-    "Master Methods & Advisors provides comprehensive leadership and strategy consulting services to organizations and individuals across Africa...",
+    "Master Methods & Advisors is a strategy and advisory firm that helps institutions, governments, and organizations make sense of complex social, leadership, and post-conflict realities using evidence, research, and strategic communication.",
   number: "01",
-  cta: "Explore Leadership Solutions",
+  cta: "Learn More",
   category: "leadership",
   featured: true,
   services: [
-    "Executive Leadership Coaching",
-    "Organizational Strategy Development",
-    "Change Management Consulting",
-    "Leadership Training Programs",
-    "Strategic Planning Workshops",
+    "Leadership & Strategy Frameworks",
+    "Post-Conflict Support",
+    "Strategic Communication",
+    "Policy & Institutional Reform",
+    "Leadership Training",
   ],
 }
 

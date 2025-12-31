@@ -85,8 +85,7 @@ export default function Footer() {
               />
             </motion.h2>
             <motion.p className="text-gray-600 max-w-md" variants={itemVariants}>
-              Documentary Filmmaker, Leadership Expert, and Climate Advocate dedicated to telling impactful stories and
-              driving positive change.
+            Expert Consultant in Post-Conflict Reconstruction Community Behaviour Analysis | Documentary-Based Evidence
             </motion.p>
           </motion.div>
 
