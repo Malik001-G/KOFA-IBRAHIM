@@ -353,7 +353,7 @@ const Navbar = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              Ideas. Solutions. Stories.
+              Evidence. Culture. Strategy
             </motion.p>
           </NavLink>
         <div className="reg-men">

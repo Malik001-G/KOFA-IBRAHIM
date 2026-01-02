@@ -562,7 +562,7 @@ const CreativeHero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            Ideas. Solutions. Stories.
+              Evidence. Culture. Strategy
           </motion.p>
         </NavLink>
 
@@ -810,11 +810,11 @@ const CreativeHero = () => {
               "Documentary",
               "Filmmaker",
               "•",
-              "Leadership",
-              "Expert",
+              "Cultural",
+              "Intelligence",
               "•",
-              "Climate",
-              "Advocate",
+              "Post-Conflict",
+              "Reconstruction",
             ].map((word, index) => (
               <motion.span
                 key={index}
